@@ -750,23 +750,28 @@ end
 
 function LiveSplit:ShowOptionsMenu()
 	ClearMenu()
+	-- Split
 	AddCustomMenuItem(GetString(SI_LIVE_SPLIT_MANUAL_SPLIT), function()
 		DBG:Log("Manually splitting!", DBG_NORMAL)
 		self:Split(SOURCE_TYPE_MENU)
 	end)
+	-- Start
 	AddCustomMenuItem(GetString(SI_LIVE_SPLIT_TIMER_START), function()
 		DBG:Log("Manually starting!", DBG_NORMAL)
 		self:StartTimer(SOURCE_TYPE_MENU)
 	end)
+	-- Stop
 	AddCustomMenuItem(GetString(SI_LIVE_SPLIT_TIMER_STOP), function()
 		DBG:Log("Manually stopping!", DBG_NORMAL)
 		self:StopTimer(SOURCE_TYPE_MENU)
 	end)
+	-- Reset
 	AddCustomMenuItem(GetString(SI_LIVE_SPLIT_RESET), function()
 		DBG:Log("Manually resetting!", DBG_NORMAL)
 		self:Reset(SOURCE_TYPE_MENU)
 	end)
 
+	-- Scale
 	local scaleMenuEntries = {
 		{ label = "50%",  callback = function() self:SetScale(0.50) end},
 		{ label = "60%",  callback = function() self:SetScale(0.60) end},
@@ -778,7 +783,8 @@ function LiveSplit:ShowOptionsMenu()
 		{ label = "100%", callback = function() self:SetScale(1.00) end},
 	}
 	AddCustomSubMenuItem(GetString(SI_LIVE_SPLIT_SCALE), scaleMenuEntries)
-	
+
+	-- MaxSplitsShown
 	local maxSplitsEntries = {
 		{ label = "3",  callback = function() self:SetMaxDisplaySplits(3)  end},
 		{ label = "4",  callback = function() self:SetMaxDisplaySplits(4)  end},
@@ -791,14 +797,23 @@ function LiveSplit:ShowOptionsMenu()
 	}
 	AddCustomSubMenuItem(GetString(SI_LIVE_SPLIT_MAXSHOWN), maxSplitsEntries)
 
+	-- Additional Info
 	local additionalDisplayToggle = ESOLS.SV.additionalInfo
 	AddCustomMenuItem(GetString(SI_LIVE_SPLIT_SHOWINFO), function()
 		additionalDisplayToggle = not additionalDisplayToggle
 		self:ShowAdditionalInfo(additionalDisplayToggle)
 	end)
 
-	local availableSplits = SPLIT_MANAGER:GetSplitsForZoneAndDifficulty(self.zoneId, self.difficulty)
+	-- Operation Mode
+	local modeEntries = {
+		{ label = GetString(SI_LIVE_SPLIT_MODE_AUTO),   callback = function() self:UpdateMode(MODE_AUTO)   end},
+		{ label = GetString(SI_LIVE_SPLIT_MODE_MIXED),  callback = function() self:UpdateMode(MODE_MIXED)  end},
+		{ label = GetString(SI_LIVE_SPLIT_MODE_MANUAL), callback = function() self:UpdateMode(MODE_MANUAL) end},
+	}
+	AddCustomSubMenuItem(GetString(SI_LIVE_SPLIT_MODE), modeEntries)
 
+	-- Possibly split selection
+	local availableSplits = SPLIT_MANAGER:GetSplitsForZoneAndDifficulty(self.zoneId, self.difficulty)
 	if #availableSplits > 1  then
 		-- Zone has multiple speed run splits
 		local submenu = {}
