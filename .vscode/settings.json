@@ -1,0 +1,15 @@
+{
+    "Lua.diagnostics.globals": [
+        "ZO_FormatTimeMilliseconds",
+        "ZO_ControlPool",
+        "ZO_ClearNumericallyIndexedTable",
+        "ZO_ObjectPool_CreateNamedControl",
+        "ZO_Menu",
+        "AnchorMenu",
+        "EVENT_PLAYER_COMBAT_STATE",
+        "EVENT_BROADCAST"
+    ],
+    "Lua.diagnostics.disable": [
+        "inject-field"
+    ]
+}

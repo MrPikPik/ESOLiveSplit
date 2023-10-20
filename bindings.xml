@@ -1,0 +1,15 @@
+<Bindings>
+    <Layer name="SI_KEYBINDINGS_LAYER_GENERAL">
+        <Category name="SI_KEYBINDINGS_CATEGORY_USER_INTERFACE">
+            <Action name="LIVE_SPLIT_KEY1">
+                <Down>
+                    if not LIVE_SPLIT.activerun then
+                        LIVE_SPLIT:StartTimer(3)
+                    else
+                        LIVE_SPLIT:Split(3)
+                    end
+                </Down>
+            </Action>
+        </Category>
+    </Layer>
+</Bindings>

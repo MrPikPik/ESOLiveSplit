@@ -1,0 +1,121 @@
+;This Add-on is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates.
+;The Elder Scrolls® and related logos are registered trademarks or trademarks of ZeniMax Media Inc. in the United States and/or other countries.
+;All rights reserved.
+
+## Title: ESO Live Split
+## Description: Live Split lookalike in ESO
+## Author: MrPikPik
+## APIVersion: 101039
+## Version: 1.0 / 9.1.8
+## AddOnVersion: 100
+## DependsOn: LibCustomMenu>=712
+## OptionalDependsOn: LibAddonMenu>=31
+## SavedVariables: LiveSplitSavedVars
+
+;Language
+lang/en.lua
+lang/$(language).lua
+
+;Modules
+Globals.lua
+Debugger.lua
+Triggers/CoordinateTrigger.lua
+Triggers/CSATrigger.lua
+Triggers/NPCMessageTrigger.lua
+Triggers/DelayTrigger.lua
+
+;SplitManager
+SplitManager/Splitmanager.lua
+
+;UI
+UI/fonts/fontstrings.xml
+UI/LiveSplitUI.lua
+UI/LiveSplitUI.xml
+
+;Basegame Dungeons
+SplitData/Dungeons/FungalGrotto1.lua
+SplitData/Dungeons/FungalGrotto2.lua
+SplitData/Dungeons/Spindleclutch1.lua
+SplitData/Dungeons/Spindleclutch2.lua
+SplitData/Dungeons/BanishedCells1.lua
+SplitData/Dungeons/BanishedCells2.lua
+SplitData/Dungeons/DarkshadeCaverns1.lua
+SplitData/Dungeons/DarkshadeCaverns2.lua
+SplitData/Dungeons/EldenHollow1.lua
+SplitData/Dungeons/EldenHollow2.lua
+SplitData/Dungeons/WayrestSewers1.lua
+SplitData/Dungeons/WayrestSewers2.lua
+SplitData/Dungeons/ArxCorinium.lua
+SplitData/Dungeons/CityOfAsh1.lua
+SplitData/Dungeons/CityOfAsh2.lua
+SplitData/Dungeons/CryptOfHearts1.lua
+SplitData/Dungeons/CryptOfHearts2.lua
+SplitData/Dungeons/DirefrostKeep.lua
+SplitData/Dungeons/TempestIsland.lua
+SplitData/Dungeons/Volenfell.lua
+SplitData/Dungeons/BlackheartHaven.lua
+SplitData/Dungeons/BlessedCrucible.lua
+SplitData/Dungeons/SelenesWeb.lua
+SplitData/Dungeons/VaultsOfMadness.lua
+
+;DLC Dungeons
+SplitData/Dungeons/ImperialCityPrison.lua
+SplitData/Dungeons/WhiteGoldTower.lua
+SplitData/Dungeons/CradleOfShadows.lua
+SplitData/Dungeons/RuinsOfMazzatun.lua
+SplitData/Dungeons/FalkreathHold.lua
+SplitData/Dungeons/BloodrootForge.lua
+SplitData/Dungeons/FangLair.lua
+SplitData/Dungeons/ScalecallerPeak.lua
+SplitData/Dungeons/MarchOfSacrifices.lua
+SplitData/Dungeons/MoonHunterKeep.lua
+SplitData/Dungeons/DepthsOfMalatar.lua
+SplitData/Dungeons/Frostvault.lua
+SplitData/Dungeons/MoongraveFane.lua
+SplitData/Dungeons/LairOfMaarselok.lua
+SplitData/Dungeons/Icereach.lua
+SplitData/Dungeons/UnhallowedGrave.lua
+SplitData/Dungeons/CastleThorn.lua
+SplitData/Dungeons/StoneGarden.lua
+SplitData/Dungeons/BlackDrakeVilla.lua
+SplitData/Dungeons/TheCauldron.lua
+SplitData/Dungeons/TheDreadCellar.lua
+SplitData/Dungeons/RedPetalBastion.lua
+SplitData/Dungeons/ShipwrightsRegret.lua
+SplitData/Dungeons/CoralAerie.lua
+SplitData/Dungeons/GravenDeep.lua
+SplitData/Dungeons/EarthenRootEnclave.lua
+SplitData/Dungeons/BalSunnar.lua
+SplitData/Dungeons/ScrivenersHall.lua
+
+;Trials
+SplitData/Trials/HelRaCitadel.lua
+SplitData/Trials/AetherianArchive.lua
+SplitData/Trials/SanctumOphidia.lua
+SplitData/Trials/MawOfLorkhaj.lua
+SplitData/Trials/HallsOfFabrication.lua
+SplitData/Trials/AsylumSanctorium.lua
+SplitData/Trials/Cloudrest.lua
+SplitData/Trials/Sunspire.lua
+SplitData/Trials/KynesAegis.lua
+SplitData/Trials/Rockgrove.lua
+SplitData/Trials/DreadsailReef.lua
+SplitData/Trials/SanitysEdge.lua
+
+;Arenas
+SplitData/Arenas/MaelstromArena.lua
+SplitData/Arenas/VatheshranHollows.lua
+SplitData/Arenas/DragonstarArena.lua
+SplitData/Arenas/BlackrosePrison.lua
+
+;Testing
+SplitData/Test.lua
+
+;AddonMain
+ESOLiveSplit.lua
+
+;Settings Menu
+SettingsPanel.lua
+
+;Keybinds
+bindings.xml

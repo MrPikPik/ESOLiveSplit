@@ -1,0 +1,72 @@
+local startData = {
+	x = 5743,
+	y = 50571,
+	z = 32094,
+	r = 1.0,
+}
+
+local splits = {
+	[1] = {
+		name = "Trash 1",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[2] = {
+		name = "Hunter-Killer Fabricants",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+	[3] = {
+		name = "Trash 2",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[4] = {
+		name = "Pinnacle Factotum",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+	[5] = {
+		name = "Trash 3",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[6] = {
+		name = "Archcustodian",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+	[7] = {
+		name = "Trash 4",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[8] = {
+		name = "Reassembly Commitee",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+	[9] = {
+		name = "Trash 5",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[10] = {
+		name = "Assembly General",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+}
+
+SPLIT_MANAGER:RegisterSplit(975, DUNGEON_DIFFICULTY_NORMAL, {
+	catName = "nHoF- Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	wr = 2400000,
+	wrPlayer = "Zenimax",
+	splits = splits,
+})
+SPLIT_MANAGER:RegisterSplit(975, DUNGEON_DIFFICULTY_VETERAN, {
+	catName = "vHoF - Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
+	wr = 2400000,
+	wrPlayer = "Zenimax",
+	splits = splits,
+})
+SPLIT_MANAGER:RegisterSplit(975, DUNGEON_DIFFICULTY_VETERAN, {
+	catName = "vHoF HM - Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
+	wr = 2400000,
+	wrPlayer = "Zenimax",
+	splits = splits,
+})
