@@ -11,7 +11,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
-		name = "Boss1",
+		name = "Overfiend",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -19,7 +19,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[4] = {
-		name = "Boss2",
+		name = "Ibomez The Flesh Sculptor",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -27,7 +27,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[6] = {
-		name = "Boss3",
+		name = "Gravelight Sentry",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -35,7 +35,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[8] = {
-		name = "Boss4",
+		name = "Flesh Abomination",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -43,7 +43,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[10] = {
-		name = "Boss5",
+		name = "Lard Warden's Quartett",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
@@ -51,42 +51,26 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[12] = {
-		name = "Boss6",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[13] = {
-		name = "Trash 7",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[14] = {
-		name = "Boss7",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[15] = {
-		name = "Trash 8",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[16] = {
-		name = "Boss8",
+		name = "Lord Warden",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
 
---SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_NORMAL, {
---	catName = "Imperial City Prison",
---	menuName = "Any%",
---	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
---	startData = startData,
---	wr = 2700000,
---	wrPlayer = "Zenimax",
---	splits = splits
---})
---SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_VETERAN, {
---	catName = "Imperial City Prison",
---	menuName = "Any%",
---	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
---	startData = startData,
---	wr = 2700000,
---	wrPlayer = "Zenimax",
---	splits = splits
---})
+SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_NORMAL, {
+	catName = "Imperial City Prison",
+	menuName = "Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	wr = 2700000,
+	wrPlayer = "Zenimax",
+	splits = splits
+})
+SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_VETERAN, {
+	catName = "Imperial City Prison",
+	menuName = "Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	wr = 2700000,
+	wrPlayer = "Zenimax",
+	splits = splits
+})
