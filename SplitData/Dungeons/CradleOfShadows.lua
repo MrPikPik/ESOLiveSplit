@@ -8,11 +8,23 @@ local startData = {
 local splits = {
 	[1] = {
 		name = "Trash 1",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 23783,
+			y = 46700,
+			z = 42713,
+			r = 35,
+		},
 	},
 	[2] = {
 		name = "Sithera",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 19312,
+			y = 46779,
+			z = 42232,
+			r = 6,
+		},
 	},
 	[3] = {
 		name = "Trash 2",
@@ -28,10 +40,16 @@ local splits = {
 	},
 	[6] = {
 		name = "The Votary of Velidreth",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 34887,
+			y = 47359,
+			z = 7248,
+			r = 3,
+		},
 	},
 	[7] = {
-		name = "Trash 4",
+		name = "Running",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[8] = {
