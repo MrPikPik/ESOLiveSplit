@@ -2,7 +2,7 @@ local startData = {
 	x = 6603,
 	y = 48562,
 	z = 17171,
-	r = 0.5,
+	r = 4,
 }
 
 local splits = {
@@ -27,8 +27,14 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[6] = {
-		name = "Cal-Nur The Slaver",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		name = "Xal-Nur The Slaver",
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 62718,
+			y = 41500,
+			z = 3274,
+			r = 1,
+		},
 	},
 	[7] = {
 		name = "Trash 4",
