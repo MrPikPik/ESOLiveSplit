@@ -17,6 +17,17 @@ end
 ---@param difficulty DUNGEON_DIFFICULTY
 ---@param splitdata Split
 function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
+	if not zoneId or type(zoneId) ~= "number" then
+		DBG:Error("SplitManager: Registering split failed: Invalid or missing zoneId")
+	end
+	if not difficulty or type(difficulty) ~= "number" then
+		DBG:Error("SplitManager: Registering split failed: Invalid or missing difficulty")
+	end
+	if not splitdata or type(difficulty) ~= "table" then
+		DBG:Error("SplitManager: Registering split failed: Invalid or missing splitdata")
+		-- Maybe further checking of data validity
+	end
+
 	if not self.splitdata[zoneId] then self.splitdata[zoneId] = {} end
 	if not self.splitdata[zoneId][difficulty] then self.splitdata[zoneId][difficulty] = {} end
 	splitdata.zone = zoneId
