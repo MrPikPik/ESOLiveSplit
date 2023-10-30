@@ -7,58 +7,54 @@ local startData = {
 
 local splits = {
 	[1] = {
-		name = "Trash 1",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[2] = {
 		name = "Rukhan",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[3] = {
+	[2] = {
 		name = "Trash 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[4] = {
+	[3] = {
 		name = "Marruz",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[5] = {
+	[4] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[6] = {
-		name = "Akezel",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[7] = {
-		name = "Trash 4",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[8] = {
-		name = "Urate The Legion",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[9] = {
-		name = "Trash 5",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[10] = {
+	[5] = {
 		name = "Horvantud The Fire Maw",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[11] = {
-		name = "Trash 6",
+	[6] = {
+		name = "Trash 4",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[12] = {
-		name = "The Ash Titan",
+	[7] = {
+		name = "Ash Titan",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[13] = {
-		name = "Trash 7",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	[8] = {
+		name = "Trash 4",
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 24475,
+			y = 34088,
+			z = 159186,
+			r = 7,
+		},
 	},
-	[14] = {
+	[9] = {
+		name = "Bridges",
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 25213,
+			y = 34731,
+			z = 167863,
+			r = 10,
+		},
+	},
+	[10] = {
 		name = "Valkyn Skoria",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
