@@ -71,6 +71,13 @@ local function OnAddonLoaded(event, addonName)
 		LIVE_SPLIT.delayListener:Listen({time="5000"})
 	end
 
+	-- Add dummmy trigger to test delay
+	SLASH_COMMANDS["/lsenabledebuginfo"] = function()
+		DBG:SetLogLevel(DBG_DEBUG)
+	end
+
+	DBG:SetLogLevel(DBG_ERROR)
+
 	if LibAddonMenu2 then
 		ESOLS.InitializeAddonMenu()
 	end

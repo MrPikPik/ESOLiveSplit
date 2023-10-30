@@ -1,4 +1,6 @@
 LIVE_SPLIT_WIDTH = 300
+LIVE_SPLIT_LABEL_WIDTH = LIVE_SPLIT_WIDTH - 70
+LIVE_SPLIT_DIFF_WIDTH = 60
 LIVE_SPLIT_ROW_HEIGHT = 30
 
 local TIMER_PRECISION_SECONDS 	= 0
@@ -30,10 +32,10 @@ function LiveSplit:Initialize(control)
 	-- Controls
 	self.control = control
 	self.controls = {}
-
-	self.currentlyShown = false
 	
 	LIVE_SPLIT_FRAGMENT = ZO_HUDFadeSceneFragment:New(control)
+	self.fragment = LIVE_SPLIT_FRAGMENT
+	self:SetShown(true) -- This adds the fragment to the ingame UI scene.
 	
 	local header = control:GetNamedChild("Header")
 	self.controls.headerTitle = header:GetNamedChild("Text")
@@ -91,7 +93,7 @@ function LiveSplit:Initialize(control)
 		row.diff:SetText()
 		row.diff:SetColor(1, 1, 1)
 		row.bg:SetColor(0, 0, 0)
-		row.name:SetWidth(300)
+		row.name:SetWidth(LIVE_SPLIT_LABEL_WIDTH)
 		row:SetHidden(true)
         row:ClearAnchors()
 	end
@@ -142,9 +144,7 @@ function LiveSplit:OnPlayerActivated()
 		local availableSplits = SPLIT_MANAGER:GetSplitsForZoneAndDifficulty(self.zoneId, self.difficulty)
 
 		if #availableSplits > 0 then
-			self.currentlyShown = true
-			SCENE_MANAGER:GetScene('hud'):AddFragment(LIVE_SPLIT_FRAGMENT)
-			SCENE_MANAGER:GetScene('hudui'):AddFragment(LIVE_SPLIT_FRAGMENT)
+			self:SetShown(true)
 		
 			if #availableSplits > 1  then
 				DBG:Log("This zone has multiple speed run splits!", DBG_NORMAL)
@@ -164,9 +164,7 @@ function LiveSplit:OnPlayerActivated()
 		else
 			-- No split data found, hide window
 			DBG:Verbose("No split data found for current zone.")
-			self.currentlyShown = false
-			SCENE_MANAGER:GetScene('hud'):RemoveFragment(LIVE_SPLIT_FRAGMENT)
-			SCENE_MANAGER:GetScene('hudui'):RemoveFragment(LIVE_SPLIT_FRAGMENT)
+			self:SetShown(false)
 		end
 	elseif self.activerun and not self.timerenabled then
 		-- Exiting instance with a started timer should reset the timers.
@@ -179,6 +177,9 @@ function LiveSplit:OnPlayerActivated()
 		-- Zone changed
 		DBG:Warn("Zone changed. Aborting current run.")
 		self:Reset(SOURCE_TYPE_SELF)
+	elseif not self.selectedSplit then
+		DBG:Verbose("No split selected and no splits available. Hiding UI.")
+		self:SetShown(false)
 	end
 end
 
@@ -326,10 +327,10 @@ function LiveSplit:UpdateSplitEntries()
 					else
 						row.diff:SetColor(1, 0, 0)
 					end
-					row.name:SetWidth(170)
+					row.name:SetWidth(LIVE_SPLIT_LABEL_WIDTH - LIVE_SPLIT_DIFF_WIDTH)
 				else
 					row.diff:SetText()
-					row.name:SetWidth(300)
+					row.name:SetWidth(LIVE_SPLIT_LABEL_WIDTH)
 				end
 			else
 				row.time:SetText("-")
@@ -402,11 +403,11 @@ function LiveSplit:UpdateCurrentSplitRow()
 			else
 				row.diff:SetColor(1, 0, 0)
 			end
-			row.name:SetWidth(170)
+			row.name:SetWidth(LIVE_SPLIT_LABEL_WIDTH - LIVE_SPLIT_DIFF_WIDTH)
 		else
 			-- Reset to normal, if it doesn't apply
 			row.diff:SetText()
-			row.name:SetWidth(300)
+			row.name:SetWidth(LIVE_SPLIT_LABEL_WIDTH)
 		end
 	else
 		row.diff:SetText() -- Just to be sure ;)
@@ -530,6 +531,8 @@ function LiveSplit:SetSelectedSplit(split)
 			match = split.startData.match,
 		}
 		self.npcListener:Listen(target)
+	elseif split.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL and self.difficulty ~= DUNGEON_DIFFICULTY_VETERAN then
+		DBG:Error("Category start trigger is begin trial, but difficulty is not veteran! This event does not fire on non-veteran content!")
 	end
 
 	if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION then
@@ -665,6 +668,8 @@ function LiveSplit:StopTimer(source)
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
+	DBG:Info("Stopping timer")
+
 	self.timerenabled = false
 	self.activerun = false
 end
@@ -737,6 +742,7 @@ function LiveSplit:Split(source)
 			DBG:LuaAssert(false, "Reached")
 		end
 
+		DBG:Info("No further splits left. Stopping run.")
 		self:StopTimer(SOURCE_TYPE_SELF)
 	end
 	
@@ -838,15 +844,21 @@ function LiveSplit:ShowOptionsMenu()
 	AnchorMenu(self.controls.optionsButton, -32)
 end
 
-function LiveSplit:ToggleWindow()
-	if self.currentlyShown then
-		self.currentlyShown = false
-		SCENE_MANAGER:GetScene('hud'):RemoveFragment(LIVE_SPLIT_FRAGMENT)
-		SCENE_MANAGER:GetScene('hudui'):RemoveFragment(LIVE_SPLIT_FRAGMENT)
-	else
-		self.currentlyShown = true
+function LiveSplit:SetShown(shown)
+	if shown then
 		SCENE_MANAGER:GetScene('hud'):AddFragment(LIVE_SPLIT_FRAGMENT)
 		SCENE_MANAGER:GetScene('hudui'):AddFragment(LIVE_SPLIT_FRAGMENT)
+	else
+		SCENE_MANAGER:GetScene('hud'):RemoveFragment(LIVE_SPLIT_FRAGMENT)
+		SCENE_MANAGER:GetScene('hudui'):RemoveFragment(LIVE_SPLIT_FRAGMENT)
+	end
+end
+
+function LiveSplit:ToggleWindow()
+	if LIVE_SPLIT_FRAGMENT.state == "shown" or LIVE_SPLIT_FRAGMENT.state == "showing" then
+		self:SetShown(false)
+	else
+		self:SetShown(true)
 	end
 end
 

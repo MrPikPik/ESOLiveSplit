@@ -20,7 +20,7 @@
 				</Texture>
 				<Label name="$(parent)Name" horizontalAlignment="LEFT" font="$(CENTURY_GOTHIC)|$(KB_18)|soft-shadow-thick" text="Do Stuff" maxLineCount="1" wrapMode="ELLIPSIS">
 					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$(parent)Icon" offsetX="5" />
-					<Dimensions x="300" />
+					<Dimensions x="LIVE_SPLIT_LABEL_WIDTH" />
 				</Label>
 			</Controls>
 		</Control>

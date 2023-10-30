@@ -6,7 +6,7 @@
 ## Description: Live Split lookalike in ESO
 ## Author: MrPikPik
 ## APIVersion: 101039
-## Version: 1.0 / 9.1.8
+## Version: 1.0.0 / 9.1.8
 ## AddOnVersion: 100
 ## DependsOn: LibCustomMenu>=712
 ## OptionalDependsOn: LibAddonMenu>=31
