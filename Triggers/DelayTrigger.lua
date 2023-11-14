@@ -44,3 +44,7 @@ function LiveSplitDelayTrigger:Remove(target)
         end
     end
 end
+
+function LiveSplitDelayTrigger:ClearTargets()
+	self.targets = {}
+end

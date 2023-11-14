@@ -43,6 +43,7 @@ function LiveSplitCoordinateTrigger:Update()
 		if IsUnitGrouped("player") then
 			for i = 1, GetGroupSize() do
 				if self:CheckTarget(target, "group" .. i) then
+					DBG:Verbose("Member of the group triggered location trigger. Skipping pending members...")
 					break
 				end
 			end
@@ -66,4 +67,8 @@ function LiveSplitCoordinateTrigger:Remove(target)
             table.remove(self.targets, i)
         end
     end
+end
+
+function LiveSplitCoordinateTrigger:ClearTargets()
+	self.targets = {}
 end

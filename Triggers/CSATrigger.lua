@@ -44,3 +44,7 @@ function LiveSplitCSATrigger:Remove(target)
         end
     end
 end
+
+function LiveSplitCSATrigger:ClearTargets()
+	self.targets = {}
+end

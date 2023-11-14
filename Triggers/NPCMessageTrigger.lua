@@ -13,7 +13,7 @@ end
 
 function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
 	if channelType == CHAT_CHANNEL_MONSTER_EMOTE or channelType == CHAT_CHANNEL_MONSTER_SAY or channelType == CHAT_CHANNEL_MONSTER_WHISPER or channelType == CHAT_CHANNEL_MONSTER_YELL then
-		DBG:Debug("NPCMessageTrigger: '<<1>>'", message)
+		DBG:Debug("NPCMessageTrigger: <<2>>: '<<1>>'", message, fromName)
 		for _, target in pairs(self.targets) do
 			if target.message and target.message == message then
 				DBG:Info("Triggering NPC trigger: Exact message match.")
@@ -22,6 +22,11 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
 				break
 			elseif target.match and string.find(message, target.match) then
 				DBG:Info("Triggering NPC trigger: string.find found match.")
+				self:Remove(target)
+				self:FireCallbacks("OnTrigger", target)
+				break
+			elseif target.fromName and string.find(fromName, target.fromName) then
+				DBG:Info("Triggering NPC trigger: string.find found match in speaker name.")
 				self:Remove(target)
 				self:FireCallbacks("OnTrigger", target)
 				break
@@ -44,4 +49,8 @@ function LiveSplitNPCMessageTrigger:Remove(target)
             table.remove(self.targets, i)
         end
     end
+end
+
+function LiveSplitNPCMessageTrigger:ClearTargets()
+	self.targets = {}
 end
