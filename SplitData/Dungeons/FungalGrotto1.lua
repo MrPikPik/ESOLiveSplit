@@ -90,8 +90,8 @@ SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_VETERAN, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "Fungal Grotto I - NoSkip",
-	menuName = "No Skip",
+	catName = "Fungal Grotto I - Any%",
+	menuName = "Any%",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -99,8 +99,8 @@ SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits_skip
 })
 SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "Fungal Grotto I - NoSkip",
-	menuName = "No Skip",
+	catName = "Fungal Grotto I - Any%",
+	menuName = "Any%",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,

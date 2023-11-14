@@ -11,82 +11,66 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
-		name = "Boss1",
+		name = "Grunt The Clever",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
+		name = "The Pack",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+	[4] = {
 		name = "Trash 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[4] = {
-		name = "Boss2",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
 	[5] = {
-		name = "Trash 3",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		name = "Teranya The Faceless",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[6] = {
-		name = "Boss3",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[7] = {
-		name = "Trash 4",
+		name = "Arena",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
+	[7] = {
+		name = "Stinger",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
 	[8] = {
-		name = "Boss4",
+		name = "The Troll King",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
-		name = "Trash 5",
+		name = "Trash 4",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[10] = {
-		name = "Boss5",
+		name = "Captain Thoran",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
-		name = "Trash 6",
+		name = "Running...",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[12] = {
-		name = "Boss6",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[13] = {
-		name = "Trash 7",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[14] = {
-		name = "Boss7",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[15] = {
-		name = "Trash 8",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[16] = {
-		name = "Boss8",
+		name = "The Lava Queen",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
 
---SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_NORMAL, {
---	catName = "Blessed Crucible",
---	menuName = "Any%",
---	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
---	startData = startData,
---	wr = 1200000,
---	wrPlayer = "Zenimax",
---	splits = splits
---})
---SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_VETERAN, {
---	catName = "Blessed Crucible",
---	menuName = "Any%",
---	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
---	startData = startData,
---	wr = 1200000,
---	wrPlayer = "Zenimax",
---	splits = splits
---})
+SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_NORMAL, {
+	catName = "Blessed Crucible",
+	menuName = "Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	wr = 1200000,
+	wrPlayer = "Zenimax",
+	splits = splits
+})
+SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_VETERAN, {
+	catName = "Blessed Crucible",
+	menuName = "Any%",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	wr = 1200000,
+	wrPlayer = "Zenimax",
+	splits = splits
+})

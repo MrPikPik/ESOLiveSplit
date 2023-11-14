@@ -8,58 +8,54 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
-		name = "Trash 2",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
-	},
-	[4] = {
 		name = "Ulguna Soul-Reaver",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[5] = {
+	[4] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[6] = {
+	[5] = {
 		name = "Death's Head",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[7] = {
+	[6] = {
 		name = "Trash 4",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[8] = {
+	[7] = {
 		name = "Grothdarr",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[9] = {
+	[8] = {
 		name = "Trash 5",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[10] = {
+	[9] = {
 		name = "Achaeraizur",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[11] = {
+	[10] = {
 		name = "Trash 6",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[12] = {
+	[11] = {
 		name = "The Ancient One",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[13] = {
+	[12] = {
 		name = "Trash 7",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[14] = {
+	[13] = {
 		name = "Iskra The Omen",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[15] = {
+	[14] = {
 		name = "Trash 8",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[16] = {
+	[15] = {
 		name = "The Mad Architect",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},

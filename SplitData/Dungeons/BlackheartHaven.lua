@@ -1,8 +1,8 @@
 local startData = {
-	x = 28147,
-	y = 13592,
-	z = 39949,
-	r = 59.4,
+	x = 48886,
+	y = 30317,
+	z = 123476,
+	r = 83.0,
 }
 local splits = {
 	[1] = {
@@ -46,7 +46,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
-		name = "Trash 6",
+		name = "Running...",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[12] = {
@@ -58,7 +58,7 @@ local splits = {
 SPLIT_MANAGER:RegisterSplit(38, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Blackheart Haven",
 	menuName = "Any%",
-	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION_INV,
 	startData = startData,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
@@ -67,7 +67,7 @@ SPLIT_MANAGER:RegisterSplit(38, DUNGEON_DIFFICULTY_NORMAL, {
 SPLIT_MANAGER:RegisterSplit(38, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Blackheart Haven",
 	menuName = "Any%",
-	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION_INV,
 	startData = startData,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
