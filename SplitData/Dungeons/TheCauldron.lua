@@ -28,6 +28,14 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[8] = {
+		name = "Free Lyranth",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+	},
+	[9] = {
+		name = "Trash 5",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[10] = {
 		name = "Baron Zaudrus",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
