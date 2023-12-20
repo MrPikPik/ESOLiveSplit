@@ -28,7 +28,13 @@ local splits = {
 	},
 	[6] = {
 		name = "Archcustodian",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 7780,
+			y = 55368,
+			z = 54610,
+			r = 1,
+		},
 	},
 	[7] = {
 		name = "Trash 4",
