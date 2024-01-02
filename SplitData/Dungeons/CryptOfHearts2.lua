@@ -1,5 +1,7 @@
 local startData = {
-	match = "Nerien'eth",
+	match = {
+		"Nerien'eth",
+	},
 }
 local splits =  {
 	[1] = {
@@ -20,11 +22,23 @@ local splits =  {
 	},
 	[5] = {
 		name = "Trash 3",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 45375,
+			y = 9903,
+			z = 4379,
+			r = 4,
+		},
 	},
 	[6] = {
 		name = "Chamber Guardian",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 47177,
+			y = 9920,
+			z = 4343,
+			r = 3,
+		},
 	},
 	[7] = {
 		name = "Trash 4",
@@ -43,12 +57,22 @@ local splits =  {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
-		name = "Trash 6",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		name = "Running & Waiting",
+		splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
+		data = {
+			match = {
+				"You think that Blade is yours to touch",
+			}
+		},
 	},
 	[12] = {
 		name = "Nerien'eth",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
+		data = {
+			match = {
+				"You did it!",
+			},
+		},
 	},
 }
 
