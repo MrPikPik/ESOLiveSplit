@@ -12,6 +12,10 @@
 ## OptionalDependsOn: LibAddonMenu>=31
 ## SavedVariables: LiveSplitSavedVars
 
+; Huge thanks goes out to all my friends and testers who helped test!
+; @FaizahVonAskir, @Sonuh, @Dosenschock, @SheldonPuper, @AmyPharaFaula, @Uwe656, @NeonLord, @Hurwey
+; @mgsnakes, @supershdow, @Screamer19, @MyNameIsElias, @Bombarde
+
 ;Language
 lang/en.lua
 lang/$(language).lua
