@@ -5,7 +5,13 @@ local splits = {
 	},
 	[2] = {
 		name = "Selene",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 129167,
+			y = 59154,
+			z = 44831,
+			r = 1,
+		},
 	},
 	[3] = {
 		name = "Trash 2",
@@ -13,7 +19,13 @@ local splits = {
 	},
 	[4] = {
 		name = "Maarselok I",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 134373,
+			y = 57602,
+			z = 65581,
+			r = 1,
+		},
 	},
 	[5] = {
 		name = "Trash 3",
@@ -29,7 +41,13 @@ local splits = {
 	},
 	[8] = {
 		name = "Maarselok II",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 97301,
+			y = 56063,
+			z = 144602,
+			r = 1,
+		},
 	},
 	[9] = {
 		name = "Trash 5",
