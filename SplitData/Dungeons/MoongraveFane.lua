@@ -28,8 +28,14 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[8] = {
-		name = "Nisaazda",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		name = "Nisaazda & Grundwulf",
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 103510,
+			y = 18226,
+			z = 98677,
+			r = 3,
+		},
 	},
 	[9] = {
 		name = "Trash 5",

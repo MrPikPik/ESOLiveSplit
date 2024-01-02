@@ -32,7 +32,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
-		name = "Trash 5",
+		name = "Running",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[10] = {
