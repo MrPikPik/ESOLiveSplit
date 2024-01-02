@@ -202,6 +202,7 @@ function ZO_Control:TakeFocus() end
 
 ---@class ZO_SceneFragment
 ---@field private New function
+---@field state string
 ZO_SceneFragment = {}
 
 ---@return ZO_SceneFragment ZO_SceneFragment

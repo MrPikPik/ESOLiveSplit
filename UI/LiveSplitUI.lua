@@ -1,4 +1,4 @@
-LIVE_SPLIT_WIDTH = 300
+LIVE_SPLIT_WIDTH = 300 -- Change this to globally change the width of the UI widget
 LIVE_SPLIT_LABEL_WIDTH = LIVE_SPLIT_WIDTH - 70
 LIVE_SPLIT_DIFF_WIDTH = 60
 LIVE_SPLIT_ROW_HEIGHT = 30
@@ -125,6 +125,19 @@ end
 
 function LiveSplit:OnTick()
 	if self.timerenabled then
+		if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_CUSTOM then
+			local split = self.selectedSplit.splits[self.currentsplit]
+			if not split.splitFunction or type(split.splitFunction) ~= "function" then
+				DBG:Critical("Current split trigger is set to custom function, but no function is defined!")
+				self:StopTimer(SOURCE_TYPE_SELF)
+			else
+				if split.splitFunction() == true then
+					self:Split(SOURCE_TYPE_SELF)
+				end
+			end
+		end
+
+
 		self.totaltime = GetGameTimeMilliseconds() - self.starttime
 		
 		self:UpdateMainTimer()
@@ -197,7 +210,7 @@ end
 
 function LiveSplit:OnUnitDeath(unitTag, isDead)
 	if not self.activerun then return end
-	
+
 	if string.sub(unitTag, 1, 4) == "boss" and isDead then
 		local numbosses = 0
 		local numdead = 0
@@ -243,7 +256,8 @@ function LiveSplit:OnTrigger(target)
 		DBG:Info("Received CSA Message. Splitting due to message match to trigger condition.")
 		self:Split(SOURCE_TYPE_SELF)
 	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
-		-- TODO
+		DBG:Info("NPCMessage triggered.")
+		self:Split(SOURCE_TYPE_SELF)
 	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_DELAY then
 		-- TODO
 	end
@@ -506,6 +520,7 @@ function LiveSplit:SetSelectedSplit(split)
 	-- World record
 	self.controls.worldRecordLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self.FormatTime(split.wr, TIMER_PRECISION_TENTHS), split.wrPlayer))
 	
+	-- Start Trigger handling
 	if split.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION then
 		local target = {
 			x = split.startData.x,
@@ -529,6 +544,7 @@ function LiveSplit:SetSelectedSplit(split)
 		local target = {
 			message = split.startData.message,
 			match = split.startData.match,
+			fromName = split.startData.fromName,
 		}
 		self.npcListener:Listen(target)
 	elseif split.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL and self.difficulty ~= DUNGEON_DIFFICULTY_VETERAN then
@@ -700,9 +716,11 @@ function LiveSplit:Split(source)
 	self.splitEntries[self.currentsplit].pb = splittime
 	self.currentSplitStartTime = self.totaltime
 
-
+	if self.selectedSplit.splits[self.currentsplit].cleanupFunction and type(self.selectedSplit.splits[self.currentsplit].cleanupFunction) == "function" then
+		self.selectedSplit.splits[self.currentsplit].cleanupFunction()
+	end
 	
-	if #self.selectedSplit.splits > self.currentsplit then
+	if self.currentsplit < #self.selectedSplit.splits then
 		self.currentsplit = self.currentsplit + 1
 		if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION then
 			local target = {
@@ -723,6 +741,18 @@ function LiveSplit:Split(source)
 				inverted = true,
 			}
 			self.coordinateListener:Listen(target)
+		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_CUSTOM then
+			-- If a setup function is defined, call it.
+			if self.selectedSplit.splits[self.currentsplit].setupFunction and type(self.selectedSplit.splits[self.currentsplit].setupFunction) == "function" then
+				self.selectedSplit.splits[self.currentsplit].setupFunction()
+			end
+		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
+			local target = {
+				message  = self.selectedSplit.splits[self.currentsplit].data.message,
+				match 	 = self.selectedSplit.splits[self.currentsplit].data.match,
+				fromName = self.selectedSplit.splits[self.currentsplit].data.fromName,
+			}
+			self.npcListener:Listen(target)
 		end
 	else
 		if self.SV[self.selectedSplit.catName] then

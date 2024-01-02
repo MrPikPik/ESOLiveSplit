@@ -20,7 +20,8 @@ LIVE_SPLIT_TRIGGER_NPC_MESSAGE      = 9 -- Triggers on a NPC voice line (from ch
 LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE  = 10 -- Listening for CSA-alert text
 ---@type LIVE_SPLIT_TRIGGER
 LIVE_SPLIT_TRIGGER_DELAY            = 11 -- Split after time delay
-
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_CUSTOM           = 12 -- Indicates a custom function shall be called every frame. If that function returns true, it will split.
 
 -- For the most part and most occasions, you most likely only need these triggers:
 --
@@ -42,3 +43,7 @@ LIVE_SPLIT_TRIGGER_DELAY            = 11 -- Split after time delay
 --      Most of the times it's a specific door you need to step trough. right after exiting the door are the coordinates you want to listen for.
 -- LIVE_SPLIT_TRIGGER_LOCATION_INV
 --      Same as LIVE_SPLIT_TRIGGER_LOCATION but inverted, meaning if a player is outside a specific range of a point.
+-- LIVE_SPLIT_TRIGGER_CUSTOM
+--      You can create custom splitting conditions with this one. You need to specify a function for splitFunction.
+--      Said function will be called every tick (frame). If the function returns true, a split will be triggered.
+--      Additionally, you can specify a setupFunction and a cleanupFunction, the first being called when the trigger is reached and loaded and the cleanup when the split occurs.

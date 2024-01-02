@@ -1,7 +1,7 @@
 SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 	catName = "Addon Development - Any%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	startOffset = 5000,
+	--startOffset = 5000,
 	wr = 18000000,
 	wrPlayer = "@MrPikPik",
 	
@@ -13,7 +13,8 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 		},
 		[2] = {
 			name = "Split 2",
-			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			splitTrigger = LIVE_SPLIT_TRIGGER_CUSTOM,
+			splitFunction = function() return true end,
 			icon = "esoui/art/icons/class/class_sorcerer.dds",
 		},
 		[3] = {
@@ -42,7 +43,7 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 			icon = "esoui/art/icons/class/class_arcanist.dds",
 		},
 		[8] = {
-			name = "Split 8",
+			name = "One Long Boi That Should Get Truncated Hopefully Pls?",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[9] = {
