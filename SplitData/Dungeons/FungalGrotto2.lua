@@ -29,7 +29,13 @@ local splits = {
 	},
 	[8] = {
 		name = "Spawn of Mephala",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 16574,
+			y = 13844,
+			z = 27520,
+			r = 3,
+		},
 	},
 	[9] = {
 		name = "Trash 4",
@@ -41,11 +47,22 @@ local splits = {
 	},
 	[11] = {
 		name = "Trash 5",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 20116,
+			y = 12453,
+			z = 42577,
+			r = 32,
+		},
 	},
 	[12] = {
 		name = "Vila Theran",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
+		data = {
+			message = {
+				"It is done.",
+			},
+		},
 	},
 }
 
