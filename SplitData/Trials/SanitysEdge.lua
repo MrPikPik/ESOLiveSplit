@@ -1,7 +1,7 @@
-local startData = { -- TODO
-	x = 26733,
-	y = 37723,
-	z = 168255,
+local startData = {
+	x = 52946,
+	y = 16425,
+	z = 67920,
 	r = 1.0,
 }
 
