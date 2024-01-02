@@ -35,12 +35,22 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[8] = {
-		name = "Trash 5",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		name = "Trash 4",
+		splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
+		data = {
+			match = {
+				"Pellingares",
+			},
+			fromName = {
+				"Allene Pellingare",
+			},
+		},
 	},
 	[9] = {
 		name = "Allene Pellingare",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_CUSTOM,
+		-- Fuck this dungeon in particular for making my life miserable finding a way to detect the boss death "event".........
+		splitFunction = function() return GetUnitName("reticleover") == "Allene Pellingare" and IsUnitDead("reticleover") end,
 	},
 }
 
