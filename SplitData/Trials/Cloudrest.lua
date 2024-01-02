@@ -7,7 +7,7 @@ local startData = {
 
 local splits = {
 	[1] = {
-		name = "Trash 1",
+		name = "Running 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
@@ -15,7 +15,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
-		name = "Trash 2",
+		name = "Running 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[4] = {
@@ -23,7 +23,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
-		name = "Trash 3",
+		name = "Running 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[6] = {
@@ -31,7 +31,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
-		name = "Trash 4",
+		name = "Running 4",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[8] = {
@@ -42,7 +42,7 @@ local splits = {
 
 local splits_plus1 = {
 	[1] = {
-		name = "Trash 1",
+		name = "Running 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
@@ -50,7 +50,7 @@ local splits_plus1 = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
-		name = "Trash 2",
+		name = "Running 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[4] = {
@@ -58,18 +58,18 @@ local splits_plus1 = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
-		name = "Trash 3",
+		name = "Running 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[6] = {
-		name = "Z'Maja",
+		name = "Z'Maja + 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
 
 local splits_plus2 = {
 	[1] = {
-		name = "Trash 1",
+		name = "Running 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
@@ -77,22 +77,22 @@ local splits_plus2 = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
-		name = "Trash 2",
+		name = "Running 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[4] = {
-		name = "Z'Maja",
+		name = "Z'Maja + 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
 
 local splits_plus3 = {
 	[1] = {
-		name = "Trash 1",
+		name = "Running 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
-		name = "Z'Maja",
+		name = "Z'Maja + 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
