@@ -193,8 +193,8 @@ local splits5Arc = {
 }
 
 local splits10Arc = {
-	catName = "Endless Archive - 5 Arcs",
-	menuName = "5Arc%",
+	catName = "Endless Archive - 10 Arcs",
+	menuName = "10Arc%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS,
 
 	wr = 0, -- No official speedrun time exists

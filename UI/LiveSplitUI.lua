@@ -244,6 +244,7 @@ function LiveSplit:OnCombatStateChanged(isInCombat)
 end
 
 function LiveSplit:OnTrigger(target)
+	-- Run is not started which means we need to start a run
 	if not self.timerenabled then
 		if self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
 			DBG:Info("Player entered trigger. Starting run...")
@@ -251,22 +252,27 @@ function LiveSplit:OnTrigger(target)
 		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
 			DBG:Info("Magic words have been spoken. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
-		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS then
+		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS and self.endlessArchiveListener.runStarted then
 			DBG:Info("Player started endless dungeon. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
 		end
-	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
+		return
+	end
+
+	-- Run is started so we need to find out how to handle the triggering
+	local currentSplitTrigger = self:GetCurrentSplitTrigger()
+	if currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
 		DBG:Info("Player entered trigger. Splitting due to location trigger.")
 		self:Split(SOURCE_TYPE_SELF)
-	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
 		DBG:Info("Received CSA Message. Splitting due to message match to trigger condition.")
 		self:Split(SOURCE_TYPE_SELF)
-	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
 		DBG:Info("NPCMessage triggered.")
 		self:Split(SOURCE_TYPE_SELF)
-	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_DELAY then
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_DELAY then
 		-- TODO
-	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_ENDLESS_STAGE then
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_ENDLESS_STAGE then
 		local arc, cycle, stage = self.endlessArchiveListener:GetCurrentProgress()
 		local currentSplitData = self:GetCurrentSplitData()
 		if not currentSplitData or currentSplitData == {} then
@@ -715,6 +721,9 @@ function LiveSplit:StopTimer(source)
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
 	DBG:Info("Stopping timer")
+
+	-- Setting this so no further stages trigger anything and the timer just stands stopped.
+	self.endlessArchiveListener.runComplete = true
 
 	self.timerenabled = false
 	self.activerun = false
