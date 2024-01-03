@@ -5,8 +5,8 @@
 ## Title: ESO Live Split
 ## Description: Live Split lookalike in ESO
 ## Author: MrPikPik
-## APIVersion: 101039
-## Version: 1.0.0 / 9.1.8
+## APIVersion: 101040
+## Version: 1.0.0 / 9.2.8
 ## AddOnVersion: 100
 ## DependsOn: LibCustomMenu>=712
 ## OptionalDependsOn: LibAddonMenu>=31
@@ -27,6 +27,7 @@ Triggers/CoordinateTrigger.lua
 Triggers/CSATrigger.lua
 Triggers/NPCMessageTrigger.lua
 Triggers/DelayTrigger.lua
+Triggers/EndlessArchiveTrigger.lua
 
 ;SplitManager
 SplitManager/Splitmanager.lua
@@ -111,6 +112,9 @@ SplitData/Arenas/MaelstromArena.lua
 SplitData/Arenas/VatheshranHollows.lua
 SplitData/Arenas/DragonstarArena.lua
 SplitData/Arenas/BlackrosePrison.lua
+
+;Endless Dungeons
+SplitData/EndlessArchive.lua
 
 ;Testing
 SplitData/Test.lua

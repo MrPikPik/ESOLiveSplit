@@ -10,6 +10,7 @@
         "EVENT_BROADCAST"
     ],
     "Lua.diagnostics.disable": [
-        "inject-field"
+        "inject-field",
+        "need-check-nil"
     ]
 }

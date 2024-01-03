@@ -22,6 +22,12 @@ LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE  = 10 -- Listening for CSA-alert text
 LIVE_SPLIT_TRIGGER_DELAY            = 11 -- Split after time delay
 ---@type LIVE_SPLIT_TRIGGER
 LIVE_SPLIT_TRIGGER_CUSTOM           = 12 -- Indicates a custom function shall be called every frame. If that function returns true, it will split.
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS    = 13 -- Endless Dungeon only. Triggered by the game.
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_END_ENDLESS      = 14 -- Endless Dungeon only. Triggered by the game.
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_ENDLESS_STAGE    = 15 -- Endless Dungeon only. Triggered by the game. Expects data for 
 
 -- For the most part and most occasions, you most likely only need these triggers:
 --

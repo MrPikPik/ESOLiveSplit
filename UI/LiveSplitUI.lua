@@ -15,10 +15,10 @@ local MODE_AUTO = 1
 local MODE_MIXED = 2
 local MODE_MANUAL = 3
 
-local SOURCE_TYPE_SELF = 1
-local SOURCE_TYPE_ADDON = 2
-local SOURCE_TYPE_KEYBIND = 3
-local SOURCE_TYPE_MENU = 4
+local SOURCE_TYPE_SELF = 1		-- Source is this addon itself
+local SOURCE_TYPE_ADDON = 2		-- Source is external addon
+local SOURCE_TYPE_KEYBIND = 3	-- Source is keybind
+local SOURCE_TYPE_MENU = 4		-- Source is UI widget (mouseclick)
 
 LiveSplit = ZO_Object:Subclass()
 
@@ -78,6 +78,9 @@ function LiveSplit:Initialize(control)
 	self.delayListener = LiveSplitDelayTrigger:New()
 	--self.delayListener:RegisterCallback("OnTrigger", function(target) self:OnTrigger(target) end)
 
+	self.endlessArchiveListener = LiveSplitEndlessArchiveTrigger:New()
+	self.endlessArchiveListener:RegisterCallback("OnTrigger", function() self:OnTrigger() end)
+
 	-- Row Pool
 	local function RowFactory(pool, objectKey)
 		local row = ZO_ObjectPool_CreateNamedControl(pool.name, pool.templateName, pool, pool.parent)
@@ -126,7 +129,7 @@ end
 function LiveSplit:OnTick()
 	if self.timerenabled then
 		if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_CUSTOM then
-			local split = self.selectedSplit.splits[self.currentsplit]
+			local split = self:GetCurrentSplit()
 			if not split.splitFunction or type(split.splitFunction) ~= "function" then
 				DBG:Critical("Current split trigger is set to custom function, but no function is defined!")
 				self:StopTimer(SOURCE_TYPE_SELF)
@@ -198,7 +201,7 @@ end
 
 function LiveSplit:OnBossChange()
 	if not self.timerenabled then return end
-	if not self.selectedSplit and not self.currentsplit and not self.selectedSplit.splits[self.currentsplit] then return end
+	if not self.selectedSplit and not self.currentsplit and not self:GetCurrentSplit() then return end
 	
 	if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
 		if GetUnitName("boss1") ~= "" then
@@ -248,6 +251,9 @@ function LiveSplit:OnTrigger(target)
 		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
 			DBG:Info("Magic words have been spoken. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
+		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS then
+			DBG:Info("Player started endless dungeon. Starting run...")
+			self:StartTimer(SOURCE_TYPE_SELF)
 		end
 	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
 		DBG:Info("Player entered trigger. Splitting due to location trigger.")
@@ -260,7 +266,31 @@ function LiveSplit:OnTrigger(target)
 		self:Split(SOURCE_TYPE_SELF)
 	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_DELAY then
 		-- TODO
+	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_ENDLESS_STAGE then
+		local arc, cycle, stage = self.endlessArchiveListener:GetCurrentProgress()
+		local currentSplitData = self:GetCurrentSplitData()
+		if not currentSplitData or currentSplitData == {} then
+			DBG:Error("Missing data for Endless Dungeon progress check! There will be no automatic splitting due to this!")
+		else
+			if not currentSplitData.arc or not currentSplitData.cycle or not currentSplitData.stage then
+				DBG:Error("Arc, Cycle or Stage data is not set fur the current split! There will be no automatic splitting due to this!")
+			end
+		end
+		if 	currentSplitData.arc == arc and currentSplitData.cycle == cycle and currentSplitData.stage == stage then
+			DBG:Info("Splitting due to achieved desired Endless Dungeon progress.")	
+			self:Split(SOURCE_TYPE_SELF)
+		end
 	end
+end
+
+function LiveSplit:GetCurrentSplit()
+	if not self.selectedSplit then return end
+	return self.selectedSplit.splits[self.currentsplit]
+end
+
+function LiveSplit:GetCurrentSplitData()
+	if not self.selectedSplit then return end
+	return self.selectedSplit.splits[self.currentsplit].data or {}
 end
 
 function LiveSplit:GetCurrentSplitTrigger()
@@ -716,41 +746,44 @@ function LiveSplit:Split(source)
 	self.splitEntries[self.currentsplit].pb = splittime
 	self.currentSplitStartTime = self.totaltime
 
-	if self.selectedSplit.splits[self.currentsplit].cleanupFunction and type(self.selectedSplit.splits[self.currentsplit].cleanupFunction) == "function" then
-		self.selectedSplit.splits[self.currentsplit].cleanupFunction()
+	local currentSplit = self:GetCurrentSplit()
+	local currentSplitData = currentSplit.data
+
+	if currentSplit.cleanupFunction and type(currentSplit.cleanupFunction) == "function" then
+		currentSplit.cleanupFunction()
 	end
 	
 	if self.currentsplit < #self.selectedSplit.splits then
 		self.currentsplit = self.currentsplit + 1
 		if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION then
 			local target = {
-				x = self.selectedSplit.splits[self.currentsplit].data.x,
-				y = self.selectedSplit.splits[self.currentsplit].data.y,
-				z = self.selectedSplit.splits[self.currentsplit].data.z,
-				r = self.selectedSplit.splits[self.currentsplit].data.r,
+				x = currentSplitData.x,
+				y = currentSplitData.y,
+				z = currentSplitData.z,
+				r = currentSplitData.r,
 				zone = self.selectedSplit.zone,
 			}
 			self.coordinateListener:Listen(target)
 		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION_INV then
 			local target = {
-				x = self.selectedSplit.splits[self.currentsplit].data.x,
-				y = self.selectedSplit.splits[self.currentsplit].data.y,
-				z = self.selectedSplit.splits[self.currentsplit].data.z,
-				r = self.selectedSplit.splits[self.currentsplit].data.r,
+				x = currentSplitData.x,
+				y = currentSplitData.y,
+				z = currentSplitData.z,
+				r = currentSplitData.r,
 				zone = self.selectedSplit.zone,
 				inverted = true,
 			}
 			self.coordinateListener:Listen(target)
 		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_CUSTOM then
 			-- If a setup function is defined, call it.
-			if self.selectedSplit.splits[self.currentsplit].setupFunction and type(self.selectedSplit.splits[self.currentsplit].setupFunction) == "function" then
-				self.selectedSplit.splits[self.currentsplit].setupFunction()
+			if currentSplit.setupFunction and type(currentSplit.setupFunction) == "function" then
+				currentSplit.setupFunction()
 			end
 		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
 			local target = {
-				message  = self.selectedSplit.splits[self.currentsplit].data.message,
-				match 	 = self.selectedSplit.splits[self.currentsplit].data.match,
-				fromName = self.selectedSplit.splits[self.currentsplit].data.fromName,
+				message  = currentSplitData.message,
+				match 	 = currentSplitData.match,
+				fromName = currentSplitData.fromName,
 			}
 			self.npcListener:Listen(target)
 		end

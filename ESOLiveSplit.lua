@@ -2,7 +2,7 @@ ESOLS = {}
 local ESOLS = ESOLS
 
 ESOLS.name = "ESOLiveSplit"
-ESOLS.version = "1.0 (Update 9.1.8, Records v1)"
+ESOLS.version = "1.0 (Update 9.2.8, Records v1)"
 
 ESOLS.defaults = {
 	splits = {},
@@ -76,6 +76,7 @@ local function OnAddonLoaded(event, addonName)
 		DBG:SetLogLevel(DBG_DEBUG)
 	end
 
+	DBG:SetLogLevel(DBG_DEBUG)
 	DBG:SetLogLevel(DBG_ERROR)
 
 	if LibAddonMenu2 then
