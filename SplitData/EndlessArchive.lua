@@ -8,7 +8,7 @@ local splits1Arc = {
 	
 	splits = {
 		[1] = {
-			name = "Cycle 1, Stage 1",
+			name = "Cycle 1 - Stage 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -17,7 +17,7 @@ local splits1Arc = {
 			}
 		},
 		[2] = {
-			name = "Cycle 1, Stage 2",
+			name = "Cycle 1 - Stage 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -26,7 +26,7 @@ local splits1Arc = {
 			}
 		},
 		[3] = {
-			name = "Cycle 1 Boss",
+			name = "Cycle 1 - Boss",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -35,7 +35,7 @@ local splits1Arc = {
 			}
 		},
 		[4] = {
-			name = "Cycle 2, Stage 1",
+			name = "Cycle 2 - Stage 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -44,7 +44,7 @@ local splits1Arc = {
 			}
 		},
 		[5] = {
-			name = "Cycle 2, Stage 2",
+			name = "Cycle 2 - Stage 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -53,7 +53,7 @@ local splits1Arc = {
 			}
 		},
 		[6] = {
-			name = "Cycle 2 Boss",
+			name = "Cycle 2 - Boss",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -62,7 +62,7 @@ local splits1Arc = {
 			}
 		},
 		[7] = {
-			name = "Cycle 3, Stage 1",
+			name = "Cycle 3 - Stage 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -71,7 +71,7 @@ local splits1Arc = {
 			}
 		},
 		[8] = {
-			name = "Cycle 3, Stage 2",
+			name = "Cycle 3 - Stage 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -80,7 +80,7 @@ local splits1Arc = {
 			}
 		},
 		[9] = {
-			name = "Cycle 3 Boss",
+			name = "Cycle 3 - Boss",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -89,7 +89,7 @@ local splits1Arc = {
 			}
 		},
 		[10] = {
-			name = "Cycle 4, Stage 1",
+			name = "Cycle 4 - Stage 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -98,7 +98,7 @@ local splits1Arc = {
 			}
 		},
 		[11] = {
-			name = "Cycle 4, Stage 2",
+			name = "Cycle 4 - Stage 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -107,7 +107,7 @@ local splits1Arc = {
 			}
 		},
 		[12] = {
-			name = "Cycle 4 Boss",
+			name = "Cycle 4 - Boss",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -116,7 +116,7 @@ local splits1Arc = {
 			}
 		},
 		[13] = {
-			name = "Cycle 5, Stage 1",
+			name = "Cycle 5 - Stage 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -125,7 +125,7 @@ local splits1Arc = {
 			}
 		},
 		[14] = {
-			name = "Cycle 5, Stage 2",
+			name = "Cycle 5 - Stage 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
