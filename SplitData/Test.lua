@@ -8,8 +8,22 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 	splits = {
 		[1] = {
 			name = "Split 1",
-			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION_MULTI,
 			icon = "esoui/art/icons/class/class_nightblade.dds",
+			data = {
+				[1] = {
+					x = 357557,
+					y = 14904,
+					z = 188117,
+					r = 6,
+				},
+				[2] = {
+					x = 371299,
+					y = 14520,
+					z = 186444,
+					r = 6,
+				},
+			},
 		},
 		[2] = {
 			name = "Split 2",
@@ -21,6 +35,7 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 			name = "Split 3",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 			icon = "esoui/art/icons/class/class_dragonknight.dds",
+			
 		},
 		[4] = {
 			name = "Split 4",

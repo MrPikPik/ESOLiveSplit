@@ -27,7 +27,9 @@ LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS    = 13 -- Endless Dungeon only. Triggered by t
 ---@type LIVE_SPLIT_TRIGGER
 LIVE_SPLIT_TRIGGER_END_ENDLESS      = 14 -- Endless Dungeon only. Triggered by the game.
 ---@type LIVE_SPLIT_TRIGGER
-LIVE_SPLIT_TRIGGER_ENDLESS_STAGE    = 15 -- Endless Dungeon only. Triggered by the game. Expects data for 
+LIVE_SPLIT_TRIGGER_ENDLESS_STAGE    = 15 -- Endless Dungeon only. Triggered by the game. Expects data for
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_LOCATION_MULTI   = 16 -- All purpose trigger, listening for players in the group being close to a specific point of a list o points.
 
 -- For the most part and most occasions, you most likely only need these triggers:
 --

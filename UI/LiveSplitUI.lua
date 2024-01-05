@@ -149,23 +149,42 @@ function LiveSplit:OnTick()
 	end
 end
 
+local lastZoneId = 0
 function LiveSplit:OnPlayerActivated()
-	--DBG:Debug("OnPlayerActivated()")
-	if not self.activerun then
-		self.zoneId = GetZoneId(GetUnitZoneIndex("player"))
+	DBG:Debug("OnPlayerActivated()")
+
+	local currentZone =  GetZoneId(GetUnitZoneIndex("player"))
+
+	if lastZoneId == 0 then lastZoneId = currentZone end
+
+	if self.activerun then
+		if currentZone == self.zoneId then
+			DBG:Info("Player activated in same zone. Continuing run.")
+		else
+			lastZoneId = currentZone
+			DBG:Info("Player exited zone. Resetting...")
+			self:Reset(SOURCE_TYPE_SELF)
+		end
+	else
+		-- Player has either a completed run or no started run
+		self.zoneId = currentZone
 		self.difficulty = GetCurrentZoneDungeonDifficulty()
-		
-		DBG:Info("Updating zone to <<1>> and difficulty to <<2>>", self.zoneId, self.difficulty)
+
+		local diffNames = {
+			[DUNGEON_DIFFICULTY_NONE] = "None",
+			[DUNGEON_DIFFICULTY_NORMAL] = "Normal",
+			[DUNGEON_DIFFICULTY_VETERAN] = "Veteran"
+		}
+		DBG:Info("Updating zone to <<1>> and difficulty to <<2>>", self.zoneId, diffNames[self.difficulty])
 
 		local availableSplits = SPLIT_MANAGER:GetSplitsForZoneAndDifficulty(self.zoneId, self.difficulty)
-
 		if #availableSplits > 0 then
 			self:SetShown(true)
-		
+
 			if #availableSplits > 1  then
 				DBG:Log("This zone has multiple speed run splits!", DBG_NORMAL)
 			end
-			
+
 			-- Try and set last selected category
 			for index, data in pairs(availableSplits) do
 				if data.catName == self.lastSelectedCategory then
@@ -177,26 +196,8 @@ function LiveSplit:OnPlayerActivated()
 			-- If no match is found, select first split from available list
 			self:SetSelectedSplit(availableSplits[1])
 			return
-		else
-			-- No split data found, hide window
-			DBG:Verbose("No split data found for current zone.")
-			self:SetShown(false)
 		end
-	elseif self.activerun and not self.timerenabled then
-		-- Exiting instance with a started timer should reset the timers.
-		DBG:Warn("Incoming reset! (run active)")
-		--self:Reset(SOURCE_TYPE_SELF)
-	elseif not self.timerenabled then
-		DBG:Warn("Incoming reset! (no run active)")
-		--self:Reset(SOURCE_TYPE_SELF)
-	elseif self.zoneId ~= GetZoneId(GetUnitZoneIndex("player")) then
-		-- Zone changed
-		DBG:Warn("Zone changed. Aborting current run.")
-		self:Reset(SOURCE_TYPE_SELF)
-	elseif not self.selectedSplit then
-		DBG:Verbose("No split selected and no splits available. Hiding UI.")
-		self:SetShown(false)
-	end
+	end	
 end
 
 function LiveSplit:OnBossChange()
@@ -249,12 +250,18 @@ function LiveSplit:OnTrigger(target)
 		if self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
 			DBG:Info("Player entered trigger. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
+		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_MULTI then
+			DBG:Info("Player entered one of the start triggers. Starting run...")
+			self.coordinateListener:ClearTargets()
+			self:StartTimer(SOURCE_TYPE_SELF)
 		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
 			DBG:Info("Magic words have been spoken. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
 		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS and self.endlessArchiveListener.runStarted then
 			DBG:Info("Player started endless dungeon. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
+		else
+			DBG:Warn("Something triggered, but no run is going on and it's not handled!")
 		end
 		return
 	end
@@ -263,6 +270,10 @@ function LiveSplit:OnTrigger(target)
 	local currentSplitTrigger = self:GetCurrentSplitTrigger()
 	if currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
 		DBG:Info("Player entered trigger. Splitting due to location trigger.")
+		self:Split(SOURCE_TYPE_SELF)
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION_MULTI then
+		DBG:Info("Player entered one of the triggers. Splitting due to location trigger.")
+		self.coordinateListener:ClearTargets()
 		self:Split(SOURCE_TYPE_SELF)
 	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
 		DBG:Info("Received CSA Message. Splitting due to message match to trigger condition.")
@@ -286,6 +297,8 @@ function LiveSplit:OnTrigger(target)
 			DBG:Info("Splitting due to achieved desired Endless Dungeon progress.")	
 			self:Split(SOURCE_TYPE_SELF)
 		end
+	else
+		DBG:Warn("Something triggered, but type is not handled!")
 	end
 end
 
@@ -557,57 +570,9 @@ function LiveSplit:SetSelectedSplit(split)
 	self.controls.worldRecordLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self.FormatTime(split.wr, TIMER_PRECISION_TENTHS), split.wrPlayer))
 	
 	-- Start Trigger handling
-	if split.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION then
-		local target = {
-			x = split.startData.x,
-			y = split.startData.y,
-			z = split.startData.z,
-			r = split.startData.r,
-			zone = split.zone,
-		}
-		self.coordinateListener:Listen(target)
-	elseif split.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
-		local target = {
-			x = split.startData.x,
-			y = split.startData.y,
-			z = split.startData.z,
-			r = split.startData.r,
-			zone = split.zone,
-			inverted = true,
-		}
-		self.coordinateListener:Listen(target)
-	elseif split.startTrigger == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
-		local target = {
-			message = split.startData.message,
-			match = split.startData.match,
-			fromName = split.startData.fromName,
-		}
-		self.npcListener:Listen(target)
-	elseif split.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL and self.difficulty ~= DUNGEON_DIFFICULTY_VETERAN then
-		DBG:Error("Category start trigger is begin trial, but difficulty is not veteran! This event does not fire on non-veteran content!")
-	end
+	local IS_START_TRIGGER = true
+	self:SetupTriggersForSplit(IS_START_TRIGGER)
 
-	if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION then
-		local target = {
-			x = split.splits[self.currentsplit].data.x,
-			y = split.splits[self.currentsplit].data.y,
-			z = split.splits[self.currentsplit].data.z,
-			r = split.splits[self.currentsplit].data.r,
-			zone = split.zone,
-		}
-		self.coordinateListener:Listen(target)
-	elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION_INV then
-		local target = {
-			x = split.splits[self.currentsplit].data.x,
-			y = split.splits[self.currentsplit].data.y,
-			z = split.splits[self.currentsplit].data.z,
-			r = split.splits[self.currentsplit].data.r,
-			zone = split.zone,
-			inverted = true,
-		}
-		self.coordinateListener:Listen(target)
-	end
-	
 	local left, top = self.control:GetLeft(), self.control:GetTop()
 	self.control:SetHeight()
 	self.control:ClearAnchors()
@@ -697,8 +662,18 @@ function LiveSplit:Reset(source)
 	self.activerun = false
 	self.timerenabled = false
 
+	-- Clear all listeners
+	self.coordinateListener:ClearTargets()
+	self.npcListener:ClearTargets()
+	self.delayListener:ClearTargets()
+	self.csaListener:ClearTargets()
+
 	self:UpdateMainTimer()
 	self:UpdateSplitTimer()
+
+	if source == SOURCE_TYPE_MENU then
+		self:OnPlayerActivated() -- Force UI reloading current zone splits
+	end
 end
 
 function LiveSplit:StartTimer(source)
@@ -714,6 +689,9 @@ function LiveSplit:StartTimer(source)
 	end
 	self.activerun = true
 	self.timerenabled = true
+
+	-- Setup first Trigger
+	self:SetupTriggersForSplit()
 end
 
 function LiveSplit:StopTimer(source)
@@ -756,7 +734,6 @@ function LiveSplit:Split(source)
 	self.currentSplitStartTime = self.totaltime
 
 	local currentSplit = self:GetCurrentSplit()
-	local currentSplitData = currentSplit.data
 
 	if currentSplit.cleanupFunction and type(currentSplit.cleanupFunction) == "function" then
 		currentSplit.cleanupFunction()
@@ -764,38 +741,7 @@ function LiveSplit:Split(source)
 	
 	if self.currentsplit < #self.selectedSplit.splits then
 		self.currentsplit = self.currentsplit + 1
-		if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION then
-			local target = {
-				x = currentSplitData.x,
-				y = currentSplitData.y,
-				z = currentSplitData.z,
-				r = currentSplitData.r,
-				zone = self.selectedSplit.zone,
-			}
-			self.coordinateListener:Listen(target)
-		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_LOCATION_INV then
-			local target = {
-				x = currentSplitData.x,
-				y = currentSplitData.y,
-				z = currentSplitData.z,
-				r = currentSplitData.r,
-				zone = self.selectedSplit.zone,
-				inverted = true,
-			}
-			self.coordinateListener:Listen(target)
-		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_CUSTOM then
-			-- If a setup function is defined, call it.
-			if currentSplit.setupFunction and type(currentSplit.setupFunction) == "function" then
-				currentSplit.setupFunction()
-			end
-		elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
-			local target = {
-				message  = currentSplitData.message,
-				match 	 = currentSplitData.match,
-				fromName = currentSplitData.fromName,
-			}
-			self.npcListener:Listen(target)
-		end
+		self:SetupTriggersForSplit()
 	else
 		if self.SV[self.selectedSplit.catName] then
 			if self.SV[self.selectedSplit.catName][self.difficulty] then
@@ -824,6 +770,72 @@ function LiveSplit:Split(source)
 
 
 	self:UpdateSplitEntries()
+end
+
+function LiveSplit:SetupTriggersForSplit(isStartTrigger)
+	local currentSplitData = self:GetCurrentSplitData()
+	local currentSplitTrigger = self:GetCurrentSplitTrigger()
+
+	if isStartTrigger == true then
+		currentSplitData = self.selectedSplit.startData
+		currentSplitTrigger = self.selectedSplit.startTrigger
+	end
+
+	if currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION then
+		local target = {
+			x = currentSplitData.x,
+			y = currentSplitData.y,
+			z = currentSplitData.z,
+			r = currentSplitData.r,
+			zone = self.selectedSplit.zone,
+		}
+		self.coordinateListener:Listen(target)
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
+		local target = {
+			x = currentSplitData.x,
+			y = currentSplitData.y,
+			z = currentSplitData.z,
+			r = currentSplitData.r,
+			zone = self.selectedSplit.zone,
+			inverted = true,
+		}
+		self.coordinateListener:Listen(target)
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION_MULTI then
+		for _, data in pairs(currentSplitData) do
+			local target = {
+				x = data.x,
+				y = data.y,
+				z = data.z,
+				r = data.r,
+				zone = self.selectedSplit.zone,
+			}
+			self.coordinateListener:Listen(target)
+		end
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_CUSTOM then
+		-- Get current split
+		local currentSplit = self:GetCurrentSplit()
+		if isStartTrigger == true then
+			currentSplit = currentSplitData
+		end
+
+		-- If a setup function is defined, call it.
+		if currentSplit.setupFunction and type(currentSplit.setupFunction) == "function" then
+			currentSplit.setupFunction()
+		end
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_NPC_MESSAGE then
+		local target = {
+			message  = currentSplitData.message,
+			match 	 = currentSplitData.match,
+			fromName = currentSplitData.fromName,
+		}
+		self.npcListener:Listen(target)
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL and self.difficulty ~= DUNGEON_DIFFICULTY_VETERAN then
+		if isStartTrigger == true then
+			DBG:Error("Category start trigger is begin trial, but difficulty is not veteran! This event does not fire on non-veteran content!")
+		else
+			DBG:Error("Split trigger is begin trial, but this is not a starting trigger!")
+		end
+	end
 end
 
 function LiveSplit:ShowOptionsMenu()
