@@ -23,10 +23,20 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
+		name = "Arena",
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 65342,
+			y = 61550,
+			z = 189839,
+			r = 1,
+		},
+	},
+	[6] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[6] = {
+	[7] = {
 		name = "Rakkhat",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
@@ -34,6 +44,7 @@ local splits = {
 
 SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "nMoL- Any%",
+	menuName = "Any%",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 2400000,
@@ -42,6 +53,7 @@ SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_NORMAL, {
 })
 SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "vMoL - Any%",
+	menuName = "Any%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 2400000,
 	wrPlayer = "Zenimax",
@@ -49,6 +61,7 @@ SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
 })
 SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "vMoL HM - Any%",
+	menuName = "HM Any%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 2400000,
 	wrPlayer = "Zenimax",

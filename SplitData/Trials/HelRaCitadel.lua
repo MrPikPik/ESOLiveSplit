@@ -20,13 +20,37 @@ local splits = {
 	},
 	[4] = {
 		name = "Yokeda Rok'dun & Kai",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION_MULTI,
+		data = {
+			[1] = {
+				x = 79904,
+				y = 24656,
+				z = 89086,
+				r = 4,
+			},
+			[2] = {
+				x = 186323,
+				y = 28070,
+				z = 96075,
+				r = 5,
+			},
+		},
 	},
 	[5] = {
 		name = "Trash 3",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+		data = {
+			x = 111935,
+			y = 35860,
+			z = 92562,
+			r = 1,
+		},
 	},
 	[6] = {
+		name = "Running",
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+	},
+	[7] = {
 		name = "The Warrior",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
