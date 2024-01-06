@@ -88,7 +88,7 @@ local splits_plus2 = {
 
 local splits_plus3 = {
 	[1] = {
-		name = "Running 1",
+		name = "Running",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[2] = {
