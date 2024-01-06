@@ -196,6 +196,8 @@ function LiveSplit:OnPlayerActivated()
 			-- If no match is found, select first split from available list
 			self:SetSelectedSplit(availableSplits[1])
 			return
+		else
+			self:SetShown(false)
 		end
 	end	
 end
