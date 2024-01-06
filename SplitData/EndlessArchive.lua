@@ -187,6 +187,15 @@ local splits5Arc = {
 		},
 		[5] = {
 			name = "Arc 5",
+			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
+			data = {
+				arc = 5,
+				cycle = 5,
+				stage = 3,
+			}
+		},
+		[6] = {
+			name = "Tho' at Replicanum",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 	}
@@ -284,6 +293,15 @@ local splits10Arc = {
 		},
 		[10] = {
 			name = "Arc 10",
+			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
+			data = {
+				arc = 10,
+				cycle = 5,
+				stage = 3,
+			}
+		},
+		[11] = {
+			name = "Tho' at Replicanum",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 	}
