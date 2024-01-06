@@ -161,9 +161,14 @@ function LiveSplit:OnPlayerActivated()
 		if currentZone == self.zoneId then
 			DBG:Info("Player activated in same zone. Continuing run.")
 		else
-			lastZoneId = currentZone
-			DBG:Info("Player exited zone. Resetting...")
-			self:Reset(SOURCE_TYPE_SELF)
+			if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_ZONE and self:GetCurrentSplitData().zone == currentZone then
+				DBG:Info("Player changed zone to target zone. Splitting...")
+				self:Split(SOURCE_TYPE_SELF)
+			else
+				lastZoneId = currentZone
+				DBG:Info("Player exited zone. Resetting...")
+				self:Reset(SOURCE_TYPE_SELF)
+			end
 		end
 	else
 		-- Player has either a completed run or no started run
