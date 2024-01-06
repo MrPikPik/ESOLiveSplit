@@ -60,6 +60,9 @@ local splits_plus1 = {
 	[5] = {
 		name = "Running 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filter = "Z'Maja",
+		},
 	},
 	[6] = {
 		name = "Z'Maja + 1",
@@ -79,6 +82,9 @@ local splits_plus2 = {
 	[3] = {
 		name = "Running 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filter = "Z'Maja",
+		},
 	},
 	[4] = {
 		name = "Z'Maja + 2",
@@ -90,6 +96,9 @@ local splits_plus3 = {
 	[1] = {
 		name = "Running",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filter = "Z'Maja",
+		},
 	},
 	[2] = {
 		name = "Z'Maja + 3",

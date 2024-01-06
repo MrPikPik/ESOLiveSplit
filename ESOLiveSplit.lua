@@ -77,7 +77,7 @@ local function OnAddonLoaded(event, addonName)
 	end
 
 	DBG:SetLogLevel(DBG_DEBUG)
-	--DBG:SetLogLevel(DBG_ERROR)	
+	--DBG:SetLogLevel(DBG_ERROR)
 
 	if LibAddonMenu2 then
 		ESOLS.InitializeAddonMenu()
