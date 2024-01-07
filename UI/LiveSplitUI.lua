@@ -151,7 +151,7 @@ local lastZoneId = 0
 function LiveSplit:OnPlayerActivated()
 	DBG:Debug("OnPlayerActivated()")
 
-	local currentZone =  GetZoneId(GetUnitZoneIndex("player"))
+	local currentZone = GetZoneId(GetUnitZoneIndex("player"))
 
 	if lastZoneId == 0 then lastZoneId = currentZone end
 
@@ -159,9 +159,13 @@ function LiveSplit:OnPlayerActivated()
 		if currentZone == self.zoneId then
 			DBG:Info("Player activated in same zone. Continuing run.")
 		else
-			if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_ZONE and self:GetCurrentSplitData().zone == currentZone then
-				DBG:Info("Player changed zone to target zone. Splitting...")
-				self:Split(SOURCE_TYPE_SELF)
+			if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_ZONE then
+				local data = self:GetCurrentSplitData()
+				DBG:LuaAssert(data.zone and type(data.zone == "number"), "Split trigger is LIVE_SPLIT_TRIGGER_ZONE but either no zoneId given or given zoneId is not a number")
+				if data.zone == currentZone then
+					DBG:Info("Player changed zone to target zone. Splitting...")
+					self:Split(SOURCE_TYPE_SELF)
+				end
 			else
 				lastZoneId = currentZone
 				DBG:Info("Player exited zone. Resetting...")
