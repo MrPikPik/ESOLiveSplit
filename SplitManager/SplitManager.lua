@@ -17,16 +17,9 @@ end
 ---@param difficulty DUNGEON_DIFFICULTY
 ---@param splitdata Split
 function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
-	if not zoneId or type(zoneId) ~= "number" then
-		DBG:Error("SplitManager: Registering split failed: Invalid or missing zoneId")
-	end
-	if not difficulty or type(difficulty) ~= "number" then
-		DBG:Error("SplitManager: Registering split failed: Invalid or missing difficulty")
-	end
-	if not splitdata or type(difficulty) ~= "table" then
-		DBG:Error("SplitManager: Registering split failed: Invalid or missing splitdata")
-		-- Maybe further checking of data validity
-	end
+	DBG:LuaAssert(zoneId and type(zoneId) == "number", "SplitManager: Registering split failed: Invalid or missing zoneId")
+	DBG:LuaAssert(difficulty and type(difficulty) == "number", "SplitManager: Registering split failed: Invalid or missing difficulty")
+	DBG:LuaAssert(splitdata and type(splitdata) == "table", "SplitManager: Registering split failed: Invalid or missing splitdata")
 
 	if not self.splitdata[zoneId] then self.splitdata[zoneId] = {} end
 	if not self.splitdata[zoneId][difficulty] then self.splitdata[zoneId][difficulty] = {} end
@@ -62,7 +55,7 @@ function SplitManager:GetSplitsForZone(zoneId)
 end
 
 ---Returns all splits for a given zone and difficulty
----@param zoneId any
+---@param zoneId number
 ---@param difficulty DUNGEON_DIFFICULTY
 ---@return table
 function SplitManager:GetSplitsForZoneAndDifficulty(zoneId, difficulty)
@@ -77,7 +70,6 @@ end
 ---@return table
 function SplitManager:GetSplitsForCurrentZone()
 	local zoneId = GetZoneId(GetUnitZoneIndex("player"))
-	
 	return self:GetSplitsForZone(zoneId)
 end
 
@@ -86,7 +78,6 @@ end
 function SplitManager:GetSplitsForCurrentZoneAndDifficulty()
 	local zoneId = GetZoneId(GetUnitZoneIndex("player"))
 	local difficulty = GetCurrentZoneDungeonDifficulty()
-	
 	return self:GetSplitsForZoneAndDifficulty(zoneId, difficulty)
 end
 

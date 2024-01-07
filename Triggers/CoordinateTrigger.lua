@@ -13,9 +13,9 @@ end
 
 function LiveSplitCoordinateTrigger:CheckTarget(target, unittag)
 	if not unittag then unittag = "player" end
-	
+
 	local zone, x, y, z = GetUnitWorldPosition(unittag)
-					
+
 	if target.zone == zone then
 		local y1 = target.y or 0
 		local y2 = target.y and y or 0
@@ -55,6 +55,11 @@ end
 
 local triggerid = 1
 function LiveSplitCoordinateTrigger:Listen(target)
+	DBG:LuaAssert(target.x and type(target.x) == "number", "LiveSplitCoordinateTrigger: X coordinate for target is missing or not a number!")
+	DBG:LuaAssert(target.y and type(target.x) == "number", "LiveSplitCoordinateTrigger: Y coordinate for target is missing or not a number!")
+	DBG:LuaAssert(target.z and type(target.x) == "number", "LiveSplitCoordinateTrigger: Z coordinate for target is missing or not a number!")
+	DBG:LuaAssert(target.r and type(target.x) == "number", "LiveSplitCoordinateTrigger: Radius r for target is missing or not a number!")
+
 	target.triggerid = triggerid
 	triggerid = triggerid + 1
     table.insert(self.targets, target)
@@ -65,8 +70,10 @@ function LiveSplitCoordinateTrigger:Remove(target)
     for i, t in ipairs(self.targets) do
         if t.triggerid == target.triggerid then
             table.remove(self.targets, i)
+			return true
         end
     end
+	DBG:Verbose("LiveSplitCoordinateTrigger: Requested deletion of target couldn't be completed: target not found!")
 end
 
 function LiveSplitCoordinateTrigger:ClearTargets()

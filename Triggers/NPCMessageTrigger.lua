@@ -12,7 +12,7 @@ function LiveSplitNPCMessageTrigger:Initialize()
 end
 
 function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
-	if not (channelType == CHAT_CHANNEL_MONSTER_EMOTE or 
+	if not (channelType == CHAT_CHANNEL_MONSTER_EMOTE or
 			channelType == CHAT_CHANNEL_MONSTER_SAY or
 			channelType == CHAT_CHANNEL_MONSTER_WHISPER or
 			channelType == CHAT_CHANNEL_MONSTER_YELL) then
@@ -61,6 +61,8 @@ end
 
 local triggerid = 1
 function LiveSplitNPCMessageTrigger:Listen(target)
+	DBG:LuaAssert(target.match or target.message or target.fromName, "LiveSplitNPCMessageTrigger: Target has nothing to check for")
+
 	target.triggerid = triggerid
 	triggerid = triggerid + 1
     table.insert(self.targets, target)
@@ -71,8 +73,10 @@ function LiveSplitNPCMessageTrigger:Remove(target)
     for i, t in ipairs(self.targets) do
         if t.triggerid == target.triggerid then
             table.remove(self.targets, i)
+			return true
         end
     end
+	DBG:Verbose("LiveSplitNPCMessageTrigger: Requested deletion of target couldn't be completed: target not found!")
 end
 
 function LiveSplitNPCMessageTrigger:ClearTargets()

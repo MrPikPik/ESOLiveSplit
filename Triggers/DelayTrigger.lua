@@ -30,6 +30,8 @@ end
 
 local triggerid = 1
 function LiveSplitDelayTrigger:Listen(target)
+    DBG:LuaAssert(target.time and type(target.time) == "number", "LiveSplitDelayTrigger: Delay time for target is missing or not a number!")
+
 	target.triggerid = triggerid
 	triggerid = triggerid + 1
     target.timeremaining = target.time
@@ -41,8 +43,10 @@ function LiveSplitDelayTrigger:Remove(target)
     for i, t in ipairs(self.targets) do
         if t.triggerid == target.triggerid then
             table.remove(self.targets, i)
+            return true
         end
     end
+    DBG:Verbose("LiveSplitDelayTrigger: Requested deletion of target couldn't be completed: target not found!")
 end
 
 function LiveSplitDelayTrigger:ClearTargets()

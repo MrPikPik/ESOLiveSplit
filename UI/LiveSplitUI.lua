@@ -32,11 +32,11 @@ function LiveSplit:Initialize(control)
 	-- Controls
 	self.control = control
 	self.controls = {}
-	
+
 	LIVE_SPLIT_FRAGMENT = ZO_HUDFadeSceneFragment:New(control)
 	self.fragment = LIVE_SPLIT_FRAGMENT
 	self:SetShown(true) -- This adds the fragment to the ingame UI scene.
-	
+
 	local header = control:GetNamedChild("Header")
 	self.controls.headerTitle = header:GetNamedChild("Text")
 	self.controls.optionsButton = header:GetNamedChild("OptionsButton")
@@ -44,7 +44,7 @@ function LiveSplit:Initialize(control)
 	self.controls.background = control:GetNamedChild("BG")
 	local summary = control:GetNamedChild("Summary")
 	local additional = control:GetNamedChild("Additional")
-	
+
 	self.controls.timer = summary:GetNamedChild("Time")
 	self.controls.splittimer = summary:GetNamedChild("SplitTime")
 	self.controls.previousSegementLabel = additional:GetNamedChild("PreviousSegmentTime")
@@ -54,7 +54,7 @@ function LiveSplit:Initialize(control)
 	self.controls.worldRecordLabel = additional:GetNamedChild("Record")
 	self.controls.summary = summary
 	self.controls.additional = additional
-	
+
 	self.difficulty = DUNGEON_DIFFICULTY_NONE
 
 	self.totaltime = 0
@@ -91,7 +91,7 @@ function LiveSplit:Initialize(control)
 		row.bg = row:GetNamedChild("BG")
 		return row
 	end
-	
+
 	local function RowReset(row, pool)
 		row.diff:SetText()
 		row.diff:SetColor(1, 1, 1)
@@ -104,15 +104,15 @@ function LiveSplit:Initialize(control)
     self.rowpool = ZO_ControlPool:New("LiveSplitTimerRow" , self.controls.splits)
 	self.rowpool:SetFactory(RowFactory)
 	self.rowpool:SetResetFunction(RowReset)
-	
+
 	--Misc
 	self.maxsplitsshown = 7
 	self.splitEntries = {}
 	self.mode = MODE_MIXED
-	
+
 	--Events
 	self:AddEvents()
-	
+
 	--Initial update
 	self:UpdateSplitEntries()
 end
@@ -139,10 +139,8 @@ function LiveSplit:OnTick()
 				end
 			end
 		end
-
-
 		self.totaltime = GetGameTimeMilliseconds() - self.starttime
-		
+
 		self:UpdateMainTimer()
 		self:UpdateSplitTimer()
 		self:UpdateCurrentSplitRow()
@@ -210,7 +208,7 @@ end
 function LiveSplit:OnBossChange()
 	if not self.timerenabled then return end
 	if not self.selectedSplit and not self.currentsplit and not self:GetCurrentSplit() then return end
-	
+
 	if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
 		local bossFound = false
 		local bossUnitTag = ""
@@ -232,8 +230,6 @@ function LiveSplit:OnBossChange()
 				DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger.", GetUnitName(bossUnitTag))
 				self:Split(SOURCE_TYPE_SELF)
 			end
-			
-			
 		end
 	end
 end
@@ -352,7 +348,6 @@ function LiveSplit:AddSplitEntry(displayname, icon, personalbest)
 	table.insert(self.splitEntries, entry)
 end
 
-
 local function IsEntryToBeShown(index, currentIndex, numshown, maxshown, maxdata)
 	if index > maxdata then return false end
 	if index < 1 then return false end
@@ -377,14 +372,14 @@ end
 
 function LiveSplit:UpdateSplitEntries()
 	self.rowpool:ReleaseAllObjects()
-	
+
 	local pbsum = 0
-	
+
 	local numshown = 0
 	for i, entry in ipairs(self.splitEntries) do
 		if IsEntryToBeShown(i, self.currentsplit, numshown, self.maxsplitsshown, #self.splitEntries) then
 			numshown = numshown + 1
-		
+
 			local row, key = self.rowpool:AcquireObject()
 			if i == self.currentsplit then
 				self.currentRow = key
@@ -400,12 +395,11 @@ function LiveSplit:UpdateSplitEntries()
 			end
 
 			row.bg:SetAlpha((i % 2 == 1 or i == self.currentsplit) and LOW_ALPHA or HIGH_ALPHA)
-			
-			
+
 			if entry.pb then
 				pbsum = pbsum + entry.pb
 				row.time:SetText(self.FormatTime(pbsum, TIMER_PRECISION_SECONDS))
-				
+
 				if entry.diff and (entry.diff > -60000 and entry.diff < 60000) then
 					local diff = self.FormatTime(math.abs(entry.diff), TIMER_PRECISION_COUNTDOWN)
 					row.diff:SetText(entry.diff < 0 and "-" .. diff or diff)
@@ -427,7 +421,7 @@ function LiveSplit:UpdateSplitEntries()
 			row.data = entry
 		end
 	end
-	
+
 	self.controls.splits:SetHeight(#self.splitEntries * LIVE_SPLIT_ROW_HEIGHT)
 	self.controls.splits:SetHeight(numshown * LIVE_SPLIT_ROW_HEIGHT)
 	--self.controls.summary:SetAnchor(TOPLEFT,  self.controls.splits, BOTTOMLEFT)
@@ -484,7 +478,7 @@ function LiveSplit:UpdateCurrentSplitRow()
 		if splittime > row.data.pb - 60000 and splittime < row.data.pb + 60000 then
 			local difference = splittime - row.data.pb
 			local diff = self.FormatTime(math.abs(difference), TIMER_PRECISION_COUNTDOWN)
-			
+
 			self.splitEntries[self.currentsplit].diff = difference
 			row.diff:SetText(difference < 0 and "-" .. diff or diff)
 			if difference < 0 then
@@ -540,30 +534,38 @@ function LiveSplit:SetSelectedSplit(split)
 
 	self.selectedSplit = split
 
+	if not split.catName then
+		DBG:Error("Selected split is missing catName!")
+		return
+	end
 	self.controls.headerTitle:SetText(split.catName)
 
 	-- Build splits list
+	if not split.splits or type(split.splits) ~= "table" then
+		DBG:Error("Selected split is missing split data or split data is not a table!")
+		return
+	end
     ZO_ClearNumericallyIndexedTable(self.splitEntries)
 	for i, s in ipairs(split.splits) do
 		local pb = nil
 		if self.SV[split.catName] and self.SV[split.catName][self.difficulty] then
 			pb = self.SV[split.catName][self.difficulty][i]
 		end
-		self:AddSplitEntry(s.name, s.icon, pb)
+		self:AddSplitEntry(s.name, s.icon, pb) -- Any of these may be nil, but this won't break anything.
 	end
 	self:UpdateSplitEntries()
-	
+
 	-- Main timer, optional time offset
 	if self.selectedSplit.startOffset then
+		DBG:LuaAssert(type(self.selectedSplit.startOffset == "number"), "Selected split's startOffset is not a number!")
 		DBG:Info("This split category has a timed start offset of <<1>>", self.selectedSplit.startOffset)
 		self.totaltime = self.totaltime - self.selectedSplit.startOffset
 		self:UpdateMainTimer()
 	end
 
-
 	-- Previous segment
 	self.controls.previousSegementLabel:SetText("-")
-	
+
 	-- Best possible time
 	local bestpossible = self:GetBestPossibleTime()
 	if bestpossible > 0 then
@@ -571,7 +573,7 @@ function LiveSplit:SetSelectedSplit(split)
 	else
 		self.controls.bestPossibleTimeLabel:SetText("-")
 	end
-	
+
 	-- Sum of best segements
 	local sumofbest = self:GetSumBestSegments()
 	if sumofbest > 0 then
@@ -579,22 +581,22 @@ function LiveSplit:SetSelectedSplit(split)
 	else
 		self.controls.sumOfBestSegmentsLabel:SetText("-")
 	end
-	
+
 	-- Personal best
 	local pb = -1
 	if self.SV[self.selectedSplit.catName] and self.SV[self.selectedSplit.catName][self.difficulty] then
 		pb = self.SV[self.selectedSplit.catName][self.difficulty]["PB"] or -1
 	end
-	
+
 	if pb > 0 then
 		self.controls.personalBestLabel:SetText(self.FormatTime(pb, TIMER_PRECISION_TENTHS))
 	else
 		self.controls.personalBestLabel:SetText("-")
 	end
-	
+
 	-- World record
 	self.controls.worldRecordLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self.FormatTime(split.wr, TIMER_PRECISION_TENTHS), split.wrPlayer))
-	
+
 	-- Start Trigger handling
 	local IS_START_TRIGGER = true
 	self:SetupTriggersForSplit(IS_START_TRIGGER)
@@ -606,17 +608,18 @@ function LiveSplit:SetSelectedSplit(split)
 end
 
 function LiveSplit:SetScale(scale)
+	DBG:LuaAssert(type(scale) == "number", "scale is not a number!")
 	DBG:Debug("Setting scale to <<1>>", tostring(scale))
 	ESOLS.SV.scale = scale
 	self.control:SetScale(scale)
 end
 
 function LiveSplit:SetMaxDisplaySplits(maxSplits)
+	DBG:LuaAssert(type(maxSplits) == "number", "maxSplits is not a number!")
 	self.maxsplitsshown = maxSplits
 	ESOLS.SV.maxsplitsshown = maxSplits
 	DBG:Info("Showing <<1>> entries in the list.", maxSplits)
 	self:UpdateSplitEntries()
-	--DBG:Error("LiveSplit:SetMaxDisplaySplits() - Not implemented")
 end
 
 function LiveSplit:ShowAdditionalInfo(showInfo)
@@ -740,14 +743,14 @@ function LiveSplit:Split(source)
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
 	local splittime = self.totaltime - self.currentSplitStartTime
-	
+
 	if not self.SV[self.selectedSplit.catName] then
 		self.SV[self.selectedSplit.catName] = {}
 	end
 	if not self.SV[self.selectedSplit.catName][self.difficulty] then
 		self.SV[self.selectedSplit.catName][self.difficulty] = {}
 	end
-	
+
 	if not self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
 		self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
 	else
@@ -755,7 +758,7 @@ function LiveSplit:Split(source)
 			self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
 		end
 	end
-	
+
 	self.splitEntries[self.currentsplit].pb = splittime
 	self.currentSplitStartTime = self.totaltime
 
@@ -764,7 +767,7 @@ function LiveSplit:Split(source)
 	if currentSplit.cleanupFunction and type(currentSplit.cleanupFunction) == "function" then
 		currentSplit.cleanupFunction()
 	end
-	
+
 	if self.currentsplit < #self.selectedSplit.splits then
 		self.currentsplit = self.currentsplit + 1
 		self:SetupTriggersForSplit()
@@ -789,11 +792,10 @@ function LiveSplit:Split(source)
 		DBG:Info("No further splits left. Stopping run.")
 		self:StopTimer(SOURCE_TYPE_SELF)
 	end
-	
+
 	self.controls.bestPossibleTimeLabel:SetText(self.FormatTime(self:GetBestPossibleTime(), TIMER_PRECISION_SECONDS))
 	self.controls.sumOfBestSegmentsLabel:SetText(self.FormatTime(self:GetSumBestSegments(), TIMER_PRECISION_SECONDS))
 	self.controls.previousSegementLabel:SetText(self.FormatTime(splittime, TIMER_PRECISION_TENTHS))
-
 
 	self:UpdateSplitEntries()
 end
@@ -933,7 +935,7 @@ function LiveSplit:ShowOptionsMenu()
 	if #availableSplits > 1  then
 		-- Zone has multiple speed run splits
 		local submenu = {}
-		
+
 		for i, split in pairs(availableSplits) do
 			table.insert(submenu, {
 				label = split.menuName or split.catName,
@@ -946,7 +948,7 @@ function LiveSplit:ShowOptionsMenu()
 				end
 			})
 		end
-		
+
 		AddCustomSubMenuItem(GetString(SI_LIVE_SPLIT_SELECT_TEMPLATE), submenu)
 	end
 

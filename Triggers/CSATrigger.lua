@@ -31,6 +31,8 @@ end
 
 local triggerid = 1
 function LiveSplitCSATrigger:Listen(target)
+	DBG:LuaAssert(target.match or target.message, "LiveSplitCSATrigger: Target has nothing to check for!")
+
 	target.triggerid = triggerid
 	triggerid = triggerid + 1
     table.insert(self.targets, target)
@@ -41,8 +43,10 @@ function LiveSplitCSATrigger:Remove(target)
     for i, t in ipairs(self.targets) do
         if t.triggerid == target.triggerid then
             table.remove(self.targets, i)
+			return true
         end
     end
+	DBG:Verbose("LiveSplitCSATrigger: Requested deletion of target couldn't be completed: target not found!")
 end
 
 function LiveSplitCSATrigger:ClearTargets()
