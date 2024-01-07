@@ -286,6 +286,9 @@ function LiveSplit:OnTrigger(target)
 		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS and self.endlessArchiveListener.runStarted then
 			DBG:Info("Player started endless dungeon. Starting run...")
 			self:StartTimer(SOURCE_TYPE_SELF)
+		elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
+			DBG:Info("Center Annouce showed with magic words. Starting run...")
+			self:StartTimer(SOURCE_TYPE_SELF)
 		else
 			DBG:Warn("Something triggered, but no run is going on and it's not handled!")
 		end
@@ -867,6 +870,16 @@ function LiveSplit:SetupTriggersForSplit(isStartTrigger)
 		else
 			DBG:Error("Split trigger is begin trial, but this is not a starting trigger!")
 		end
+	elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
+		local target = {
+			message = currentSplitData.message,
+			match = currentSplitData.match,
+			subMessage = currentSplitData.subMessage,
+			subMatch = currentSplitData.subMatch,
+			parsePattern = currentSplitData.parsePattern,
+			parseMatch = currentSplitData.parseMatch,
+		}
+		self.csaListener:Listen(target)
 	end
 end
 
