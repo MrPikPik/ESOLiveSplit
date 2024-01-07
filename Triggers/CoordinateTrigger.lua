@@ -17,10 +17,10 @@ function LiveSplitCoordinateTrigger:CheckTarget(target, unittag)
 	local zone, x, y, z = GetUnitWorldPosition(unittag)
 
 	if target.zone == zone then
-		local y1 = target.y or 0
-		local y2 = target.y and y or 0
+		local z1 = target.z or 0
+		local z2 = target.z and z or 0
 
-		local distM = zo_floor(zo_distance3D(target.x, y1, target.z, x, y2, z)) / 100
+		local distM = zo_floor(zo_distance3D(target.x, target.y, z1, x, y, z2)) / 100
 
 		if target.inverted and distM >= target.r then
 			DBG:Info("Triggering inverted location trigger: <<1>>@<<2>>", GetUnitName(unittag), distM)
