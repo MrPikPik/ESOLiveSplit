@@ -437,6 +437,7 @@ function LiveSplit:UpdateSplitEntries()
 	--self.controls.summary:SetAnchor(TOPRIGHT, self.controls.splits, BOTTOMRIGHT)
 end
 
+local lang = GetCVar("language.2")
 function LiveSplit.FormatTime(milliseconds, precicion)
 	local sign = ""
 	-- Return blank if negative time is given
@@ -451,6 +452,15 @@ function LiveSplit.FormatTime(milliseconds, precicion)
 	local frac = ms / 1000 + 0.0001
 
 	local strSec = ZO_FormatTimeMilliseconds(secs, TIME_FORMAT_STYLE_COLONS, TIME_FORMAT_PRECISION_TENTHS)
+
+	-- French specific formatting......
+	if lang == "fr" then
+		strSec = string.gsub(strSec, "d ", ":") -- Maybe overkill?
+		strSec = string.gsub(strSec, "h ", ":")
+		strSec = string.gsub(strSec, "m ", ":")
+		strSec = string.gsub(strSec, "s ", ":")
+	end
+
 	if precicion == TIMER_PRECISION_COUNTDOWN then -- Expected sub 60 seconds, otherwise, total seconds would be displayed, i.e. 123.4 instead of 2:03.4
 		return string.format("%.1f", milliseconds / 1000)
 	elseif precicion == TIMER_PRECISION_SECONDS then
@@ -520,7 +530,7 @@ function LiveSplit:GetSumBestSegments(offset)
 			end
 		end
 
-		if offset == #self.selectedSplit.splits then
+		if not self.activerun and offset == #self.selectedSplit.splits then
 			return self.totaltime
 		elseif offset > 1 then
 			return total + self.totaltime

@@ -89,3 +89,8 @@ MENU_ADD_OPTION_CHECKBOX = 1
 
 function ShowMenu(where) end
 function ClearMenu() end
+
+---Get a console var
+---@param cvar string Variable to get
+---@return string Value of requested variable
+function GetCVar(cvar) return "" end
