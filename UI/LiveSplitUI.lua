@@ -211,7 +211,7 @@ end
 
 function LiveSplit:OnBossChange()
 	if not self.timerenabled then return end
-	if not self.selectedSplit and not self.currentsplit and not self:GetCurrentSplit() then return end
+	if not self.selectedSplit then return end
 
 	if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
 		local bossFound = false
@@ -271,6 +271,8 @@ function LiveSplit:OnCombatStateChanged(isInCombat)
 end
 
 function LiveSplit:OnTrigger(target)
+	if not self.selectedSplit then return end
+
 	-- Run is not started which means we need to start a run
 	if not self.timerenabled then
 		if self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
@@ -713,6 +715,7 @@ function LiveSplit:Reset(source)
 end
 
 function LiveSplit:StartTimer(source)
+	if not self.selectedSplit then return end
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
@@ -731,6 +734,8 @@ function LiveSplit:StartTimer(source)
 end
 
 function LiveSplit:StopTimer(source)
+	if not self.selectedSplit then return end
+
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
@@ -745,6 +750,7 @@ end
 
 function LiveSplit:Split(source)
 	if not self.timerenabled then return end
+	if not self.selectedSplit then return end
 
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
