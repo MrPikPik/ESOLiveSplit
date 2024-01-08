@@ -12,6 +12,7 @@ ESOLS.defaults = {
 	maxsplitsshown = 7,
 	additionalInfo = true,
 	mode = 2, -- Mixed mode
+	commitImmediatly = false,
 }
 
 local function OnAddonLoaded(event, addonName)

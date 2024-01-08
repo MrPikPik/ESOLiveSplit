@@ -81,6 +81,12 @@ function ESOLS.InitializeAddonMenu()
 		type = "divider",
 	})
 
+	-- Behavioue header
+	table.insert(optionsData, {
+		type = "header",
+		name = GetString(SI_LIVE_SPLIT_HEADER_BEHAVIOR),
+	})
+
     -- Operation Mode
 	table.insert(optionsData, {
 		type = "dropdown",
@@ -110,6 +116,19 @@ function ESOLS.InitializeAddonMenu()
 			end
 		end,
 		default = ESOLS.defaults.mode,
+	})
+
+	-- Commit immediately
+    table.insert(optionsData, {
+		type = "checkbox",
+		name = GetString(SI_LIVE_SPLIT_COMMIT_IMMEDIATELY),
+		tooltip = GetString(SI_LIVE_SPLIT_COMMIT_IMMEDIATELY_TT),
+		default = ESOLS.defaults.commitImmediately,
+		getFunc = function() return ESOLS.SV.commitImmediately end,
+		setFunc = function(value)
+			ESOLS.SV.commitImmediately = value
+            LIVE_SPLIT.commitImmediately = value
+        end,
 	})
 
 	--local count = 1

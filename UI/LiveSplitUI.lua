@@ -64,6 +64,7 @@ function LiveSplit:Initialize(control)
 	self.currentSplitStartTime = 0
 	self.lastSelectedCategory = ""
 	self.splitdata = {}
+	self.uncommitedTimes = {}
 
 	-- Listeners
 	self.coordinateListener = LiveSplitCoordinateTrigger:New()
@@ -412,9 +413,7 @@ function LiveSplit:UpdateSplitEntries()
 				if entry.diff and (entry.diff > -60000 and entry.diff < 60000) then
 					local diff = self.FormatTime(math.abs(entry.diff), TIMER_PRECISION_COUNTDOWN)
 					row.diff:SetText(entry.diff < 0 and "-" .. diff or diff)
-					if entry.wasbest then
-						row.diff:SetColor(1, 1, 0)
-					elseif entry.diff < 0 then
+					if entry.diff < 0 then
 						row.diff:SetColor(0, 1, 0)
 					else
 						row.diff:SetColor(1, 0, 0)
@@ -699,6 +698,7 @@ function LiveSplit:Reset(source)
 	self.currentSplitStartTime = 0
 	self.activerun = false
 	self.timerenabled = false
+	self.uncommitedTimes = {}
 
 	-- Clear all listeners
 	self.coordinateListener:ClearTargets()
@@ -741,6 +741,41 @@ function LiveSplit:StopTimer(source)
 
 	DBG:Info("Stopping timer")
 
+	-- Setup for time saving
+	if not self.SV[self.selectedSplit.catName] then
+		self.SV[self.selectedSplit.catName] = {}
+	end
+	if not self.SV[self.selectedSplit.catName][self.difficulty] then
+		self.SV[self.selectedSplit.catName][self.difficulty] = {}
+	end
+	-- Individual best times, if not already committed
+	if not self.commitImmediatly then
+		DBG:Info("Saving split times...")
+		for splitindex, splittime in pairs(self.uncommitedTimes) do
+			if not self.SV[self.selectedSplit.catName][self.difficulty][splitindex] then
+				DBG:Info("Added best time for split '<<1>>': <<2>>.", self.selectedSplit.splits[splitindex].name, splittime)
+				self.SV[self.selectedSplit.catName][self.difficulty][splitindex] = splittime
+			else
+				if splittime < self.SV[self.selectedSplit.catName][self.difficulty][splitindex] then
+					DBG:Info("Achieved new best time for split '<<1>>': <<2>>!", self.selectedSplit.splits[splitindex].name, splittime)
+					self.SV[self.selectedSplit.catName][self.difficulty][splitindex] = splittime
+				end
+			end
+		end
+	end
+	-- Personal best
+	if self.SV[self.selectedSplit.catName][self.difficulty]["PB"] then
+		if self.totaltime < self.SV[self.selectedSplit.catName][self.difficulty]["PB"] then
+			DBG:Info("Achieved new overall best time for '<<1>>': <<2>>!", self.selectedSplit.catName, self.totaltime)
+			self.SV[self.selectedSplit.catName][self.difficulty]["PB"] = self.totaltime
+			self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
+		end
+	else
+		DBG:Info("Recorded overall best time for '<<1>>': <<2>>.", self.selectedSplit.catName, self.totaltime)
+		self.SV[self.selectedSplit.catName][self.difficulty]["PB"] = self.totaltime
+		self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
+	end
+
 	-- Setting this so no further stages trigger anything and the timer just stands stopped.
 	self.endlessArchiveListener.runComplete = true
 
@@ -755,24 +790,30 @@ function LiveSplit:Split(source)
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
-	local splittime = self.totaltime - self.currentSplitStartTime
+		local splittime = self.totaltime - self.currentSplitStartTime
 
-	if not self.SV[self.selectedSplit.catName] then
-		self.SV[self.selectedSplit.catName] = {}
-	end
-	if not self.SV[self.selectedSplit.catName][self.difficulty] then
-		self.SV[self.selectedSplit.catName][self.difficulty] = {}
-	end
-
-	if not self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
-		self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
-	else
-		if splittime < self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
-			self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
+	if self.commitImmediatly then
+		if not self.SV[self.selectedSplit.catName] then
+			self.SV[self.selectedSplit.catName] = {}
 		end
+		if not self.SV[self.selectedSplit.catName][self.difficulty] then
+			self.SV[self.selectedSplit.catName][self.difficulty] = {}
+		end
+
+		if not self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
+			self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
+		else
+			if splittime < self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
+				DBG:Info("Achieved new best time for split '<<1>>'!", self.selectedSplit.splits[self.currentsplit].name)
+				self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
+			end
+		end
+	else
+		self.uncommitedTimes[self.currentsplit] = splittime
 	end
 
 	self.splitEntries[self.currentsplit].pb = splittime
+
 	self.currentSplitStartTime = self.totaltime
 
 	local currentSplit = self:GetCurrentSplit()
@@ -785,23 +826,6 @@ function LiveSplit:Split(source)
 		self.currentsplit = self.currentsplit + 1
 		self:SetupTriggersForSplit()
 	else
-		if self.SV[self.selectedSplit.catName] then
-			if self.SV[self.selectedSplit.catName][self.difficulty] then
-				if self.SV[self.selectedSplit.catName][self.difficulty]["PB"] then
-					if self.totaltime < self.SV[self.selectedSplit.catName][self.difficulty]["PB"] then
-						self.SV[self.selectedSplit.catName][self.difficulty]["PB"] = self.totaltime
-						self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
-					end
-				else
-					self.SV[self.selectedSplit.catName][self.difficulty]["PB"] = self.totaltime
-					self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
-				end
-			end
-		else
-			-- Should never happen :x
-			DBG:LuaAssert(false, "Reached")
-		end
-
 		DBG:Info("No further splits left. Stopping run.")
 		self:StopTimer(SOURCE_TYPE_SELF)
 	end

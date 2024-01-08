@@ -13,6 +13,9 @@ DBG_FORMAT_9 = 1
 SI_LIVE_SPLIT_MAXSHOWN = 1
 
 ---@type integer
+SI_LIVE_SPLIT_MAXSHOWN_TT = 1
+
+---@type integer
 SI_LIVE_SPLIT_SHOWINFO = 1
 
 ---@type integer
@@ -64,7 +67,13 @@ SI_LIVE_SPLIT_SHOWINFO_SETTING = 1
 SI_LIVE_SPLIT_SHOWINFO_SETTING_TT = 1
 
 ---@type integer
-SI_LIVE_SPLIT_MAXSHOWN_TT = 1
+SI_LIVE_SPLIT_HEADER_BEHAVIOR = 1
+
+---@type integer
+SI_LIVE_SPLIT_COMMIT_IMMEDIATELY = 1
+
+---@type integer
+SI_LIVE_SPLIT_COMMIT_IMMEDIATELY_TT = 1
 
 ---@param name string
 ---@param entries table
