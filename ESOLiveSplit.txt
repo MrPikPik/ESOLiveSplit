@@ -13,7 +13,7 @@
 ## SavedVariables: LiveSplitSavedVars
 
 ; Huge thanks goes out to all my friends and testers who helped test!
-; @FaizahVonAskir, @Sonuh, @Dosenschock, @SheldonPuper, @AmyPharaFaula, @Uwe656, @Diapalin, @NTH009
+; @FaizahVonAskir, @Sonuh, @Dosenschock, @SheldonPuper, @AmyPharaFaula, @klaus007, @Uwe656, @Diapalin, @NTH009
 ; @luchtt, @supershdow, @Screamer19, @MyNameIsElias, @Bombarde, @mgsnakes, @NeonLord, @Hurwey
 
 ;Language
