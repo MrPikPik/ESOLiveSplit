@@ -8,7 +8,7 @@ function ESOLS.InitializeAddonMenu()
 		displayName = "ESO Live Split",
 		author = "MrPikPik",
 		version = ESOLS.version,
-		website = 'https://www.esoui.com/downloads/info2798-FastTravelSpendings.html#donate',
+		website = 'https://www.esoui.com/downloads/info3782-ESOLiveSplit.html#donate',
 		donation = function()
 			SCENE_MANAGER:Show('mailSend')
 			zo_callLater(function()
