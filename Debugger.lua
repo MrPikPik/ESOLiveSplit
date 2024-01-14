@@ -17,7 +17,7 @@
 --- @field public LuaError function
 --- @field public LuaAssert function
 
---debugger version 1.6
+--debugger version 1.7
 
 -- Debugger
 ZO_CreateStringId("DBG_FORMAT",  "|cffac30[Debugger]<<1>> <<2>>|r|r")
@@ -106,7 +106,7 @@ function MPP_Debugger:Log(message, debugLevel, ...)
 
     if level <= self.logLevel or level == DBG_ALWAYS_SHOW  or level == DBG_ASSERT then
         if level == DBG_DEBUG and not self.showDebug then return end
-        d(zo_strformat(DBG_FORMAT, GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
+        CHAT_ROUTER:AddDebugMessage(zo_strformat(DBG_FORMAT, GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
     end
 end
 
@@ -163,6 +163,16 @@ end
 function MPP_Debugger:Debug(message, ...)
     if not message then return end
     self:Log(message, DBG_DEBUG, ...)
+end
+
+---Displays an assertion  in chat
+---@param condition boolean Expression to be checked. If true nothing happens, if false, the given `message` will be shown.
+---@param message string Format string used by zo_strformat
+function MPP_Debugger:Assert(condition, message, ...)
+    message = message or "No message"
+    if not condition then
+        self:Log(message, DBG_ASSERT, ...)
+    end
 end
 
 ---Throws a Lua error
