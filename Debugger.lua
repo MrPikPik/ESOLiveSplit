@@ -17,10 +17,10 @@
 --- @field public LuaError function
 --- @field public LuaAssert function
 
---debugger version 1.7
+--debugger version 1.8
 
 -- Debugger
-ZO_CreateStringId("DBG_FORMAT",  "|cffac30[Debugger]<<1>> <<2>>|r|r")
+ZO_CreateStringId("DBG_FORMAT",  "|cffac30[<<1>>]<<2>> <<3>>|r|r")
 ZO_CreateStringId("DBG_FORMAT_0", "")
 ZO_CreateStringId("DBG_FORMAT_1", "")
 ZO_CreateStringId("DBG_FORMAT_2", "|cc40000 [Critical]")
@@ -70,6 +70,7 @@ end
 function MPP_Debugger:Initialize()
     self.logLevel = DBG_NORMAL or DBG_QUIET
     self.showDebug = false
+    self.tag = "Debugger"
 end
 
 ---Sets the current log level
@@ -97,6 +98,12 @@ function MPP_Debugger:GetLogLevel()
     return self.logLevel
 end
 
+---Sets the tag at the beginning of messages
+---@param tag string Desired tag. Will be wrapped in square brackets.
+function MPP_Debugger:SetTag(tag)
+    self.tag = tag
+end
+
 ---Prints a message to chat
 ---@param message string Format string used by zo_strformat
 ---@param debugLevel number
@@ -106,7 +113,7 @@ function MPP_Debugger:Log(message, debugLevel, ...)
 
     if level <= self.logLevel or level == DBG_ALWAYS_SHOW  or level == DBG_ASSERT then
         if level == DBG_DEBUG and not self.showDebug then return end
-        CHAT_ROUTER:AddDebugMessage(zo_strformat(DBG_FORMAT, GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
+        CHAT_ROUTER:AddDebugMessage(zo_strformat(DBG_FORMAT, self.tag, GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
     end
 end
 
