@@ -1,10 +1,12 @@
 --- @class MPP_Debugger
 --- @field public logLevel number Loglevel of the debugger
 --- @field public showDebug boolean Whether to show DBG_DEBUG level outputs
+--- @field public tag string The tag to be shown in beginning of messages
 --- @field public New function
 --- @field public Initialize function
 --- @field public SetLogLevel function
 --- @field public SetDebugOutputEnabled function
+--- @field public SetTag function
 --- @field public GetLogLevel function
 --- @field public Log function
 --- @field public TestLevels function
@@ -14,6 +16,7 @@
 --- @field public Error function
 --- @field public Critical function
 --- @field public Debug function
+--- @field public Assert function
 --- @field public LuaError function
 --- @field public LuaAssert function
 
