@@ -7,7 +7,7 @@ LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("clear", clear)
 
 -- script
 local function script(...)
-	DBG:LuaAssert(LoadString(ESOLS_DebugConsole.Utils.CombineArgs(...)), "Executing script from console failed!")()
+	assert(LoadString(ESOLS_DebugConsole.Utils.CombineArgs(...)))()
 end
 LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("script", script)
 
