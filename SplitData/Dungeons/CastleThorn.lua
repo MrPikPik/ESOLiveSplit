@@ -42,16 +42,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1201, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_CastleThorn",
 	catName = "Castle Thorn",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(1201, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_CastleThorn",
 	catName = "Castle Thorn",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

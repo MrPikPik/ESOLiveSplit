@@ -1,6 +1,7 @@
 local splits = {
+    id = "ESOLS_BlackrosePrison",
 	catName = "Blackrose Prison",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
 	startData = {
 		parsePattern = "%d+",
@@ -48,15 +49,22 @@ local splits = {
 		},
 		[5] = {
 			name = "Arena 1 - Boss",
-			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
-                x = 100688,
-                y = 60951,
-                z = 69095,
-                r = 1.4,
+                match = {
+                    [1] = "I yield",
+                }
             },
 		},
         [6] = {
+			name = "Inter-Round",
+			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
+            data = {
+                parsePattern = "%d+",
+                parseMatch = "1",
+            },
+		},
+        [7] = {
 			name = "Arena 2 - Round 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -64,7 +72,7 @@ local splits = {
                 parseMatch = "2",
             },
 		},
-		[7] = {
+		[8] = {
 			name = "Arena 2 - Round 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -72,7 +80,7 @@ local splits = {
                 parseMatch = "3",
             },
 		},
-		[8] = {
+		[9] = {
 			name = "Arena 2 - Round 3",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -80,7 +88,7 @@ local splits = {
                 parseMatch = "4",
             },
 		},
-		[9] = {
+		[10] = {
 			name = "Arena 2 - Round 4",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -91,17 +99,24 @@ local splits = {
                 },
             },
 		},
-		[10] = {
+		[11] = {
 			name = "Arena 2 - Boss",
-			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
-                x = 90050,
-                y = 57152,
-                z = 60598,
-                r = 2.4,
+                match = {
+                    [1] = "I yield",
+                }
             },
 		},
-        [11] = {
+        [12] = {
+			name = "Inter-Round",
+			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
+            data = {
+                parsePattern = "%d+",
+                parseMatch = "1",
+            },
+		},
+        [13] = {
 			name = "Arena 3 - Round 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -109,7 +124,7 @@ local splits = {
                 parseMatch = "2",
             },
 		},
-		[12] = {
+		[14] = {
 			name = "Arena 3 - Round 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -117,7 +132,7 @@ local splits = {
                 parseMatch = "3",
             },
 		},
-		[13] = {
+		[15] = {
 			name = "Arena 3 - Round 3",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -125,7 +140,7 @@ local splits = {
                 parseMatch = "4",
             },
 		},
-		[14] = {
+		[16] = {
 			name = "Arena 3 - Round 4",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -136,17 +151,24 @@ local splits = {
                 },
             },
 		},
-		[15] = {
+		[17] = {
 			name = "Arena 3 - Boss",
-			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
-                x = 99746,
-                y = 53926,
-                z = 48762,
-                r = 1.5,
+                match = {
+                    [1] = "I yield",
+                }
             },
 		},
-        [16] = {
+        [18] = {
+			name = "Inter-Round",
+			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
+            data = {
+                parsePattern = "%d+",
+                parseMatch = "1",
+            },
+		},
+        [19] = {
 			name = "Arena 4 - Round 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -154,7 +176,7 @@ local splits = {
                 parseMatch = "2",
             },
 		},
-		[17] = {
+		[20] = {
 			name = "Arena 4 - Round 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -162,7 +184,7 @@ local splits = {
                 parseMatch = "3",
             },
 		},
-		[18] = {
+		[21] = {
 			name = "Arena 4 - Round 3",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -170,7 +192,7 @@ local splits = {
                 parseMatch = "4",
             },
 		},
-		[19] = {
+		[22] = {
 			name = "Arena 4 - Round 4",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -181,17 +203,24 @@ local splits = {
                 },
             },
 		},
-		[20] = {
+		[23] = {
 			name = "Arena 4 - Boss",
-			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
-                x = 107860,
-                y = 50690,
-                z = 35007,
-                r = 1.8,
+                match = {
+                    [1] = "bloody contest",
+                }
             },
 		},
-        [21] = {
+        [24] = {
+			name = "Inter-Round",
+			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
+            data = {
+                parsePattern = "%d+",
+                parseMatch = "1",
+            },
+		},
+        [25] = {
 			name = "Arena 5 - Round 1",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -199,7 +228,7 @@ local splits = {
                 parseMatch = "2",
             },
 		},
-		[22] = {
+		[26] = {
 			name = "Arena 5 - Round 2",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -207,7 +236,7 @@ local splits = {
                 parseMatch = "3",
             },
 		},
-		[23] = {
+		[27] = {
 			name = "Arena 5 - Round 3",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -215,7 +244,7 @@ local splits = {
                 parseMatch = "4",
             },
 		},
-		[24] = {
+		[28] = {
 			name = "Arena 5 - Round 4",
 			splitTrigger = LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE,
             data = {
@@ -226,7 +255,7 @@ local splits = {
                 },
             },
 		},
-		[25] = {
+		[29] = {
 			name = "Arena 5 - Endboss",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},

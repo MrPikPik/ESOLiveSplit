@@ -49,7 +49,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1344, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nDSR- Any%",
+	id = "ESOLS_DreadSailReef",
+	catName = "nDSR",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,
@@ -57,14 +59,18 @@ SPLIT_MANAGER:RegisterSplit(1344, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1344, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vDSR - Any%",
+	id = "ESOLS_DreadSailReef",
+	catName = "vDSR",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1344, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vDSR HM - Any%",
+	id = "ESOLS_DreadSailReef_HM",
+	catName = "vDSR HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

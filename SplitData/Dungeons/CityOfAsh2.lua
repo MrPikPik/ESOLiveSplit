@@ -61,8 +61,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(681, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_CityOfAsh2",
 	catName = "City of Ash II",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,
@@ -70,8 +71,9 @@ SPLIT_MANAGER:RegisterSplit(681, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(681, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_CityOfAsh2",
 	catName = "City of Ash II",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,

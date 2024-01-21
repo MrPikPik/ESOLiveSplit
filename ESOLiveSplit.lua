@@ -77,6 +77,7 @@ local function OnAddonLoaded(event, addonName)
 		DBG:SetLogLevel(DBG_DEBUG)
 	end
 
+	DBG:SetTag("ESOLiveSplit")
 	DBG:SetLogLevel(DBG_DEBUG)
 	--DBG:SetLogLevel(DBG_ERROR)
 

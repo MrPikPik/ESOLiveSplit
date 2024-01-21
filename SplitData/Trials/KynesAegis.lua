@@ -33,7 +33,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1196, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nKA- Any%",
+	id = "ESOLS_KynesAegis",
+	catName = "nKA",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 2100000,
@@ -41,14 +43,18 @@ SPLIT_MANAGER:RegisterSplit(1196, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1196, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vKA - Any%",
+	id = "ESOLS_KynesAegis",
+	catName = "vKA",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 2100000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1196, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vKA HM - Any%",
+	id = "ESOLS_KynesAegis_HM",
+	catName = "vKA HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 2100000,
 	wrPlayer = "Zenimax",

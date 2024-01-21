@@ -17,12 +17,18 @@ end
 ---@param difficulty DUNGEON_DIFFICULTY
 ---@param splitdata Split
 function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
-	DBG:LuaAssert(zoneId and type(zoneId) == "number", "SplitManager: Registering split failed: Invalid or missing zoneId")
-	DBG:LuaAssert(difficulty and type(difficulty) == "number", "SplitManager: Registering split failed: Invalid or missing difficulty")
-	DBG:LuaAssert(splitdata and type(splitdata) == "table", "SplitManager: Registering split failed: Invalid or missing splitdata")
+	DBG:LuaAssert(zoneId and type(zoneId) == "number", "SplitManager: Registering split failed: Invalid or missing zoneId.")
+	DBG:LuaAssert(difficulty and type(difficulty) == "number", "SplitManager: Registering split failed: Invalid or missing difficulty.")
+	DBG:LuaAssert(splitdata and type(splitdata) == "table", "SplitManager: Registering split failed: Invalid or missing splitdata.")
+	DBG:LuaAssert(splitdata.id ~= nil, "SplitManager: Registering split failed: Missing field 'id' in splitdata.")
 
 	if not self.splitdata[zoneId] then self.splitdata[zoneId] = {} end
 	if not self.splitdata[zoneId][difficulty] then self.splitdata[zoneId][difficulty] = {} end
+
+	for i, data in pairs(self.splitdata[zoneId][difficulty]) do
+		DBG:LuaAssert(data.id ~= splitdata.id, "SplitManager: ID <<1>> already in use for given difficulty! (catName=<<2>>, menuName=<<3>>)", splitdata.id, splitdata.catName, splitdata.menuName)
+	end
+
 	splitdata.zone = zoneId
 	table.insert(self.splitdata[zoneId][difficulty], splitdata)
 	DBG:Info("Registered new split data for zoneId <<1>>: <<2>>", zoneId, splitdata.catName)

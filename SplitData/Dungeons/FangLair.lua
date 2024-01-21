@@ -42,16 +42,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1009, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_FangLair",
 	catName = "Fang Lair",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(1009, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_FangLair",
 	catName = "Fang Lair",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

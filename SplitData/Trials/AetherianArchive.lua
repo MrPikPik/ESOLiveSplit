@@ -41,7 +41,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nAA- Any%",
+	id = "ESOLS_AetherianArchive",
+	catName = "nAA",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1980000,
@@ -50,7 +52,9 @@ SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_NORMAL, {
 })
 
 SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vAA - Any%",
+	id = "ESOLS_AetherianArchive",
+	catName = "vAA",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1980000,
 	wrPlayer = "Zenimax",
@@ -58,7 +62,9 @@ SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_VETERAN, {
 })
 
 SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vAA HM - Any%",
+	id = "ESOLS_AetherianArchive_HM",
+	catName = "vAA HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1980000,
 	wrPlayer = "Zenimax",

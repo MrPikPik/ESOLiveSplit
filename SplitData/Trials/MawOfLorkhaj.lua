@@ -43,8 +43,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nMoL- Any%",
-	menuName = "Any%",
+	id = "ESOLS_MawOfLorkhaj",
+	catName = "nMoL",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 2400000,
@@ -52,16 +53,18 @@ SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vMoL - Any%",
-	menuName = "Any%",
+	id = "ESOLS_MawOfLorkhaj",
+	catName = "vMoL",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 2400000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vMoL HM - Any%",
-	menuName = "HM Any%",
+	id = "ESOLS_MawOfLorkhaj_HM",
+	catName = "vMoL HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 2400000,
 	wrPlayer = "Zenimax",

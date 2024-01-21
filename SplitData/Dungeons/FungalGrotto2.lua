@@ -67,16 +67,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(934, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_FungalGrotto2_NoSkip",
 	catName = "Fungal Grotto II - NoSkip",
-	menuName = "No Skip",
+	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(934, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_FungalGrotto2_NoSkip",
 	catName = "Fungal Grotto II - NoSkip",
-	menuName = "No Skip",
+	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1200000,
 	wrPlayer = "Zenimax",

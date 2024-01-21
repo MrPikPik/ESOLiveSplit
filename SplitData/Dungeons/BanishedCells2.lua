@@ -50,16 +50,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(935, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_BanishedCells2",
 	catName = "Banished Cells II",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(935, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_BanishedCells2",
 	catName = "Banished Cells II",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1200000,
 	wrPlayer = "Zenimax",

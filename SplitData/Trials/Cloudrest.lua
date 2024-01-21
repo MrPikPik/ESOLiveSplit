@@ -107,7 +107,9 @@ local splits_plus3 = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_Cloudrest_0",
 	catName = "nCR+0",
+	menuName = "Official +0",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -115,7 +117,9 @@ SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_Cloudrest_1",
 	catName = "nCR+1",
+	menuName = "Official +1",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -123,7 +127,9 @@ SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits_plus1,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_Cloudrest_2",
 	catName = "nCR+2",
+	menuName = "Official + 2",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -131,7 +137,9 @@ SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits_plus2,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_Cloudrest_3",
 	catName = "nCR+3",
+	menuName = "Official +3",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -139,28 +147,36 @@ SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits_plus3,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_Cloudrest_0",
 	catName = "vCR+0",
+	menuName = "Official +0",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 900000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_Cloudrest_1",
 	catName = "vCR+1",
+	menuName = "Official +1",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 900000,
 	wrPlayer = "Zenimax",
 	splits = splits_plus1,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_Cloudrest_2",
 	catName = "vCR+2",
+	menuName = "Official +2",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 900000,
 	wrPlayer = "Zenimax",
 	splits = splits_plus2,
 })
 SPLIT_MANAGER:RegisterSplit(1051, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_Cloudrest_3",
 	catName = "vCR+3",
+	menuName = "Official +3",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 900000,
 	wrPlayer = "Zenimax",

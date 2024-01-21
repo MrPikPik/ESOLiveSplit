@@ -57,8 +57,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_BlessedCrucible",
 	catName = "Blessed Crucible",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1200000,
@@ -66,8 +67,9 @@ SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(64, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_BlessedCrucible",
 	catName = "Blessed Crucible",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1200000,

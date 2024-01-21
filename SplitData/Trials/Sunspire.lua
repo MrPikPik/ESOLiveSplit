@@ -33,7 +33,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1121, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nSS - Any%",
+	id = "ESOLS_Sunspire",
+	catName = "nSS",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,
@@ -41,14 +43,18 @@ SPLIT_MANAGER:RegisterSplit(1121, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1121, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vSS - Any%",
+	id = "ESOLS_Sunspire",
+	catName = "vSS",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1121, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vSS HM - Any%",
+	id = "ESOLS_Sunspire_HM",
+	catName = "vSS HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

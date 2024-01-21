@@ -1,4 +1,5 @@
 local splits1Arc = {
+	id = "ESOLS_EndlessArchive",
 	catName = "Endless Archive - 1 Arc",
 	menuName = "1Arc%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS,
@@ -141,6 +142,7 @@ local splits1Arc = {
 }
 
 local splits5Arc = {
+	id = "ESOLS_EndlessArchive_5Arc",
 	catName = "Endless Archive - 5 Arcs",
 	menuName = "5Arc%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS,
@@ -197,11 +199,15 @@ local splits5Arc = {
 		[6] = {
 			name = "Tho' at Replicanum",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			data = {
+				match = "Tho' at",
+			},
 		},
 	}
 }
 
 local splits10Arc = {
+	id = "ESOLS_EndlessArchive_10Arc",
 	catName = "Endless Archive - 10 Arcs",
 	menuName = "10Arc%",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_ENDLESS,
@@ -303,6 +309,9 @@ local splits10Arc = {
 		[11] = {
 			name = "Tho' at Replicanum",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			data = {
+				match = "Tho' at",
+			},
 		},
 	}
 }

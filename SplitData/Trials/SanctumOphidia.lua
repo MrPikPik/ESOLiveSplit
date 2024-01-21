@@ -41,7 +41,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(639, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nSO- Any%",
+	id = "ESOLS_SanctumOphidia",
+	catName = "nSO",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1980000,
@@ -49,14 +51,18 @@ SPLIT_MANAGER:RegisterSplit(639, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(639, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vSO - Any%",
+	id = "ESOLS_SanctumOphidia",
+	catName = "vSO",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1980000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(639, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vSO HM - Any%",
+	id = "ESOLS_SanctumOphidia_HM",
+	catName = "vSO HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1980000,
 	wrPlayer = "Zenimax",

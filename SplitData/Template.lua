@@ -1,6 +1,7 @@
 local splits = {
+	id = "ESOLS_MyId",
 	catName = "Name",
-	menuName = "Any%",
+	menuName = "ShortName",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	
 	startData = {

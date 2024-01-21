@@ -102,8 +102,9 @@ local splitsNoSkip = {
 
 
 SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_DirefrostKeep_Skip",
 	catName = "Direfrost Keep - Skip",
-	menuName = "Skip",
+	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1200000,
@@ -111,8 +112,9 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splitsSkip
 })
 SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_DirefrostKeep_Skip",
 	catName = "Direfrost Keep - Skip",
-	menuName = "Skip",
+	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1200000,
@@ -120,8 +122,9 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_VETERAN, {
 	splits = splitsSkip
 })
 SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_DirefrostKeep_NoSkip",
 	catName = "Direfrost Keep - NoSkip",
-	menuName = "NoSkip",
+	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1200000,
@@ -129,8 +132,9 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splitsNoSkip
 })
 SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_DirefrostKeep_NoSkip",
 	catName = "Direfrost Keep - NoSkip",
-	menuName = "NoSkip",
+	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1200000,

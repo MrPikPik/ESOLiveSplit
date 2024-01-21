@@ -26,16 +26,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1228, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_BlackDrakeVilla",
 	catName = "Black Drake Villa",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1500000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(1228, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_BlackDrakeVilla",
 	catName = "Black Drake Villa",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1500000,
 	wrPlayer = "Zenimax",

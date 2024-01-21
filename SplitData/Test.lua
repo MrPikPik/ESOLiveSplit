@@ -1,5 +1,7 @@
 SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
+	id = "TESTING_1",
 	catName = "Addon Development - Any%",
+	menuName = "Testing only!",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	--startOffset = 5000,
 	wr = 18000000,
@@ -77,5 +79,43 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 			name = "Split 12",
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		}
+	}
+})
+
+
+SPLIT_MANAGER:RegisterSplit(888, DUNGEON_DIFFICULTY_NONE, {
+	id = "TESTING_2",
+	catName = "SaveTest",
+	menuName = "Testing only!",
+	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
+	wr = 1000000,
+	wrPlayer = "@MrPikPik",
+
+	splits = {
+		[1] = {
+			name = "Split 1",
+			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			icon = "esoui/art/icons/class/class_nightblade.dds",
+		},
+		[2] = {
+			name = "Split 2",
+			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			icon = "esoui/art/icons/class/class_sorcerer.dds",
+		},
+		[3] = {
+			name = "Split 3",
+			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			icon = "esoui/art/icons/class/class_dragonknight.dds",
+		},
+		[4] = {
+			name = "Split 4",
+			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			icon = "esoui/art/icons/class/class_necromancer.dds",
+		},
+		[5] = {
+			name = "Split 5",
+			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+			icon = "esoui/art/icons/class/class_warden.dds",
+		},
 	}
 })

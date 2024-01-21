@@ -57,7 +57,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(636, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nHRC- Any%",
+	id = "ESOLS_HelRaCitadel",
+	catName = "nHRC",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1980000,
@@ -65,14 +67,18 @@ SPLIT_MANAGER:RegisterSplit(636, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(636, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vHRC - Any%",
+	id = "ESOLS_HelRaCitadel",
+	catName = "vHRC",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1980000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(636, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vHRC HM - Any%",
+	id = "ESOLS_HelRaCitadel_HM",
+	catName = "vHRC HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1980000,
 	wrPlayer = "Zenimax",

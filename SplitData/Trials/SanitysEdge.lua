@@ -55,7 +55,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1427, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nSE- Any%",
+	id = "ESOLS_SanitysEdge",
+	catName = "nSE",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,
@@ -63,14 +65,18 @@ SPLIT_MANAGER:RegisterSplit(1427, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1427, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vSE - Any%",
+	id = "ESOLS_SanitysEdge",
+	catName = "vSE",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1427, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vSE HM - Any%",
+	id = "ESOLS_SanitysEdge_HM",
+	catName = "vSE HM",
+	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

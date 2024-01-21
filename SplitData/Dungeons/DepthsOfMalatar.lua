@@ -42,16 +42,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1081, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_DepthsOfMalatar",
 	catName = "Depths of Malatar",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(1081, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_DepthsOfMalatar",
 	catName = "Depths of Malatar",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

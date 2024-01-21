@@ -49,14 +49,15 @@ local splits = {
 	[9] = {
 		name = "Allene Pellingare",
 		splitTrigger = LIVE_SPLIT_TRIGGER_CUSTOM,
-		-- Fuck this dungeon in particular for making my life miserable finding a way to detect the boss death "event".........
+		-- F~~~ this dungeon in particular for making my life miserable finding a way to detect the boss death "event".........
 		splitFunction = function() return GetUnitName("reticleover") == "Allene Pellingare" and IsUnitDead("reticleover") end,
 	},
 }
 
 SPLIT_MANAGER:RegisterSplit(146, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_WayrestSewers1",
 	catName = "Wayrest Sewers I",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -64,8 +65,9 @@ SPLIT_MANAGER:RegisterSplit(146, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(146, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_WayrestSewers1",
 	catName = "Wayrest Sewers I",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,

@@ -72,8 +72,9 @@ local splits =  {
 }
 
 SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_FungalGrotto1_NoSkip",
 	catName = "Fungal Grotto I - NoSkip",
-	menuName = "No Skip",
+	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -81,8 +82,9 @@ SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_FungalGrotto1_NoSkip",
 	catName = "Fungal Grotto I - NoSkip",
-	menuName = "No Skip",
+	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -90,8 +92,9 @@ SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_VETERAN, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "Fungal Grotto I - Any%",
-	menuName = "Any%",
+	id = "ESOLS_FungalGrotto1_Skip",
+	catName = "Fungal Grotto I - Skip",
+	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,
@@ -99,8 +102,9 @@ SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits_skip
 })
 SPLIT_MANAGER:RegisterSplit(283, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "Fungal Grotto I - Any%",
-	menuName = "Any%",
+	id = "ESOLS_FungalGrotto1_Skip",
+	catName = "Fungal Grotto I - Skip",
+	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 900000,

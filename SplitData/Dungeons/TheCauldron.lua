@@ -42,16 +42,18 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(1229, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_TheCauldron",
 	catName = "The Cauldron",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 2100000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(1229, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_TheCauldron",
 	catName = "The Cauldron",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
 	wr = 2100000,
 	wrPlayer = "Zenimax",

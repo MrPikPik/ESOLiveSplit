@@ -77,8 +77,9 @@ local splitsWithSideBoss = {
 
 -- Without side boss
 SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_NORMAL, {
-	catName = "nRG - Any%",
-	menuName = "Main Bosses",
+	id = "ESOLS_RockGrove_Main",
+	catName = "nRG - Main Bosses",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,
@@ -86,16 +87,18 @@ SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vRG - Any%",
-	menuName = "Main Bosses",
+	id = "ESOLS_RockGrove_Main",
+	catName = "vRG - Main Bosses",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
 SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_VETERAN, {
-	catName = "vRG HM - Any%",
-	menuName = "Main Bosses",
+	id = "ESOLS_RockGrove_Main_HM",
+	catName = "vRG HM",
+	menuName = "Offical HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
@@ -104,8 +107,9 @@ SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_VETERAN, {
 
 -- With side boss
 SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_RockGrove_Sideboss",
 	catName = "nRG +Sideboss",
-	menuName = "+Sideboss",
+	menuName = "Official +Sideboss",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 1800000,
@@ -113,16 +117,18 @@ SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splitsWithSideBoss,
 })
 SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_RockGrove_Sideboss",
 	catName = "vRG +Sideboss",
-	menuName = "+Sideboss",
+	menuName = "Official +Sideboss",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splitsWithSideBoss,
 })
 SPLIT_MANAGER:RegisterSplit(1263, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_RockGrove_Sideboss_HM",
 	catName = "vRG HM +Sideboss",
-	menuName = "+Sideboss",
+	menuName = "Official HM +Sideboss",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	wr = 1800000,
 	wrPlayer = "Zenimax",

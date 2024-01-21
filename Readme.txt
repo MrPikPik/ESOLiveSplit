@@ -8,15 +8,9 @@ Features:
 
 
 TODO:
- - Manual Mode / Autosplit bypass
- - BRP, MA, VH support
- - Stipped build, without debugger lines and luadoc
- - CenterAnnounceTrigger
- - Do not commit split times before run is over (in case there were wrong splits)
- - Having the inventory open (UI hidden) breaks autosplitting
- - SplitRow desc length overflowing into timer element
-
-Issues:
-FG2 Mephala Spawn, what if player is in cave when boss dies?
-FG2 Endboss sometimes does not have a healthbar, need to investigate
-Wayrest1 Last boss no HP bar??
+ - French text support
+ - DSA, VH support
+ - Stipped build, without debugger lines and luadoc?
+ - Center Announce when Speedrun time has been exceeded?
+ - Get texts for text-triggers in different languages
+ - Manual commit function

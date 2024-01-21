@@ -518,13 +518,13 @@ end
 function LiveSplit:GetSumBestSegments(offset)
 	local offset = offset or 1
 	local total = 0
-	if self.SV[self.selectedSplit.catName] and self.SV[self.selectedSplit.catName][self.difficulty] then
+	if self.SV[self.selectedSplit.id] and self.SV[self.selectedSplit.id][self.difficulty] then
 		-- Bail if there are less saved split tims than there are splits
-		if #self.SV[self.selectedSplit.catName][self.difficulty] ~= #self.selectedSplit.splits then
+		if #self.SV[self.selectedSplit.id][self.difficulty] ~= #self.selectedSplit.splits then
 			return -1
 		end
 
-		for i, t in ipairs(self.SV[self.selectedSplit.catName][self.difficulty]) do
+		for i, t in ipairs(self.SV[self.selectedSplit.id][self.difficulty]) do
 			if i >= offset then
 				total = total + t
 			end
@@ -602,8 +602,8 @@ function LiveSplit:SetSelectedSplit(split)
 
 	-- Personal best
 	local pb = -1
-	if self.SV[self.selectedSplit.catName] and self.SV[self.selectedSplit.catName][self.difficulty] then
-		pb = self.SV[self.selectedSplit.catName][self.difficulty]["PB"] or -1
+	if self.SV[self.selectedSplit.id] and self.SV[self.selectedSplit.id][self.difficulty] then
+		pb = self.SV[self.selectedSplit.id][self.difficulty]["PB"] or -1
 	end
 
 	if pb > 0 then
@@ -752,37 +752,37 @@ function LiveSplit:StopTimer(source)
 	DBG:Info("Stopping timer")
 
 	-- Setup for time saving
-	if not self.SV[self.selectedSplit.catName] then
-		self.SV[self.selectedSplit.catName] = {}
+	if not self.SV[self.selectedSplit.id] then
+		self.SV[self.selectedSplit.id] = {}
 	end
-	if not self.SV[self.selectedSplit.catName][self.difficulty] then
-		self.SV[self.selectedSplit.catName][self.difficulty] = {}
+	if not self.SV[self.selectedSplit.id][self.difficulty] then
+		self.SV[self.selectedSplit.id][self.difficulty] = {}
 	end
 	-- Individual best times, if not already committed
 	if not self.commitImmediatly then
 		DBG:Info("Saving split times...")
 		for splitindex, splittime in pairs(self.uncommitedTimes) do
-			if not self.SV[self.selectedSplit.catName][self.difficulty][splitindex] then
+			if not self.SV[self.selectedSplit.id][self.difficulty][splitindex] then
 				DBG:Info("Added best time for split '<<1>>': <<2>>.", self.selectedSplit.splits[splitindex].name, splittime)
-				self.SV[self.selectedSplit.catName][self.difficulty][splitindex] = splittime
+				self.SV[self.selectedSplit.id][self.difficulty][splitindex] = splittime
 			else
-				if splittime < self.SV[self.selectedSplit.catName][self.difficulty][splitindex] then
+				if splittime < self.SV[self.selectedSplit.id][self.difficulty][splitindex] then
 					DBG:Info("Achieved new best time for split '<<1>>': <<2>>!", self.selectedSplit.splits[splitindex].name, splittime)
-					self.SV[self.selectedSplit.catName][self.difficulty][splitindex] = splittime
+					self.SV[self.selectedSplit.id][self.difficulty][splitindex] = splittime
 				end
 			end
 		end
 	end
 	-- Personal best
-	if self.SV[self.selectedSplit.catName][self.difficulty]["PB"] then
-		if self.totaltime < self.SV[self.selectedSplit.catName][self.difficulty]["PB"] then
-			DBG:Info("Achieved new overall best time for '<<1>>': <<2>>!", self.selectedSplit.catName, self.totaltime)
-			self.SV[self.selectedSplit.catName][self.difficulty]["PB"] = self.totaltime
+	if self.SV[self.selectedSplit.id][self.difficulty]["PB"] then
+		if self.totaltime < self.SV[self.selectedSplit.id][self.difficulty]["PB"] then
+			DBG:Info("Achieved new overall best time for '<<1>>': <<2>>!", self.selectedSplit.id, self.totaltime)
+			self.SV[self.selectedSplit.id][self.difficulty]["PB"] = self.totaltime
 			self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
 		end
 	else
-		DBG:Info("Recorded overall best time for '<<1>>': <<2>>.", self.selectedSplit.catName, self.totaltime)
-		self.SV[self.selectedSplit.catName][self.difficulty]["PB"] = self.totaltime
+		DBG:Info("Recorded overall best time for '<<1>>': <<2>>.", self.selectedSplit.id, self.totaltime)
+		self.SV[self.selectedSplit.id][self.difficulty]["PB"] = self.totaltime
 		self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
 	end
 
@@ -803,19 +803,19 @@ function LiveSplit:Split(source)
 		local splittime = self.totaltime - self.currentSplitStartTime
 
 	if self.commitImmediatly then
-		if not self.SV[self.selectedSplit.catName] then
-			self.SV[self.selectedSplit.catName] = {}
+		if not self.SV[self.selectedSplit.id] then
+			self.SV[self.selectedSplit.id] = {}
 		end
-		if not self.SV[self.selectedSplit.catName][self.difficulty] then
-			self.SV[self.selectedSplit.catName][self.difficulty] = {}
+		if not self.SV[self.selectedSplit.id][self.difficulty] then
+			self.SV[self.selectedSplit.id][self.difficulty] = {}
 		end
 
-		if not self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
-			self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
+		if not self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] then
+			self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] = splittime
 		else
-			if splittime < self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] then
+			if splittime < self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] then
 				DBG:Info("Achieved new best time for split '<<1>>'!", self.selectedSplit.splits[self.currentsplit].name)
-				self.SV[self.selectedSplit.catName][self.difficulty][self.currentsplit] = splittime
+				self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] = splittime
 			end
 		end
 	else

@@ -57,8 +57,9 @@ local splits = {
 }
 
 SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_ImperialCityPrison",
 	catName = "Imperial City Prison",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 2700000,
@@ -66,8 +67,9 @@ SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_NORMAL, {
 	splits = splits
 })
 SPLIT_MANAGER:RegisterSplit(678, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_ImperialCityPrison",
 	catName = "Imperial City Prison",
-	menuName = "Any%",
+	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
 	wr = 2700000,
