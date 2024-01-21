@@ -60,7 +60,7 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
 		data = {
 			message = {
-				"It is done.",
+				[1] = "It is done.",
 			},
 		},
 	},

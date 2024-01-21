@@ -12,5 +12,5 @@ TODO:
  - DSA, VH support
  - Stipped build, without debugger lines and luadoc?
  - Center Announce when Speedrun time has been exceeded?
- - Get texts for text-triggers in different languages
+ - Get texts for text-triggers in different languages: FG2, BRP, Wayrest 2, CoH2
  - Manual commit function

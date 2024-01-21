@@ -45,7 +45,9 @@ local splits_plus1 = {
 		name = "Running 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 		data = {
-			filterMatch = "Olms",
+			filterMatch = {
+				[1] = "Olms",
+			},
 		},
 	},
 	[4] = {
@@ -59,7 +61,9 @@ local splits_plus2 = {
 		name = "Running",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 		data = {
-			filterMatch = "Olms",
+			filterMatch = {
+				[1] = "Olms",
+			},
 		},
 	},
 	[2] = {

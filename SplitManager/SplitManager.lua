@@ -15,7 +15,7 @@ end
 ---Register a splits
 ---@param zoneId number
 ---@param difficulty DUNGEON_DIFFICULTY
----@param splitdata Split
+---@param splitdata CategoryData
 function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
 	DBG:LuaAssert(zoneId and type(zoneId) == "number", "SplitManager: Registering split failed: Invalid or missing zoneId.")
 	DBG:LuaAssert(difficulty and type(difficulty) == "number", "SplitManager: Registering split failed: Invalid or missing difficulty.")
