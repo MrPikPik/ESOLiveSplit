@@ -228,7 +228,7 @@ function LiveSplit:OnBossChange()
 			local splitData = self:GetCurrentSplitData()
 			
 
-			if splitData and splitData.filter and splitData.filter == GetUnitName(bossUnitTag) then
+			if splitData and splitData.filter then
 				for _, filter in pairs(splitData.filter) do
 					if filter == bossName then
 						DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with exact match.", bossName)
@@ -236,7 +236,7 @@ function LiveSplit:OnBossChange()
 						break
 					end
 				end
-			elseif splitData and splitData.filterMatch and string.find(GetUnitName(bossUnitTag), splitData.filterMatch) then
+			elseif splitData and splitData.filterMatch then
 				for _, filterMatch in pairs(splitData.filterMatch) do
 					if string.find(bossName, filterMatch) then
 						DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with match.", bossName)
