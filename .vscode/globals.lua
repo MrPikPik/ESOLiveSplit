@@ -66,3 +66,9 @@ ENDLESS_DUNGEON_COUNTER_TYPE_CYCLE = 1
 ENDLESS_DUNGEON_COUNTER_TYPE_STAGE = 2
 
 CHAT_ROUTER = {}
+
+---Pre hook a functions
+---@param table table Where to override
+---@param fnName string What to override
+---@param fn function Function to run
+function ZO_PreHook(table, fnName, fn) end

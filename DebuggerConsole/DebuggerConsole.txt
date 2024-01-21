@@ -1,0 +1,23 @@
+;This Add-on is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates.
+;The Elder Scrolls® and related logos are registered trademarks or trademarks of ZeniMax Media Inc. in the United States and/or other countries.
+;All rights reserved.
+;The authors of this Add-on are not responsible in any way for content made with this library nor does content made with this library reflect the authors' views and opinions.
+
+## Title: ESO Live Split - Debugger
+## Author: MrPikPik
+## APIVersion: 101040
+## AddOnVersion: 1
+## Version: 1
+## DependsOn: ESOLiveSplit
+## Description: Provides debugging functionality for ESOLiveSplit.
+
+;Fonts
+fonts/fontstrings.xml
+
+;Console Main
+ConsoleMain.lua
+Console.xml
+Utils.lua
+
+;Commands
+BuiltInCommands.lua

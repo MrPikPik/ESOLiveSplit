@@ -114,7 +114,7 @@ function MPP_Debugger:Log(message, debugLevel, ...)
     if not message then return end
     local level = debugLevel or DBG_NORMAL
 
-    if level <= self.logLevel or level == DBG_ALWAYS_SHOW  or level == DBG_ASSERT then
+    if level <= self:GetLogLevel() or level == DBG_ALWAYS_SHOW  or level == DBG_ASSERT then
         if level == DBG_DEBUG and not self.showDebug then return end
         CHAT_ROUTER:AddDebugMessage(zo_strformat(DBG_FORMAT, self.tag, GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
     end

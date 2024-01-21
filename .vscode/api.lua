@@ -5,7 +5,20 @@
 ---@alias UnitTag "player"|"reticleover"|"reticletarget"|"boss1"|"boss2"|"boss3"|"boss4"|"boss5"|"boss6"|"boss7"|"boss8"|"group1"|"group2"|"group3"|"group4"|"group5"|"group6"|"group7"|"group8"|"group9"|"group10"|"group11"|"group12"|"playerpet1"|"playerpet2"|"playerpet3"|"playerpet4"|"companion"
 ---@alias EventCode integer
 ---@alias SavedVars table
----@alias Control userdata
+
+---@class Control
+Control = {}
+
+---Gets a child control by name
+---@param str string Name of the control
+---@return Control
+function Control:GetNamedChild(str) return {} end
+
+
+---Adds a message
+---@param str string Mesage to be added
+function Control:AddMessage(str) end
+
 
 ---@class ZO_Control
 
@@ -64,7 +77,16 @@ EventManager = {}
 ---@return EventManager eventmanager
 function EventManager:New() return {} end
 
+---Loads a string as lua code
+---@param str string
+---@returns function byteCodeFunction
+function LoadString(str)
+    return function() end
+end
 
+---Gets the current time
+---@return string time Current Time
+function GetTimeString() return "" end
 
 ---Registers to an Event
 ---@param name string Name to whom the event should be registered for
