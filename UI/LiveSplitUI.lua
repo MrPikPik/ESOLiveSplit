@@ -195,7 +195,7 @@ function LiveSplit:OnPlayerActivated()
 
 			-- Try and set last selected category
 			for index, data in pairs(availableSplits) do
-				if data.catName == self.lastSelectedCategory then
+				if data.id == self.lastSelectedCategory then
 					DBG:Debug("Found manual selected category from previous visit to instance. Restoring selection.")
 					self:SetSelectedSplit(availableSplits[index])
 					return
@@ -579,8 +579,8 @@ function LiveSplit:SetSelectedSplit(split)
     ZO_ClearNumericallyIndexedTable(self.splitEntries)
 	for i, s in ipairs(split.splits) do
 		local pb = nil
-		if self.SV[split.catName] and self.SV[split.catName][self.difficulty] then
-			pb = self.SV[split.catName][self.difficulty][i]
+		if self.SV[split.id] and self.SV[split.id][self.difficulty] then
+			pb = self.SV[split.id][self.difficulty][i]
 		end
 		self:AddSplitEntry(s.name, s.icon, pb) -- Any of these may be nil, but this won't break anything.
 	end
@@ -1013,7 +1013,7 @@ function LiveSplit:ShowOptionsMenu()
 					-- Remember selected category for subsequent loads to the zone, i.e. resetting an instance,
 					-- but only for manual selected template data.
 					DBG:Debug("Setting lastSelectedCategory to '<<1>>'", split.catName)
-					self.lastSelectedCategory = split.catName
+					self.lastSelectedCategory = split.id
 					self:SetSelectedSplit(split)
 				end
 			})
