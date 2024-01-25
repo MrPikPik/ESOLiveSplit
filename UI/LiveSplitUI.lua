@@ -33,6 +33,8 @@ function LiveSplit:Initialize(control)
 	self.control = control
 	self.controls = {}
 
+	self.language = GetCVar("language.2")
+
 	LIVE_SPLIT_FRAGMENT = ZO_HUDFadeSceneFragment:New(control)
 	self.fragment = LIVE_SPLIT_FRAGMENT
 	self:SetShown(true) -- This adds the fragment to the ingame UI scene.
@@ -409,7 +411,13 @@ function LiveSplit:UpdateSplitEntries()
 			end
 
 			row:SetAnchor(TOPLEFT, nil, TOPLEFT, 0, (numshown - 1) * LIVE_SPLIT_ROW_HEIGHT)
-			row.name:SetText(entry.name)
+
+			local name = entry.name
+			if type(entry.name) == "table" then
+				-- This may result in a nil value, but won't break anything as it would just blank the label.
+				name = entry.name[self.language] or entry.name["en"]
+			end
+			row.name:SetText(name)
 			if entry.icon then
 				row.icon:SetTexture(entry.icon)
 				row.icon:SetHidden(false)
@@ -569,7 +577,13 @@ function LiveSplit:SetSelectedSplit(split)
 		DBG:Error("Selected split is missing catName!")
 		return
 	end
-	self.controls.headerTitle:SetText(split.catName)
+
+	local name = split.catName
+	if type(split.catName) == "table" then
+		-- This may result in a nil value, but won't break anything as it would just blank the label.
+		name = split.catName[self.language] or split.catName["en"]
+	end
+	self.controls.headerTitle:SetText(name)
 
 	-- Build splits list
 	if not split.splits or type(split.splits) ~= "table" then

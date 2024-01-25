@@ -3,6 +3,17 @@
 
 ---@alias TexturePath string # File path of a texture.
 
+---Table of named string representing a string in differen Langauges
+---@class MultiLang
+---@field en string English version of the string.
+---@field de string? German version of the string.
+---@field fr string? French version of the string.
+---@field ru string? Russian version of the string.
+---@field es string? Spanish version of the string.
+---@field zh string? Chinese version of the string.
+---@field jp string? Japanese version of the string.
+
+
 ---@alias LIVE_SPLIT_TRIGGER number # Trigger Types.
 --- |`LIVE_SPLIT_TRIGGER_ENTER_COMBAT` # Player enters combat state.
 --- |`LIVE_SPLIT_TRIGGER_EXIT_COMBAT` # Player leaves combat state.
@@ -25,7 +36,7 @@
 ---Dataset used by `SplitManager` for data registration.
 ---@class CategoryData
 ---@field id string|number Unique ID of the category.
----@field catName string Display name of the category.
+---@field catName string|MultiLang Display name of the category. May be an array of localized string
 ---@field menuName string? Optional name given priority over the `catName` in the Template Selector menu of the UI widget.
 ---@field startTrigger LIVE_SPLIT_TRIGGER Trigger type for starting a run. May require optional `LIVE_SPLIT_TRIGGER_DATA`.
 ---@field startData LIVE_SPLIT_TRIGGER_DATA? Additional data for the trigger. Data depending on selected `startTrigger`-type.
@@ -36,7 +47,7 @@
 
 ---Single split/segment dataset.
 ---@class SplitData
----@field name string Display name of the segment.
+---@field name string|MultiLang Display name of the segment.
 ---@field icon TexturePath? Texture to be displayed in front of the split name.
 ---@field splitTrigger LIVE_SPLIT_TRIGGER Trigger type for automatic advancing.
 ---@field data LIVE_SPLIT_TRIGGER_DATA? Additional data needed for triggers.

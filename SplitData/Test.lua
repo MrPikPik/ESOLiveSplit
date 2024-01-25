@@ -1,6 +1,9 @@
 SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 	id = "TESTING_1",
-	catName = "Addon Development - Any%",
+	catName = {
+		en = "Addon Development - Any%",
+		de = "Addon Entwicklung - Any%",
+	},
 	menuName = "Testing only!",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	--startOffset = 5000,
@@ -9,7 +12,10 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 	
 	splits = {
 		[1] = {
-			name = "Split 1",
+			name = {
+				en = "English Split 1",
+				de = "Deutscher Split 1",
+			},
 			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION_MULTI,
 			icon = "esoui/art/icons/class/class_nightblade.dds",
 			data = {
