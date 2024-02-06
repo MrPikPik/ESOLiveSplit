@@ -64,7 +64,7 @@ SPLIT_MANAGER:RegisterSplit(1123, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Lair of Maarselok",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
-	wr = 1800000,
+	wr = 2100000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
@@ -73,7 +73,7 @@ SPLIT_MANAGER:RegisterSplit(1123, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Lair of Maarselok",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
-	wr = 1800000,
+	wr = 2100000,
 	wrPlayer = "Zenimax",
 	splits = splits
 })
