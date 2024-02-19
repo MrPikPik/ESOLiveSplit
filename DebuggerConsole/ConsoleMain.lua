@@ -1,4 +1,8 @@
 ---@diagnostic disable: deprecated
+
+-- Maximum lines in the console history. Default is 500
+ESOLS_CONSOLE_MAX_LINES = 500
+
 local ESOLS_DebugConsole = ZO_Object:Subclass()
 
 ---Create new console instance
@@ -13,22 +17,19 @@ end
 ---Initializes the console instance
 ---@param control Control
 function ESOLS_DebugConsole:Initialize(control)
-	self.control = control	
+	self.control = control
 	self.commands = {}
 
 	self.output = control:GetNamedChild("Output")
 	self.input = control:GetNamedChild("EditBox")
+	self.input.ownerConsole = self
 
 	SLASH_COMMANDS["/lsdebugconsole"] = ESOLS_DebugConsole_Toggle
 
 	local function Log(debugger, message, debugLevel, ...)
 		if not message then return end
 		local level = debugLevel or DBG_NORMAL
-
-		if level <= debugger:GetLogLevel() or level == DBG_ALWAYS_SHOW  or level == DBG_ASSERT then
-			if level == DBG_DEBUG and not debugger.showDebug then return end
-			self:Write(zo_strformat("|cffac30[<<1>>]<<2>> <<3>>|r|r", GetTimeString(), GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
-		end
+		self:Write(zo_strformat(DBG_FORMAT, GetTimeString(), GetString("DBG_FORMAT_", level), zo_strformat(message, ...)))
 	end
 
 	ZO_PreHook(DBG, "Log", Log)
@@ -52,7 +53,7 @@ end
 ---@param name string Command to be invoked
 ---@vararg any Paramters for the invoked command
 function ESOLS_DebugConsole:InvokeCommand(name, ...)
-	if self.commands[name] and type(self.command[name]) == "function" then
+	if self.commands[name] and type(self.commands[name]) == "function" then
 		self.commands[name](...)
 	else
 		self:Write(zo_strformat("Command '<<1>>' unknown.", name))
@@ -102,4 +103,19 @@ function ESOLS_DebugConsole_ToggleFocus()
 	else
 		LIVE_SPLIT_DEBUG_CONSOLE.control:SetHidden(true)
 	end
+end
+
+function ESOLS_Debugconsole_PreviousCommand(control)
+	if not control.system:IsAutoCompleteOpen() then
+        control.owner:PreviousCommand()
+    end
+end
+
+function ESOLS_Debugconsole_NextCommand(control)
+	if not control.system:IsAutoCompleteOpen() then
+        control.owner:NextCommand()
+    end
+end
+function ESOLS_Debugconsole_Tab(control, newText)
+control.system:OnTextEntryChanged(newText)
 end
