@@ -13,7 +13,7 @@ local splits = {
             x = 34938,
             y = 47583,
             z = 33137,
-            r= 1,
+            r = 1,
         },
     },
     [2] = {
@@ -47,7 +47,7 @@ local splits = {
         },
     },
     [5] = {
-        name = "Rink if Frozen Blood",
+        name = "Rink of Frozen Blood",
         splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
         data = {
             x = 165822,
