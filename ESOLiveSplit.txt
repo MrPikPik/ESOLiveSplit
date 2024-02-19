@@ -33,7 +33,7 @@ Triggers/EndlessArchiveTrigger.lua
 SplitManager/Splitmanager.lua
 
 ;UI
-UI/fonts/fontstrings.xml
+UI/fonts/fontstrings_$(APIVersion).xml
 UI/LiveSplitUI.lua
 UI/LiveSplitUI.xml
 
