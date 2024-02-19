@@ -25,7 +25,7 @@
                     </OnClicked>
                 </Button>
 
-				<TextBuffer name="$(parent)Output" font="ConsoleRoboto" maxHistoryLines="200" mouseEnabled="true" linkEnabled="true">
+				<TextBuffer name="$(parent)Output" font="ConsoleRoboto" maxHistoryLines="ESOLS_CONSOLE_MAX_LINES" mouseEnabled="true" linkEnabled="true">
 					<Anchor point="TOPLEFT" offsetY="30"/>
 					<Anchor point="BOTTOMRIGHT" offsetX="-2" offsetY="-24"/>
 				</TextBuffer>
@@ -47,6 +47,18 @@
 								self:LoseFocus()
 							</OnEscape>
 							
+							 <OnUpArrow>
+								ESOLS_Debugconsole_PreviousCommand(self:GetParent():GetParent())
+							</OnUpArrow>
+
+							<OnDownArrow>
+								ESOLS_Debugconsole_NextCommand(self:GetParent():GetParent())
+							</OnDownArrow>
+
+							<OnTab>
+								ESOLS_Debugconsole_Tab(self:GetParent():GetParent())
+							</OnTab>
+
 							<OnEnter>
 								if self:GetText() ~= "" then
 									ESOLS_DebugConsole_ExecFromInput()
