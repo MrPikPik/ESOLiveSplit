@@ -23,12 +23,12 @@ function LiveSplitCoordinateTrigger:CheckTarget(target, unittag)
 		local distM = zo_floor(zo_distance3D(target.x, target.y, z1, x, y, z2)) / 100
 
 		if target.inverted and distM >= target.r then
-			DBG:Info("Triggering inverted location trigger: <<1>>@<<2>>", GetUnitName(unittag), distM)
+			DBG:Info("Triggering inverted location trigger <<3>>: <<1>>@<<2>>m", GetUnitName(unittag), distM, target.triggerid)
 			self:Remove(target)
 			self:FireCallbacks("OnTrigger", target)
 			return true
 		elseif not target.inverted and distM <= target.r then
-			DBG:Info("Triggering location trigger: <<1>>@<<2>>", GetUnitName(unittag), distM)
+			DBG:Info("Triggering location trigger <<3>>: <<1>>@<<2>>m", GetUnitName(unittag), distM, target.triggerid)
 			self:Remove(target)
 			self:FireCallbacks("OnTrigger", target)
 			return true
@@ -56,9 +56,8 @@ end
 local triggerid = 1
 function LiveSplitCoordinateTrigger:Listen(target)
 	DBG:LuaAssert(target.x and type(target.x) == "number", "LiveSplitCoordinateTrigger: X coordinate for target is missing or not a number!")
-	DBG:LuaAssert(target.y and type(target.x) == "number", "LiveSplitCoordinateTrigger: Y coordinate for target is missing or not a number!")
-	DBG:LuaAssert(target.z and type(target.x) == "number", "LiveSplitCoordinateTrigger: Z coordinate for target is missing or not a number!")
-	DBG:LuaAssert(target.r and type(target.x) == "number", "LiveSplitCoordinateTrigger: Radius r for target is missing or not a number!")
+	DBG:LuaAssert(target.y and type(target.y) == "number", "LiveSplitCoordinateTrigger: Y coordinate for target is missing or not a number!")
+	DBG:LuaAssert(target.r and type(target.r) == "number", "LiveSplitCoordinateTrigger: Radius r for target is missing or not a number!")
 
 	target.triggerid = triggerid
 	triggerid = triggerid + 1
