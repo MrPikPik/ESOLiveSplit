@@ -8,6 +8,7 @@ local splits = {
         parseMatch = "1",
 	},
 
+    par = LIVE_SPLIT_TIME_30_MINUTES,
 	wr = 2400000,
 	wrPlayer = "Zenimax",
 

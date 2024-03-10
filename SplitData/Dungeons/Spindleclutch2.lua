@@ -54,6 +54,7 @@ SPLIT_MANAGER:RegisterSplit(936, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Spindleclutch II",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits
@@ -63,6 +64,7 @@ SPLIT_MANAGER:RegisterSplit(936, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Spindleclutch II",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits

@@ -90,6 +90,7 @@ SPLIT_MANAGER:RegisterSplit(130, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Crypt of Hearts I - Skip",
 	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsSkip
@@ -99,6 +100,7 @@ SPLIT_MANAGER:RegisterSplit(130, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Crypt of Hearts I - Skip",
 	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsSkip
@@ -108,6 +110,7 @@ SPLIT_MANAGER:RegisterSplit(130, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Crypt of Hearts I - NoSkip",
 	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsNoSkip
@@ -117,6 +120,7 @@ SPLIT_MANAGER:RegisterSplit(130, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Crypt of Hearts I - NoSkip",
 	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsNoSkip

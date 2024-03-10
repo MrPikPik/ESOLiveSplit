@@ -30,6 +30,7 @@ SPLIT_MANAGER:RegisterSplit(1360, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Earthen Root Enclave",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_25_MINUTES,
 	wr = 1500000,
 	wrPlayer = "Zenimax",
 	splits = splits
@@ -39,6 +40,7 @@ SPLIT_MANAGER:RegisterSplit(1360, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Earthen Root Enclave",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_25_MINUTES,
 	wr = 1500000,
 	wrPlayer = "Zenimax",
 	splits = splits

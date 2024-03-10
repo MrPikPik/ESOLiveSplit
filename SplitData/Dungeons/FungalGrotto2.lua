@@ -71,6 +71,7 @@ SPLIT_MANAGER:RegisterSplit(934, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Fungal Grotto II - NoSkip",
 	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits
@@ -80,6 +81,7 @@ SPLIT_MANAGER:RegisterSplit(934, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Fungal Grotto II - NoSkip",
 	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits

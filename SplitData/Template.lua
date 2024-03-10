@@ -11,6 +11,7 @@ local splits = {
 		r = 59.4,
 	},
 
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	

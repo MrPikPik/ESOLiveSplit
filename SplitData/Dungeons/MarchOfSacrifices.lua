@@ -54,6 +54,7 @@ SPLIT_MANAGER:RegisterSplit(1055, DUNGEON_DIFFICULTY_NORMAL, {
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
+	par = LIVE_SPLIT_TIME_30_MINUTES,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits
@@ -64,6 +65,7 @@ SPLIT_MANAGER:RegisterSplit(1055, DUNGEON_DIFFICULTY_VETERAN, {
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
+	par = LIVE_SPLIT_TIME_30_MINUTES,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits

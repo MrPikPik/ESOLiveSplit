@@ -46,6 +46,7 @@ SPLIT_MANAGER:RegisterSplit(1081, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Depths of Malatar",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_30_MINUTES,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits
@@ -55,6 +56,7 @@ SPLIT_MANAGER:RegisterSplit(1081, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Depths of Malatar",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_30_MINUTES,
 	wr = 1800000,
 	wrPlayer = "Zenimax",
 	splits = splits

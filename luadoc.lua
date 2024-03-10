@@ -34,14 +34,14 @@
 --- |`LIVE_SPLIT_TRIGGER_ZONE` # When player enters specific zone.
 
 ---@alias LIVE_SPLIT_TIME number # Predifined times
---- | `LIVE_SPLIT_TIME_15_MINUTES` # 15 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_20_MINUTES` # 20 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_25_MINUTES` # 25 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_30_MINUTES` # 30 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_33_MINUTES` # 33 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_35_MINUTES` # 35 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_40_MINUTES` # 40 Minutes in milliseconds
---- | `LIVE_SPLIT_TIME_45_MINUTES` # 45 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_15_MINUTES` # 900000  milliseconds
+--- | `LIVE_SPLIT_TIME_20_MINUTES` # 1200000 milliseconds
+--- | `LIVE_SPLIT_TIME_25_MINUTES` # 1500000 milliseconds
+--- | `LIVE_SPLIT_TIME_30_MINUTES` # 1800000 milliseconds
+--- | `LIVE_SPLIT_TIME_33_MINUTES` # 1980000 milliseconds
+--- | `LIVE_SPLIT_TIME_35_MINUTES` # 2100000 milliseconds
+--- | `LIVE_SPLIT_TIME_40_MINUTES` # 2400000 milliseconds
+--- | `LIVE_SPLIT_TIME_45_MINUTES` # 2700000 milliseconds
 
 
 
@@ -54,6 +54,7 @@
 ---@field startTrigger LIVE_SPLIT_TRIGGER Trigger type for starting a run. May require optional `LIVE_SPLIT_TRIGGER_DATA`.
 ---@field startData LIVE_SPLIT_TRIGGER_DATA? Additional data for the trigger. Data depending on selected `startTrigger`-type.
 ---@field startOffset number? Offset in milliseconds from which the timer will count up to 0 from.
+---@field par number? Par time (speedrun time) in milliseconds.
 ---@field wr number World record time in milliseconds.
 ---@field wrPlayer string Name of the world record holder.
 ---@field splits SplitData[] Array (table) of splits/segement data (see below how to form).

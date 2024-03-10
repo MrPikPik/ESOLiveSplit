@@ -107,6 +107,7 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_NORMAL, {
 	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsSkip
@@ -117,6 +118,7 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_VETERAN, {
 	menuName = "Official - Skip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsSkip
@@ -127,6 +129,7 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_NORMAL, {
 	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsNoSkip
@@ -137,6 +140,7 @@ SPLIT_MANAGER:RegisterSplit(449, DUNGEON_DIFFICULTY_VETERAN, {
 	menuName = "Official - NoSkip",
 	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 	startData = startData,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splitsNoSkip

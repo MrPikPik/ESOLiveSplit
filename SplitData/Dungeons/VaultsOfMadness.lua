@@ -66,6 +66,7 @@ SPLIT_MANAGER:RegisterSplit(11, DUNGEON_DIFFICULTY_NORMAL, {
 	catName = "Vaults Of Madness",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits
@@ -75,6 +76,7 @@ SPLIT_MANAGER:RegisterSplit(11, DUNGEON_DIFFICULTY_VETERAN, {
 	catName = "Vaults Of Madness",
 	menuName = "Official",
 	startTrigger = LIVE_SPLIT_TRIGGER_ENTER_COMBAT,
+	par = LIVE_SPLIT_TIME_20_MINUTES,
 	wr = 1200000,
 	wrPlayer = "Zenimax",
 	splits = splits
