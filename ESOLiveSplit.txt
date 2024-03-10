@@ -5,7 +5,7 @@
 ## Title: ESO Live Split
 ## Description: Live Split lookalike in ESO
 ## Author: MrPikPik
-## APIVersion: 101040
+## APIVersion: 101041
 ## Version: 1.0.0 / 9.2.8
 ## AddOnVersion: 100
 ## DependsOn: LibCustomMenu>=712
@@ -14,7 +14,7 @@
 
 ; Huge thanks goes out to all my friends and testers who helped test!
 ; @FaizahVonAskir, @Sonuh, @Dosenschock, @SheldonPuper, @AmyPharaFaula, @klaus007, @Uwe656, @Diapalin, @NTH009
-; @luchtt, @supershdow, @Screamer19, @MyNameIsElias, @Bombarde, @mgsnakes, @NeonLord, @Hurwey
+; @luchtt, Eximzy, @supershdow, @Screamer19, @MyNameIsElias, @Bombarde, @mgsnakes, @NeonLord, @Hurwey
 
 ;Language
 lang/en.lua
@@ -92,6 +92,8 @@ SplitData/Dungeons/GravenDeep.lua
 SplitData/Dungeons/EarthenRootEnclave.lua
 SplitData/Dungeons/BalSunnar.lua
 SplitData/Dungeons/ScrivenersHall.lua
+SplitData/Dungeons/BedlamVeil.lua
+SplitData/Dungeons/OathswornPit.lua
 
 ;Trials
 SplitData/Trials/HelRaCitadel.lua
