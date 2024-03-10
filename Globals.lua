@@ -57,3 +57,21 @@ LIVE_SPLIT_TRIGGER_ZONE             = 17 -- When player enters specific zone.
 --      You can create custom splitting conditions with this one. You need to specify a function for splitFunction.
 --      Said function will be called every tick (frame). If the function returns true, a split will be triggered.
 --      Additionally, you can specify a setupFunction and a cleanupFunction, the first being called when the trigger is reached and loaded and the cleanup when the split occurs.
+
+
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_15_MINUTES = 1000 * 60 * 15 -- 15 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_20_MINUTES = 1000 * 60 * 20 -- 20 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_25_MINUTES = 1000 * 60 * 25 -- 25 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_30_MINUTES = 1000 * 60 * 30 -- 30 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_33_MINUTES = 1000 * 60 * 33 -- 33 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_35_MINUTES = 1000 * 60 * 35 -- 35 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_40_MINUTES = 1000 * 60 * 40 -- 40 Minutes in milliseconds
+---@type LIVE_SPLIT_TIME
+LIVE_SPLIT_TIME_45_MINUTES = 1000 * 60 * 45 -- 45 Minutes in milliseconds

@@ -33,6 +33,19 @@
 --- |`LIVE_SPLIT_TRIGGER_LOCATION_MULTI` # All purpose trigger, listening for players in the group being close to a specific point of a list o points.
 --- |`LIVE_SPLIT_TRIGGER_ZONE` # When player enters specific zone.
 
+---@alias LIVE_SPLIT_TIME number # Predifined times
+--- | `LIVE_SPLIT_TIME_15_MINUTES` # 15 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_20_MINUTES` # 20 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_25_MINUTES` # 25 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_30_MINUTES` # 30 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_33_MINUTES` # 33 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_35_MINUTES` # 35 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_40_MINUTES` # 40 Minutes in milliseconds
+--- | `LIVE_SPLIT_TIME_45_MINUTES` # 45 Minutes in milliseconds
+
+
+
+
 ---Dataset used by `SplitManager` for data registration.
 ---@class CategoryData
 ---@field id string|number Unique ID of the category.
