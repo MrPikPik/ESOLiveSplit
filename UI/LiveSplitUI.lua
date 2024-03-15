@@ -53,7 +53,8 @@ function LiveSplit:Initialize(control)
 	self.controls.bestPossibleTimeLabel = additional:GetNamedChild("BestPossibleTime")
 	self.controls.sumOfBestSegmentsLabel = additional:GetNamedChild("BestSegmentsTime")
 	self.controls.personalBestLabel = additional:GetNamedChild("PersonalBestTime")
-	self.controls.worldRecordLabel = additional:GetNamedChild("Record")
+	self.controls.worldRecordTimeLabel = additional:GetNamedChild("RecordTime")
+	self.controls.worldRecordHolderLabel = additional:GetNamedChild("RecordHolder")
 	self.controls.summary = summary
 	self.controls.additional = additional
 
@@ -65,6 +66,7 @@ function LiveSplit:Initialize(control)
 	self.currentsplit = 1
 	self.currentSplitStartTime = 0
 	self.lastSelectedCategory = ""
+	self.freshInstance = true
 	self.splitdata = {}
 	self.uncommitedTimes = {}
 
@@ -156,7 +158,10 @@ function LiveSplit:OnPlayerActivated()
 
 	local currentZone = GetZoneId(GetUnitZoneIndex("player"))
 
-	if lastZoneId == 0 then lastZoneId = currentZone end
+	if lastZoneId == 0 then
+		lastZoneId = currentZone
+		self.freshInstance = true
+	end
 
 	if self.activerun then
 		if currentZone == self.zoneId then
@@ -172,6 +177,7 @@ function LiveSplit:OnPlayerActivated()
 			else
 				lastZoneId = currentZone
 				DBG:Info("Player exited zone. Resetting...")
+				self.freshInstance = true
 				self:Reset(SOURCE_TYPE_SELF)
 			end
 		end
@@ -209,7 +215,7 @@ function LiveSplit:OnPlayerActivated()
 		else
 			self:SetShown(false)
 		end
-	end	
+	end
 end
 
 function LiveSplit:OnBossChange()
@@ -476,10 +482,10 @@ function LiveSplit.FormatTime(milliseconds, precicion)
 
 	-- French specific formatting......
 	if lang == "fr" then
-		strSec = string.gsub(strSec, "d ", ":") -- Maybe overkill?
+		strSec = string.gsub(strSec, "j ", ":") -- Maybe overkill?
 		strSec = string.gsub(strSec, "h ", ":")
 		strSec = string.gsub(strSec, "m ", ":")
-		strSec = string.gsub(strSec, "s ", ":")
+		strSec = string.gsub(strSec, "s", "")
 	end
 
 	if precicion == TIMER_PRECISION_COUNTDOWN then -- Expected sub 60 seconds, otherwise, total seconds would be displayed, i.e. 123.4 instead of 2:03.4
@@ -640,7 +646,8 @@ function LiveSplit:SetSelectedSplit(split)
 	end
 
 	-- World record
-	self.controls.worldRecordLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self.FormatTime(split.wr, TIMER_PRECISION_TENTHS), split.wrPlayer))
+	self.controls.worldRecordTimeLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self.FormatTime(split.wr, TIMER_PRECISION_TENTHS)))
+	self.controls.worldRecordHolderLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR_BY, split.wrPlayer))
 
 	-- Start Trigger handling
 	local IS_START_TRIGGER = true
@@ -753,6 +760,11 @@ end
 
 function LiveSplit:StartTimer(source)
 	if not self.selectedSplit then return end
+	if not self.freshInstance then
+		DBG:Warn("Requested timer start in a already used instance. Please change zones to reset to a fresh instance.")
+		return
+	end
+
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
 
@@ -826,9 +838,7 @@ function LiveSplit:Split(source)
 
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
-
 		local splittime = self.totaltime - self.currentSplitStartTime
-
 	if self.commitImmediatly then
 		if not self.SV[self.selectedSplit.id] then
 			self.SV[self.selectedSplit.id] = {}
@@ -864,6 +874,7 @@ function LiveSplit:Split(source)
 		self:SetupTriggersForSplit()
 	else
 		DBG:Info("No further splits left. Stopping run.")
+		DBG:Info("Stopping timer with a time of <<1>>", self.FormatTime(self.totaltime, TIMER_PRECISION_HUNDREDS))
 		self:StopTimer(SOURCE_TYPE_SELF)
 	end
 

@@ -2,7 +2,7 @@ ESOLS = {}
 local ESOLS = ESOLS
 
 ESOLS.name = "ESOLiveSplit"
-ESOLS.version = "1.0 (Update 9.2.8, Records v1)"
+ESOLS.version = "0.2b (Update 9.3.5, Records v1)"
 
 ESOLS.defaults = {
 	splits = {},

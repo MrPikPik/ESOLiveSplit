@@ -15,6 +15,7 @@ SPLIT_MANAGER:RegisterSplit(41, DUNGEON_DIFFICULTY_NONE, {
 			name = {
 				en = "English Split 1",
 				de = "Deutscher Split 1",
+				fr = "Split française 1",
 			},
 			splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION_MULTI,
 			icon = "esoui/art/icons/class/class_nightblade.dds",

@@ -76,9 +76,9 @@
 					</Controls>
                 </Control>
 				<Control name="$(parent)Additional">
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)Summary" />
-					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)Summary" />
-					<Dimensions y="120" />
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)Summary" offsetX="5" />
+					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)Summary" offsetX="-5" />
+					<Dimensions y="132" />
 					<Controls>	
 						<Label name="$(parent)PreviousSegmentLabel" font="$(CENTURY_GOTHIC)|$(KB_24)|soft-shadow-thick" horizontalAlignment="LEFT" text="SI_LIVE_SPLIT_PREV_SEG">
 							<Anchor point="TOPLEFT"/>
@@ -112,9 +112,14 @@
 							<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)BestSegmentsTime" />
 						</Label>
 						
-						<Label name="$(parent)Record" font="$(CENTURY_GOTHIC)|$(KB_18)|soft-shadow-thick" horizontalAlignment="CENTER" text="SI_LIVE_SPLIT_WR">
+						<Label name="$(parent)RecordHolder" font="$(CENTURY_GOTHIC)|$(KB_18)|soft-shadow-thick" horizontalAlignment="CENTER" text="SI_LIVE_SPLIT_WR_BY">
 							<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" />
 							<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)" />
+						</Label>
+
+						<Label name="$(parent)RecordTime" font="$(CENTURY_GOTHIC)|$(KB_18)|soft-shadow-thick" horizontalAlignment="CENTER" text="SI_LIVE_SPLIT_WR">
+							<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$(parent)RecordHolder" />
+							<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" relativeTo="$(parent)RecordHolder" />
 						</Label>
 					</Controls>
                 </Control>

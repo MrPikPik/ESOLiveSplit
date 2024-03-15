@@ -22,6 +22,9 @@ SI_LIVE_SPLIT_SHOWINFO = 1
 SI_LIVE_SPLIT_WR = 1
 
 ---@type integer
+SI_LIVE_SPLIT_WR_BY = 1
+
+---@type integer
 SI_LIVE_SPLIT_MANUAL_SPLIT = 1
 
 ---@type integer
@@ -94,3 +97,6 @@ function ClearMenu() end
 ---@param cvar string Variable to get
 ---@return string Value of requested variable
 function GetCVar(cvar) return "" end
+
+
+function GetTopMatchesByLevenshteinSubStringScore(...) end
