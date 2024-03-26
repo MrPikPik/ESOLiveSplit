@@ -76,16 +76,16 @@
 					</Controls>
                 </Control>
 				<Control name="$(parent)Additional">
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)Summary" offsetX="5" />
-					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)Summary" offsetX="-5" />
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)Summary"/>
+					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)Summary" />
 					<Dimensions y="132" />
 					<Controls>	
 						<Label name="$(parent)PreviousSegmentLabel" font="$(CENTURY_GOTHIC)|$(KB_24)|soft-shadow-thick" horizontalAlignment="LEFT" text="SI_LIVE_SPLIT_PREV_SEG">
-							<Anchor point="TOPLEFT"/>
+							<Anchor point="TOPLEFT" offsetX="5" />
 						</Label>
 						
 						<Label name="$(parent)PreviousSegmentTime" font="$(CENTURY_GOTHIC)|$(KB_24)|soft-shadow-thick" horizontalAlignment="RIGHT" text="-">
-							<Anchor point="TOPRIGHT"/>
+							<Anchor point="TOPRIGHT" offsetX="-5" />
 						</Label>
 						
 						<Label name="$(parent)BestPossibleLabel" font="$(CENTURY_GOTHIC)|$(KB_15)|soft-shadow-thick" horizontalAlignment="LEFT" text="SI_LIVE_SPLIT_BEST_POS">
