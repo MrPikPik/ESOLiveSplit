@@ -91,6 +91,10 @@ function ESOLS_DebugConsole_ExecFromInput()
 	LIVE_SPLIT_DEBUG_CONSOLE:Exec(LIVE_SPLIT_DEBUG_CONSOLE.input:GetText())
 end
 
+function ESOLS_DebugConsole_AddLine(str)
+	LIVE_SPLIT_DEBUG_CONSOLE:Write(str)
+end
+
 function ESOLS_DebugConsole_OnMouseWheel(control, delta, ctrl, alt, shift)
 	local pos = control:GetNamedChild("Output"):GetScrollPosition()
 	control:GetNamedChild("Output"):SetScrollPosition(pos - delta)
@@ -106,16 +110,17 @@ function ESOLS_DebugConsole_ToggleFocus()
 end
 
 function ESOLS_Debugconsole_PreviousCommand(control)
-	if not control.system:IsAutoCompleteOpen() then
-        control.owner:PreviousCommand()
-    end
+	--if not control.system:IsAutoCompleteOpen() then
+    --    control.owner:PreviousCommand()
+    --end
 end
 
 function ESOLS_Debugconsole_NextCommand(control)
-	if not control.system:IsAutoCompleteOpen() then
-        control.owner:NextCommand()
-    end
+	--if not control.system:IsAutoCompleteOpen() then
+    --    control.owner:NextCommand()
+    --end
 end
+
 function ESOLS_Debugconsole_Tab(control, newText)
-control.system:OnTextEntryChanged(newText)
+	--control.system:OnTextEntryChanged(newText)
 end

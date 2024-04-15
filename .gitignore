@@ -2,3 +2,5 @@
 SplitData/Test.lua
 UI/fonts/slugfont.exe
 UI/fonts/convert.bat
+.vscode/api.lua
+.vscode/globals.lua

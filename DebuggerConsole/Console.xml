@@ -1,5 +1,5 @@
 <GuiXml>
-	<Font name="ConsoleRoboto" font="$(ESOLS_ROBOTO_MONO)|$(KB_14)|soft-shadow-thin" />
+    <Font name="ConsoleRoboto" font="$(ESOLS_ROBOTO_MONO)|$(KB_14)|soft-shadow-thin" />
 
     <Controls>
         <TopLevelControl name="ESOLS_DebugConsoleWindow" clampedToScreen="true" mouseEnabled="true" movable="true" hidden="true">
@@ -8,11 +8,11 @@
             <OnInitialized>
                 ESOLS_DebugConsole_Init(self)
             </OnInitialized>
-			
-			<OnMouseWheel>
+            
+            <OnMouseWheel>
                 ESOLS_DebugConsole_OnMouseWheel(self, -delta, ctrl, alt, shift)
             </OnMouseWheel>
-			
+            
             <Controls>
                 <Label name="$(parent)Title" inherits="ZO_WindowTitle" text="ESOLiveSplit Debug Console" />
               
@@ -25,49 +25,51 @@
                     </OnClicked>
                 </Button>
 
-				<TextBuffer name="$(parent)Output" font="ConsoleRoboto" maxHistoryLines="ESOLS_CONSOLE_MAX_LINES" mouseEnabled="true" linkEnabled="true">
-					<Anchor point="TOPLEFT" offsetY="30"/>
-					<Anchor point="BOTTOMRIGHT" offsetX="-2" offsetY="-24"/>
-				</TextBuffer>
+                <TextBuffer name="$(parent)Output" font="ConsoleRoboto" maxHistoryLines="ESOLS_CONSOLE_MAX_LINES" mouseEnabled="true" linkEnabled="true">
+                    <Anchor point="TOPLEFT" offsetY="30"/>
+                    <Anchor point="BOTTOMRIGHT" offsetX="-2" offsetY="-24"/>
+                </TextBuffer>
 
-				<Backdrop name="$(parent)Edit" inherits="ZO_SingleLineEditBackdrop_Keyboard">
-					<Anchor point="BOTTOMLEFT"/>
-					<Anchor point="BOTTOMRIGHT" />
-					<Controls>
-						<EditBox name="$(parent)Box" override="true" font="ConsoleRoboto" mouseEnabled="true">
-							<Dimensions y="24" />
-							<Anchor point="TOPLEFT" offsetX="4" offsetY="0"/>
-							<Anchor point="BOTTOMRIGHT" offsetX="-4" offsetY="0"/>
-							
-							<OnMouseDown>
-								self:TakeFocus()
-							</OnMouseDown>
-							
-							<OnEscape>
-								self:LoseFocus()
-							</OnEscape>
-							
-							 <OnUpArrow>
-								ESOLS_Debugconsole_PreviousCommand(self:GetParent():GetParent())
-							</OnUpArrow>
+                <Backdrop name="$(parent)Edit" inherits="ZO_SingleLineEditBackdrop_Keyboard">
+                    <Anchor point="BOTTOMLEFT"/>
+                    <Anchor point="BOTTOMRIGHT" />
+                    <Controls>
+                        <EditBox name="$(parent)Box" override="true" font="ConsoleRoboto" mouseEnabled="true">
+                            <Dimensions y="24" />
+                            <Anchor point="TOPLEFT" offsetX="4" offsetY="0"/>
+                            <Anchor point="BOTTOMRIGHT" offsetX="-4" offsetY="0"/>
+                            
+                            <OnMouseDown>
+                                self:TakeFocus()
+                            </OnMouseDown>
+                            
+                            <OnEscape>
+                                self:LoseFocus()
+                            </OnEscape>
+                            
+                             <OnUpArrow>
+                                ESOLS_Debugconsole_PreviousCommand(self:GetParent():GetParent())
+                            </OnUpArrow>
 
-							<OnDownArrow>
-								ESOLS_Debugconsole_NextCommand(self:GetParent():GetParent())
-							</OnDownArrow>
+                            <OnDownArrow>
+                                ESOLS_Debugconsole_NextCommand(self:GetParent():GetParent())
+                            </OnDownArrow>
 
-							<OnTab>
-								ESOLS_Debugconsole_Tab(self:GetParent():GetParent())
-							</OnTab>
+                            <OnTab>
+                                ESOLS_Debugconsole_Tab(self:GetParent():GetParent())
+                            </OnTab>
 
-							<OnEnter>
-								if self:GetText() ~= "" then
-									ESOLS_DebugConsole_ExecFromInput()
-									self:Clear()
-								end
-							</OnEnter>
-						</EditBox>
-					</Controls>
-				</Backdrop>
+                            <OnEnter>
+                                if self:GetText() ~= "" then
+                                    ESOLS_DebugConsole_ExecFromInput()
+                                    self:Clear()
+                                else
+                                    ESOLS_DebugConsole_AddLine("")
+                                end
+                            </OnEnter>
+                        </EditBox>
+                    </Controls>
+                </Backdrop>
             </Controls>
         </TopLevelControl>
     </Controls>
