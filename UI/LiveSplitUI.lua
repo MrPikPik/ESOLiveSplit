@@ -122,6 +122,10 @@ function LiveSplit:Initialize(control)
 	self:UpdateSplitEntries()
 end
 
+function LiveSplit:GetLocalizedName(object)
+	return type(object) == "table" and object[self.language] or object
+end
+
 function LiveSplit:AddEvents()
 	EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_ACTIVATED, function() self:OnPlayerActivated() end)
 	EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_STARTED, function() self:StartTimer(SOURCE_TYPE_SELF) end)
@@ -144,6 +148,8 @@ function LiveSplit:OnTick()
 				end
 			end
 		end
+
+		-- This should be in theory frame rate independet, if the game runtime value is not coupled to a fps based update loop.
 		self.totaltime = GetGameTimeMilliseconds() - self.starttime
 
 		self:UpdateMainTimer()
@@ -418,11 +424,8 @@ function LiveSplit:UpdateSplitEntries()
 
 			row:SetAnchor(TOPLEFT, nil, TOPLEFT, 0, (numshown - 1) * LIVE_SPLIT_ROW_HEIGHT)
 
-			local name = entry.name
-			if type(entry.name) == "table" then
-				-- This may result in a nil value, but won't break anything as it would just blank the label.
-				name = entry.name[self.language] or entry.name["en"]
-			end
+			local name = self:GetLocalizedName(entry.name)
+
 			row.name:SetText(name)
 			if entry.icon then
 				row.icon:SetTexture(entry.icon)
@@ -435,10 +438,10 @@ function LiveSplit:UpdateSplitEntries()
 
 			if entry.pb then
 				pbsum = pbsum + entry.pb
-				row.time:SetText(self.FormatTime(pbsum, TIMER_PRECISION_SECONDS))
+				row.time:SetText(self:FormatTime(pbsum, TIMER_PRECISION_SECONDS))
 
 				if entry.diff and (entry.diff > -60000 and entry.diff < 60000) then
-					local diff = self.FormatTime(math.abs(entry.diff), TIMER_PRECISION_COUNTDOWN)
+					local diff = self:FormatTime(math.abs(entry.diff), TIMER_PRECISION_COUNTDOWN)
 					row.diff:SetText(entry.diff < 0 and "-" .. diff or diff)
 					if entry.diff < 0 then
 						row.diff:SetColor(0, 1, 0)
@@ -464,8 +467,7 @@ function LiveSplit:UpdateSplitEntries()
 	--self.controls.summary:SetAnchor(TOPRIGHT, self.controls.splits, BOTTOMRIGHT)
 end
 
-local lang = GetCVar("language.2")
-function LiveSplit.FormatTime(milliseconds, precicion)
+function LiveSplit:FormatTime(milliseconds, precicion)
 	local sign = ""
 	-- Return blank if negative time is given
 	if milliseconds < 0 then
@@ -481,7 +483,7 @@ function LiveSplit.FormatTime(milliseconds, precicion)
 	local strSec = ZO_FormatTimeMilliseconds(secs, TIME_FORMAT_STYLE_COLONS, TIME_FORMAT_PRECISION_TENTHS)
 
 	-- French specific formatting......
-	if lang == "fr" then
+	if self.lang == "fr" then
 		strSec = string.gsub(strSec, "j ", ":") -- Maybe overkill?
 		strSec = string.gsub(strSec, "h ", ":")
 		strSec = string.gsub(strSec, "m ", ":")
@@ -500,11 +502,11 @@ function LiveSplit.FormatTime(milliseconds, precicion)
 end
 
 function LiveSplit:UpdateMainTimer()
-	self.controls.timer:SetText(self.FormatTime(self.totaltime))
+	self.controls.timer:SetText(self:FormatTime(self.totaltime))
 end
 
 function LiveSplit:UpdateSplitTimer()
-	self.controls.splittimer:SetText(self.FormatTime(self.totaltime - self.currentSplitStartTime))
+	self.controls.splittimer:SetText(self:FormatTime(self.totaltime - self.currentSplitStartTime))
 end
 
 function LiveSplit:UpdateCurrentSplitRow()
@@ -522,7 +524,7 @@ function LiveSplit:UpdateCurrentSplitRow()
 		local splittime = self.totaltime - self.currentSplitStartTime
 		if splittime > row.data.pb - 60000 and splittime < row.data.pb + 60000 then
 			local difference = splittime - row.data.pb
-			local diff = self.FormatTime(math.abs(difference), TIMER_PRECISION_COUNTDOWN)
+			local diff = self:FormatTime(math.abs(difference), TIMER_PRECISION_COUNTDOWN)
 
 			self.splitEntries[self.currentsplit].diff = difference
 			row.diff:SetText(difference < 0 and "-" .. diff or diff)
@@ -584,11 +586,7 @@ function LiveSplit:SetSelectedSplit(split)
 		return
 	end
 
-	local name = split.catName
-	if type(split.catName) == "table" then
-		-- This may result in a nil value, but won't break anything as it would just blank the label.
-		name = split.catName[self.language] or split.catName["en"]
-	end
+	local name = self:GetLocalizedName(split.catName)
 	self.controls.headerTitle:SetText(name)
 
 	-- Build splits list
@@ -620,7 +618,7 @@ function LiveSplit:SetSelectedSplit(split)
 	-- Best possible time
 	local bestpossible = self:GetBestPossibleTime()
 	if bestpossible > 0 then
-		self.controls.bestPossibleTimeLabel:SetText(self.FormatTime(bestpossible, TIMER_PRECISION_SECONDS))
+		self.controls.bestPossibleTimeLabel:SetText(self:FormatTime(bestpossible, TIMER_PRECISION_SECONDS))
 	else
 		self.controls.bestPossibleTimeLabel:SetText("-")
 	end
@@ -628,7 +626,7 @@ function LiveSplit:SetSelectedSplit(split)
 	-- Sum of best segements
 	local sumofbest = self:GetSumBestSegments()
 	if sumofbest > 0 then
-		self.controls.sumOfBestSegmentsLabel:SetText(self.FormatTime(sumofbest, TIMER_PRECISION_SECONDS))
+		self.controls.sumOfBestSegmentsLabel:SetText(self:FormatTime(sumofbest, TIMER_PRECISION_SECONDS))
 	else
 		self.controls.sumOfBestSegmentsLabel:SetText("-")
 	end
@@ -640,13 +638,13 @@ function LiveSplit:SetSelectedSplit(split)
 	end
 
 	if pb > 0 then
-		self.controls.personalBestLabel:SetText(self.FormatTime(pb, TIMER_PRECISION_TENTHS))
+		self.controls.personalBestLabel:SetText(self:FormatTime(pb, TIMER_PRECISION_TENTHS))
 	else
 		self.controls.personalBestLabel:SetText("-")
 	end
 
 	-- World record
-	self.controls.worldRecordTimeLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self.FormatTime(split.wr, TIMER_PRECISION_TENTHS)))
+	self.controls.worldRecordTimeLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR, self:FormatTime(split.wr, TIMER_PRECISION_TENTHS)))
 	self.controls.worldRecordHolderLabel:SetText(zo_strformat(SI_LIVE_SPLIT_WR_BY, split.wrPlayer))
 
 	-- Start Trigger handling
@@ -761,7 +759,7 @@ end
 function LiveSplit:StartTimer(source)
 	if not self.selectedSplit then return end
 	if not self.freshInstance then
-		DBG:Warn("Requested timer start in a already used instance. Please change zones to reset to a fresh instance.")
+		DBG:Info("Requested timer start in a already used instance. Please change zones to reset to a fresh instance.")
 		return
 	end
 
@@ -770,6 +768,10 @@ function LiveSplit:StartTimer(source)
 
 	self.currentsplit = 1
 	self.starttime = GetGameTimeMilliseconds()
+
+	-- Time deviation timer
+	self.starttimeTimestamp = GetTimeStamp()
+
 	if self.selectedSplit and self.selectedSplit.startOffset then
 		DBG:Info("This split category has a timed start offset of <<1>>", self.selectedSplit.startOffset)
 		self.totaltime = 0 --Need to reset this back to 0 as it has been set to the offset earlier by the SetSelectedSplit() method
@@ -780,6 +782,9 @@ function LiveSplit:StartTimer(source)
 
 	-- Setup first Trigger
 	self:SetupTriggersForSplit()
+
+	local catName = type(self.selectedSplit.catName) == "table" and self.selectedSplit.catName["en"] or self.selectedSplit.catName
+	DBG:Warn("Starting new run for '<<1>>'", catName)
 end
 
 function LiveSplit:StopTimer(source)
@@ -817,12 +822,12 @@ function LiveSplit:StopTimer(source)
 		if self.totaltime < self.SV[self.selectedSplit.id][self.difficulty]["PB"] then
 			DBG:Info("Achieved new overall best time for '<<1>>': <<2>>!", self.selectedSplit.id, self.totaltime)
 			self.SV[self.selectedSplit.id][self.difficulty]["PB"] = self.totaltime
-			self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
+			self.controls.personalBestLabel:SetText(self:FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
 		end
 	else
 		DBG:Info("Recorded overall best time for '<<1>>': <<2>>.", self.selectedSplit.id, self.totaltime)
 		self.SV[self.selectedSplit.id][self.difficulty]["PB"] = self.totaltime
-		self.controls.personalBestLabel:SetText(self.FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
+		self.controls.personalBestLabel:SetText(self:FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
 	end
 
 	-- Setting this so no further stages trigger anything and the timer just stands stopped.
@@ -838,7 +843,12 @@ function LiveSplit:Split(source)
 
 	-- Mode handling
 	if not self:SourceAllowedForCurrentMode(source) then return end
-		local splittime = self.totaltime - self.currentSplitStartTime
+
+	local splittime = self.totaltime - self.currentSplitStartTime
+	local splitName = type(self.selectedSplit.splits[self.currentsplit].name) == "table" and self.selectedSplit.splits[self.currentsplit].name["en"] or self.selectedSplit.splits[self.currentsplit].name
+	DBG:Info("Splitting the split '<<1>>' with a time of <<2>>", splitName, self:FormatTime(splittime, TIMER_PRECISION_TENTHS))
+
+
 	if self.commitImmediatly then
 		if not self.SV[self.selectedSplit.id] then
 			self.SV[self.selectedSplit.id] = {}
@@ -863,6 +873,11 @@ function LiveSplit:Split(source)
 
 	self.currentSplitStartTime = self.totaltime
 
+	local deviance = self.starttimeTimestamp + (self.totaltime / 1000) - GetTimeStamp()
+	if zo_floor(deviance) ~= 0 then
+		DBG:Warn("Timer deviance! <<1>>s", string.format("%.2f", deviance))
+	end
+
 	local currentSplit = self:GetCurrentSplit()
 
 	if currentSplit.cleanupFunction and type(currentSplit.cleanupFunction) == "function" then
@@ -874,13 +889,13 @@ function LiveSplit:Split(source)
 		self:SetupTriggersForSplit()
 	else
 		DBG:Info("No further splits left. Stopping run.")
-		DBG:Info("Stopping timer with a time of <<1>>", self.FormatTime(self.totaltime, TIMER_PRECISION_HUNDREDS))
+		DBG:Info("Stopping timer with a time of <<1>>", self:FormatTime(self.totaltime, TIMER_PRECISION_HUNDREDS))
 		self:StopTimer(SOURCE_TYPE_SELF)
 	end
 
-	self.controls.bestPossibleTimeLabel:SetText(self.FormatTime(self:GetBestPossibleTime(), TIMER_PRECISION_SECONDS))
-	self.controls.sumOfBestSegmentsLabel:SetText(self.FormatTime(self:GetSumBestSegments(), TIMER_PRECISION_SECONDS))
-	self.controls.previousSegementLabel:SetText(self.FormatTime(splittime, TIMER_PRECISION_TENTHS))
+	self.controls.bestPossibleTimeLabel:SetText(self:FormatTime(self:GetBestPossibleTime(), TIMER_PRECISION_SECONDS))
+	self.controls.sumOfBestSegmentsLabel:SetText(self:FormatTime(self:GetSumBestSegments(), TIMER_PRECISION_SECONDS))
+	self.controls.previousSegementLabel:SetText(self:FormatTime(splittime, TIMER_PRECISION_TENTHS))
 
 	self:UpdateSplitEntries()
 end
