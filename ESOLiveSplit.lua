@@ -79,7 +79,7 @@ local function OnAddonLoaded(event, addonName)
 
     DBG:SetTag("ESOLiveSplit")
     DBG:SetLogLevel(DBG_DEBUG)
-    DBG:SetLogLevel(DBG_ERROR)
+    --DBG:SetLogLevel(DBG_ERROR)
 
     if LibAddonMenu2 then
         ESOLS.InitializeAddonMenu()
