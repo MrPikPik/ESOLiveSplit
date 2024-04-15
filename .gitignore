@@ -1,3 +1,4 @@
-.vscode
+**/.vscode/*
 SplitData/Test.lua
-.vscode/settings.json
+UI/fonts/slugfont.exe
+UI/fonts/convert.bat
