@@ -37,7 +37,7 @@ DUNGEON_DIFFICULTY_VETERAN = 2
 LibAddonMenu2 = {}
 
 
-
+AUTO_COMPLETION_ANCHOR_BOTTOM = 1
 
 LEFT = 1
 RIGHT = 2
@@ -71,4 +71,7 @@ CHAT_ROUTER = {}
 ---@param table table Where to override
 ---@param fnName string What to override
 ---@param fn function Function to run
+---@overload fun(fnName: string, fn: function)
 function ZO_PreHook(table, fnName, fn) end
+
+ZO_AutoComplete = ZO_Object:New()

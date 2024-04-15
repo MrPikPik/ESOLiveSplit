@@ -17,7 +17,7 @@ function LiveSplitDelayTrigger:OnUpdate()
     local gametimems = GetGameTimeMilliseconds()
     local deltaT = gametimems - lastframetimestamp
     lastframetimestamp = gametimems
-	for _, target in pairs(self.targets) do
+    for _, target in pairs(self.targets) do
         target.timeremaining = target.timeremaining - deltaT
         if target.timeremaining <= 0 then
             DBG:Info("Triggering delay trigger.")
@@ -32,11 +32,11 @@ local triggerid = 1
 function LiveSplitDelayTrigger:Listen(target)
     DBG:LuaAssert(target.time and type(target.time) == "number", "LiveSplitDelayTrigger: Delay time for target is missing or not a number!")
 
-	target.triggerid = triggerid
-	triggerid = triggerid + 1
+    target.triggerid = triggerid
+    triggerid = triggerid + 1
     target.timeremaining = target.time
     table.insert(self.targets, target)
-	return triggerid - 1
+    return triggerid - 1
 end
 
 function LiveSplitDelayTrigger:Remove(target)
@@ -50,5 +50,5 @@ function LiveSplitDelayTrigger:Remove(target)
 end
 
 function LiveSplitDelayTrigger:ClearTargets()
-	self.targets = {}
+    self.targets = {}
 end

@@ -7,7 +7,7 @@ local Utils = {}
 ---@param search string Search text
 ---@return boolean match
 function Utils.StartsWith(text, search)
-	return text:find(search, 1, #search) == 1
+    return text:find(search, 1, #search) == 1
 end
 
 ---Left justify in given length
@@ -15,9 +15,9 @@ end
 ---@param len number Desired length
 ---@return string return
 function Utils.LJust(text, len)
-	text = tostring(text)
-	local pad = string.rep(" ", len - #text)
-	return text .. pad
+    text = tostring(text)
+    local pad = string.rep(" ", len - #text)
+    return text .. pad
 end
 
 ---Right justify in given length
@@ -25,9 +25,9 @@ end
 ---@param len number Desired length
 ---@return string return
 function Utils.RJust(text, len)
-	text = tostring(text)
-	local pad = string.rep(" ", len - #text)
-	return pad .. text
+    text = tostring(text)
+    local pad = string.rep(" ", len - #text)
+    return pad .. text
 end
 
 ---Center justify to given length
@@ -35,11 +35,11 @@ end
 ---@param len number Desired length
 ---@return string return
 function Utils.CJust(text, len)
-	text = tostring(text)
-	local ws = (len - #text) / 2
-	local pad = string.rep(" ", math.floor(ws))
-	local opad = ((ws % 1) ~= 0.0) and " " or ""
-	return pad .. text .. pad .. opad
+    text = tostring(text)
+    local ws = (len - #text) / 2
+    local pad = string.rep(" ", math.floor(ws))
+    local opad = ((ws % 1) ~= 0.0) and " " or ""
+    return pad .. text .. pad .. opad
 end
 
 -- === General utils ===
@@ -48,11 +48,11 @@ end
 ---@param ... any
 ---@return string return
 function Utils.CombineArgs(...)
-	local text = ""
-	for i = 1, select('#', ...) do
-		text = text .. select(i, ...) .. " "
-	end
-	return string.sub(text, 1, -2)
+    local text = ""
+    for i = 1, select('#', ...) do
+        text = text .. select(i, ...) .. " "
+    end
+    return string.sub(text, 1, -2)
 end
 
 ---Iterator over a table's keys, sorted

@@ -68,6 +68,15 @@ function ZO_Object.New(baseClass) return baseClass end
 ---@return T object
 function ZO_Object.Subclass() return {} end
 
+
+
+ZO_AutoComplete = ZO_Object:New()
+
+---Initialize
+---@param control Control
+---@param ... any
+function ZO_AutoComplete:Initialize(control, ...) end
+
 ---@class EventManager
 ---@field public RegisterForEvents function
 ---@field public UnregisterForEvents function
@@ -268,9 +277,16 @@ function ZO_CheckButton_SetChecked(checkbox) end
 ---@param delay number
 function zo_callLater(fn, delay) end
 
+---Gets the current unix time stamp
+function GetTimeStamp() return 1 end
+
 ---@type ZO_Control
 ZO_MailSendToField = {}
 ---@type ZO_Control
 ZO_MailSendSubjectField = {}
 ---@type ZO_Control
 ZO_MailSendBodyField = {}
+
+---REturns of the shift key is pressed
+---@return boolean KeyDown
+function IsShiftKeyDown() return true end
