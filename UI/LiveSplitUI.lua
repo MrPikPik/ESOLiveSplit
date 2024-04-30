@@ -240,7 +240,6 @@ function LiveSplit:OnBossChange()
         if bossFound then
             local bossName = GetUnitName(bossUnitTag)
             local splitData = self:GetCurrentSplitData()
-            
 
             if splitData and splitData.filter then
                 for _, filter in pairs(splitData.filter) do
@@ -270,20 +269,42 @@ function LiveSplit:OnUnitDeath(unitTag, isDead)
     if not self.activerun then return end
 
     if string.sub(unitTag, 1, 4) == "boss" and isDead then
-        local numbosses = 0
-        local numdead = 0
-        for i = 1, MAX_BOSSES do
-            if DoesUnitExist("boss"..i) then
-                numbosses = numbosses + 1
-                if IsUnitDead("boss"..i) then
-                    numdead = numdead + 1
+        if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
+            local bossName = GetUnitName(unitTag)
+            local splitData = self:GetCurrentSplitData()
+
+            if splitData and splitData.filter then
+                for _, filter in pairs(splitData.filter) do
+                    if filter == bossName then
+                        DBG:Info("Specifically named boss <<1>> died. Splitting with exact match.", bossName)
+                        self:Split(SOURCE_TYPE_SELF)
+                        return
+                    end
+                end
+            elseif splitData and splitData.filterMatch then
+                for _, filterMatch in pairs(splitData.filterMatch) do
+                    if string.find(bossName, filterMatch) then
+                        DBG:Info("Specifically named boss <<1>> died. Splitting with match.", bossName)
+                        self:Split(SOURCE_TYPE_SELF)
+                        return
+                    end
                 end
             end
-        end
-        if numbosses == numdead then
-            if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_DEATH then
+        elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_DEATH then
+            local numbosses = 0
+            local numdead = 0
+            for i = 1, MAX_BOSSES do
+                if DoesUnitExist("boss"..i) then
+                    numbosses = numbosses + 1
+                    if IsUnitDead("boss"..i) then
+                        numdead = numdead + 1
+                    end
+                end
+            end
+            if numbosses == numdead then
                 DBG:Info("All bosses gone. Splitting due to BOSS_DEATH trigger.")
                 self:Split(SOURCE_TYPE_SELF)
+                return
             end
         end
     end

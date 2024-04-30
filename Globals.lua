@@ -32,6 +32,8 @@ LIVE_SPLIT_TRIGGER_ENDLESS_STAGE    = 15 -- Endless Dungeon only. Triggered by t
 LIVE_SPLIT_TRIGGER_LOCATION_MULTI   = 16 -- All purpose trigger, listening for players in the group being close to a specific point of a list o points.
 ---@type LIVE_SPLIT_TRIGGER
 LIVE_SPLIT_TRIGGER_ZONE             = 17 -- When player enters specific zone.
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED       = 18 -- Specify a named boss that needs to perish.
 
 -- For the most part and most occasions, you most likely only need these triggers:
 --
