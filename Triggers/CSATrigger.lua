@@ -14,7 +14,7 @@ function LiveSplitCSATrigger:Initialize()
 end
 
 function LiveSplitCSATrigger:OnMessage(message, subMessage)
-    DBG:Info("CSATrigger: '<<1>>' (<<2>>)", message, subMessage)
+    DBG:Debug("CSATrigger: '<<1>>' (<<2>>)", message, subMessage)
 
     local triggerMessage = "Nothing specified"
     local triggerTarget = nil
