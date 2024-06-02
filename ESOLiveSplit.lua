@@ -58,28 +58,33 @@ local function OnAddonLoaded(event, addonName)
     end
 
     -- Add dummmy trigger to test csa messages
-    SLASH_COMMANDS["/lscsatrigger"] = function()
-        LIVE_SPLIT.csaListener:Listen({message="1"})
-    end
+    -- SLASH_COMMANDS["/lscsatrigger"] = function()
+    --     LIVE_SPLIT.csaListener:Listen({message="1"})
+    -- end
 
     -- Add dummmy trigger to test npc messages
-    SLASH_COMMANDS["/lsnpctrigger"] = function()
-        LIVE_SPLIT.npcListener:Listen({message="1"})
-    end
+    -- SLASH_COMMANDS["/lsnpctrigger"] = function()
+    --     LIVE_SPLIT.npcListener:Listen({message="1"})
+    -- end
 
     -- Add dummmy trigger to test delay
-    SLASH_COMMANDS["/lsdelaytrigger"] = function()
-        LIVE_SPLIT.delayListener:Listen({time="5000"})
-    end
+    -- SLASH_COMMANDS["/lsdelaytrigger"] = function()
+    --     LIVE_SPLIT.delayListener:Listen({time="5000"})
+    -- end
 
     -- Add dummmy trigger to test delay
     SLASH_COMMANDS["/lsenabledebuginfo"] = function()
         DBG:SetLogLevel(DBG_DEBUG)
     end
 
+    -- Enable NPC messages to log
+    SLASH_COMMANDS["/lsenablenpcmessages"] = function()
+        LIVE_SPLIT.npcListener.bounceMessageToLog = true
+    end
+
     DBG:SetTag("ESOLiveSplit")
     DBG:SetLogLevel(DBG_DEBUG)
-    --DBG:SetLogLevel(DBG_ERROR)
+    DBG:SetLogLevel(DBG_ERROR)
 
     if LibAddonMenu2 then
         ESOLS.InitializeAddonMenu()

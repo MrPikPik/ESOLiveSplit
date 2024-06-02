@@ -8,6 +8,7 @@ end
 
 function LiveSplitNPCMessageTrigger:Initialize()
     self.targets = {}
+    self.bounceMessageToLog = false
     EVENT_MANAGER:RegisterForEvent("LiveSplitNPCMessageTrigger", EVENT_CHAT_MESSAGE_CHANNEL, function(evt, channelType, fromName, message) self:OnMessage(channelType, fromName, message) end)
 end
 
@@ -19,7 +20,10 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
         return
     end
 
-    DBG:Debug("NPCMessageTrigger: <<2>>: '<<1>>'", message, fromName)
+    if self.bounceMessageToLog then
+        DBG:Debug("NPCMessageTrigger: <<2>>: '<<1>>'", message, fromName)
+    end
+
     local breakouter = false
     for _, target in pairs(self.targets) do
         if target.message then
