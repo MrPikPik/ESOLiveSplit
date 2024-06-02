@@ -805,7 +805,7 @@ function LiveSplit:StartTimer(source)
     self:SetupTriggersForSplit()
 
     local catName = type(self.selectedSplit.catName) == "table" and self.selectedSplit.catName["en"] or self.selectedSplit.catName
-    DBG:Warn("Starting new run for '<<1>>'", catName)
+    DBG:Info("Starting new run for '<<1>>'", catName)
 end
 
 function LiveSplit:StopTimer(source)
