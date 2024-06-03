@@ -228,6 +228,15 @@ function LiveSplit:OnBossChange()
     if not self.timerenabled then return end
     if not self.selectedSplit then return end
 
+    if DoesUnitExist("boss1") then 
+        DBG:Debug("BossChange")
+        for i = 1, MAX_BOSSES do
+            if DoesUnitExist("boss"..i) then
+                DBG:Debug("   boss<<1>>: '<<2>>'", i, GetUnitName("boss"..i))
+            end
+        end
+    end
+
     if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
         local bossFound = false
         local bossUnitTag = ""
