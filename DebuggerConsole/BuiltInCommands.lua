@@ -21,3 +21,6 @@ local function nuke(confirm)
     end
 end
 LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("nuke", nuke)
+
+-- hide
+LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("hide", ESOLS_DebugConsole_Close)
