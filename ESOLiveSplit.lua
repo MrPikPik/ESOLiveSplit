@@ -57,20 +57,18 @@ local function OnAddonLoaded(event, addonName)
         DBG:Info("Player pos: X: <<2>>, Y: <<3>>, Z: <<4>> (Zone: <<1>>)", GetUnitWorldPosition("player"))
     end
 
-    -- Add dummmy trigger to test csa messages
-    -- SLASH_COMMANDS["/lscsatrigger"] = function()
-    --     LIVE_SPLIT.csaListener:Listen({message="1"})
-    -- end
-
-    -- Add dummmy trigger to test npc messages
-    -- SLASH_COMMANDS["/lsnpctrigger"] = function()
-    --     LIVE_SPLIT.npcListener:Listen({message="1"})
-    -- end
-
-    -- Add dummmy trigger to test delay
-    -- SLASH_COMMANDS["/lsdelaytrigger"] = function()
-    --     LIVE_SPLIT.delayListener:Listen({time="5000"})
-    -- end
+    SLASH_COMMANDS["/lsbossinfo"] = function()
+        if DoesUnitExist("boss1") then 
+            DBG:Info("Current bosses:")
+            for i = 1, MAX_BOSSES do
+                if DoesUnitExist("boss"..i) then
+                    DBG:Info("   boss<<1>>: '<<2>>'", i, GetUnitName("boss"..i))
+                end
+            end
+        else
+            DBG:Info("Currently no bosses.")
+        end
+    end
 
     -- Add dummmy trigger to test delay
     SLASH_COMMANDS["/lsenabledebuginfo"] = function()
