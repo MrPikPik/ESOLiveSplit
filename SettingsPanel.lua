@@ -76,11 +76,6 @@ function ESOLS.InitializeAddonMenu()
         end,
     })
 
-    -- Divider
-    table.insert(optionsData, {
-        type = "divider",
-    })
-
     -- Behavioue header
     table.insert(optionsData, {
         type = "header",
