@@ -109,6 +109,7 @@ SplitData/Trials/KynesAegis.lua
 SplitData/Trials/Rockgrove.lua
 SplitData/Trials/DreadsailReef.lua
 SplitData/Trials/SanitysEdge.lua
+SplitData/Trials/LucentCitadel.lua
 
 ;Arenas
 SplitData/Arenas/MaelstromArena.lua
