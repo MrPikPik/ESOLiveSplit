@@ -5,8 +5,8 @@
 ## Title: ESO Live Split
 ## Description: Live Split lookalike in ESO
 ## Author: MrPikPik
-## APIVersion: 101041
-## Version: 1.0.0 / 9.3.5
+## APIVersion: 101042
+## Version: 1.0.0 / 10.0.5
 ## AddOnVersion: 100
 ## DependsOn: LibCustomMenu>=712
 ## OptionalDependsOn: LibAddonMenu>=31
@@ -120,7 +120,7 @@ SplitData/Arenas/BlackrosePrison.lua
 SplitData/EndlessArchive.lua
 
 ;Testing
-SplitData/Test.lua
+;SplitData/Test.lua
 
 ;AddonMain
 ESOLiveSplit.lua

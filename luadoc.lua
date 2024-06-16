@@ -32,6 +32,8 @@
 --- |`LIVE_SPLIT_TRIGGER_ENDLESS_STAGE` # Endless Dungeon only. Triggered by the game.
 --- |`LIVE_SPLIT_TRIGGER_LOCATION_MULTI` # All purpose trigger, listening for players in the group being close to a specific point of a list o points.
 --- |`LIVE_SPLIT_TRIGGER_ZONE` # When player enters specific zone.
+--- |`LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED` # Specify a named boss that needs to perish.
+--- |`LIVE_SPLIT_TRIGGER_END_TRIAL` # Trigger for the EVENT_RAID_TRIAL_COMPLETE firing.
 
 ---@alias LIVE_SPLIT_TIME number # Predifined times
 --- | `LIVE_SPLIT_TIME_15_MINUTES` # 900000  milliseconds
@@ -43,7 +45,9 @@
 --- | `LIVE_SPLIT_TIME_40_MINUTES` # 2400000 milliseconds
 --- | `LIVE_SPLIT_TIME_45_MINUTES` # 2700000 milliseconds
 
-
+---@alias LIVE_SPLIT_ICON TexturePath # Predifined icons
+--- | `LIVE_SPLIT_ICON_BOSS`    # Preset icon for a boss (Crossed swords)
+--- | `LIVE_SPLIT_ICON_ENDBOSS` # Preset icon for a final boss (Crossed swords with skull)
 
 
 ---Dataset used by `SplitManager` for data registration.
@@ -88,6 +92,7 @@
 -- LIVE_SPLIT_TRIGGER:LIVE_SPLIT_TRIGGER_NPC_MESSAGE      - LIVE_SPLIT_NPC_MESSAGE_TRIGGER_DATA
 -- LIVE_SPLIT_TRIGGER:LIVE_SPLIT_TRIGGER_ZONE             - LIVE_SPLIT_ZONE_TRIGGER_DATA
 -- LIVE_SPLIT_TRIGGER:LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED - LIVE_SPLIT_BOSS_TRIGGER_DATA
+-- LIVE_SPLIT_TRIGGER:LIVE_SPLIT_TRIGGER_END_TRIAL        - No additional data
 
 ---Additional data for `LIVE_SPLIT_TRIGGER_BOSS_ENTER`.
 ---@class LIVE_SPLIT_BOSS_TRIGGER_DATA: LIVE_SPLIT_TRIGGER_DATA

@@ -3,10 +3,10 @@ LIVE_SPLIT_LABEL_WIDTH = LIVE_SPLIT_WIDTH - 70
 LIVE_SPLIT_DIFF_WIDTH = 60
 LIVE_SPLIT_ROW_HEIGHT = 30
 
-local TIMER_PRECISION_SECONDS 	= 0
-local TIMER_PRECISION_TENTHS 	= 1
-local TIMER_PRECISION_HUNDREDS 	= 2
-local TIMER_PRECISION_COUNTDOWN = 3
+local TIMER_PRECISION_SECONDS 	= 0 -- 1:23:45
+local TIMER_PRECISION_TENTHS 	= 1 -- 1:23:45.6
+local TIMER_PRECISION_HUNDREDS 	= 2 -- 1:23:45.67
+local TIMER_PRECISION_COUNTDOWN = 3 -- 12.34
 
 local LOW_ALPHA = 0.2
 local HIGH_ALPHA = 0.5
@@ -129,6 +129,7 @@ end
 function LiveSplit:AddEvents()
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_ACTIVATED, function() self:OnPlayerActivated() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_STARTED, function() self:StartTimer(SOURCE_TYPE_SELF) end)
+    EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_COMPLETE, function() self:OnTrigger() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_BOSSES_CHANGED, function() self:OnBossChange() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_UNIT_DEATH_STATE_CHANGED, function(evt, unitTag, isDead) self:OnUnitDeath(unitTag, isDead) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_COMBAT_STATE, function(code, inCombat) self:OnCombatStateChanged(inCombat) end)
@@ -374,9 +375,12 @@ function LiveSplit:OnTrigger(target)
             end
         end
         if 	currentSplitData.arc == arc and currentSplitData.cycle == cycle and currentSplitData.stage == stage then
-            DBG:Info("Splitting due to achieved desired Endless Dungeon progress.")	
+            DBG:Info("Splitting due to achieved desired Endless Dungeon progress.")
             self:Split(SOURCE_TYPE_SELF)
         end
+    elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_END_TRIAL then
+        DBG:Info("Splitting due to trial end trigger.")
+        self:Split(SOURCE_TYPE_SELF)
     else
         DBG:Warn("Something triggered, but type is not handled!")
     end

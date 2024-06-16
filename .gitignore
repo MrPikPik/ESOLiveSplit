@@ -4,3 +4,5 @@ UI/fonts/slugfont.exe
 UI/fonts/convert.bat
 .vscode/api.lua
 .vscode/globals.lua
+UI/fonts/CenturyGothic.ttf
+DebuggerConsole/fonts/RobotoMono-Regular.ttf

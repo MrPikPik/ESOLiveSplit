@@ -33,7 +33,9 @@ LIVE_SPLIT_TRIGGER_LOCATION_MULTI   = 16 -- All purpose trigger, listening for p
 ---@type LIVE_SPLIT_TRIGGER
 LIVE_SPLIT_TRIGGER_ZONE             = 17 -- When player enters specific zone.
 ---@type LIVE_SPLIT_TRIGGER
-LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED       = 18 -- Specify a named boss that needs to perish.
+LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED = 18 -- Specify a named boss that needs to perish.
+---@type LIVE_SPLIT_TRIGGER
+LIVE_SPLIT_TRIGGER_END_TRIAL        = 19 -- Trigger for the EVENT_RAID_TRIAL_COMPLETE firing.
 
 -- For the most part and most occasions, you most likely only need these triggers:
 --
@@ -77,3 +79,8 @@ LIVE_SPLIT_TIME_35_MINUTES = 1000 * 60 * 35 -- 35 Minutes in milliseconds
 LIVE_SPLIT_TIME_40_MINUTES = 1000 * 60 * 40 -- 40 Minutes in milliseconds
 ---@type LIVE_SPLIT_TIME
 LIVE_SPLIT_TIME_45_MINUTES = 1000 * 60 * 45 -- 45 Minutes in milliseconds
+
+---@type LIVE_SPLIT_ICON
+LIVE_SPLIT_ICON_ENDBOSS = "/esoui/art/icons/poi/poi_groupboss_complete.dds"
+---@type LIVE_SPLIT_ICON
+LIVE_SPLIT_ICON_BOSS = "/esoui/art/icons/mapkey/mapkey_battle.dds"
