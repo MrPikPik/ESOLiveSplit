@@ -22,6 +22,7 @@ local splits = {
 		},
 		[2] = {
 			name = "Boss1",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[3] = {
@@ -30,6 +31,7 @@ local splits = {
 		},
 		[4] = {
 			name = "Boss2",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[5] = {
@@ -38,6 +40,7 @@ local splits = {
 		},
 		[6] = {
 			name = "Boss3",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[7] = {
@@ -46,6 +49,7 @@ local splits = {
 		},
 		[8] = {
 			name = "Boss4",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[9] = {
@@ -54,6 +58,7 @@ local splits = {
 		},
 		[10] = {
 			name = "Boss5",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[11] = {
@@ -62,6 +67,7 @@ local splits = {
 		},
 		[12] = {
 			name = "Boss6",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[13] = {
@@ -70,6 +76,7 @@ local splits = {
 		},
 		[14] = {
 			name = "Boss7",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 		[15] = {
@@ -78,6 +85,7 @@ local splits = {
 		},
 		[16] = {
 			name = "Boss8",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 	}

@@ -5,6 +5,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Sonolia The Matriarch",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -13,6 +14,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Valaran Stormcaller",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -21,6 +23,7 @@ local splits = {
 	},
 	[6] = {
 		name = "Yalorasse The Speaker",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -29,6 +32,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Stormfist",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -37,6 +41,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Commodore Ohmanil",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
@@ -45,6 +50,7 @@ local splits = {
 	},
 	[12] = {
 		name = "Stormreeve Neidir",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

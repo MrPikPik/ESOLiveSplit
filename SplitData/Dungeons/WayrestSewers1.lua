@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Slimecraw",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Investigator Garron",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,10 +30,12 @@ local splits = {
 	},
 	[6] = {
 		name = "Uulgarg The Hungry",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
 		name = "Varaine Pellingare",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[8] = {
@@ -48,8 +52,9 @@ local splits = {
 	},
 	[9] = {
 		name = "Allene Pellingare",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_CUSTOM,
-		-- F~~~ this dungeon in particular for making my life miserable finding a way to detect the boss death "event".........
+		-- F*** this dungeon in particular for making my life miserable finding a way to detect the boss death "event".........
 		splitFunction = function() return GetUnitName("reticleover") == "Allene Pellingare" and IsUnitDead("reticleover") end,
 	},
 }

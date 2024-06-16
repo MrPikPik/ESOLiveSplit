@@ -5,6 +5,7 @@ local splits = {
 	},
 	[2] = {
 		name = "The Fallen Foreman",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -13,6 +14,7 @@ local splits = {
 	},
 	[4] = {
 		name = "The Hive Lord",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -21,6 +23,7 @@ local splits = {
 	},
 	[6] = {
 		name = "Transmuted Alit",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -29,6 +32,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Grobull",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -43,10 +47,12 @@ local splits = {
 	},
 	[10] = {
 		name = "The Engine Garrison",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[11] = {
 		name = "Engine Guardian",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

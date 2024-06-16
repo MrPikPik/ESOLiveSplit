@@ -18,6 +18,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Sithera",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 19312,
@@ -32,6 +33,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Khephidaen the Spiderkith",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -40,6 +42,7 @@ local splits = {
 	},
 	[6] = {
 		name = "The Votary of Velidreth",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 34887,
@@ -54,6 +57,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Dranos Velador",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -62,6 +66,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Velidreth",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

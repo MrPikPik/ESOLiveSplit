@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Ra Kotu",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Yokeda Rok'dun & Kai",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION_MULTI,
 		data = {
 			[1] = {
@@ -52,6 +54,7 @@ local splits = {
 	},
 	[7] = {
 		name = "The Warrior",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

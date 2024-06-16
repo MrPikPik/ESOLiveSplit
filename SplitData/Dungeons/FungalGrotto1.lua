@@ -12,6 +12,7 @@ local splits_skip = {
 	},
 	[2] = {
 		name = "Tazkad the Packmaster",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits_skip = {
 	},
 	[4] = {
 		name = "War Chief Ozozai",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,6 +30,7 @@ local splits_skip = {
 	},
 	[6] = {
 		name = "Kra'gh the Dreug King",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -39,6 +42,7 @@ local splits =  {
 	},
 	[2] = {
 		name = "Tazkad the Packmaster",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -47,6 +51,7 @@ local splits =  {
 	},
 	[4] = {
 		name = "War Chief Ozozai",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -55,6 +60,7 @@ local splits =  {
 	},
 	[6] = {
 		name = "Broodbirther",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -63,10 +69,12 @@ local splits =  {
 	},
 	[8] = {
 		name = "Clatterclaw",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
 		name = "Kra'gh the Dreug King",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

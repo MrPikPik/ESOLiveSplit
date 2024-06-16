@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "The Adjudicator",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Empress Regent's Guard",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,6 +30,7 @@ local splits = {
 	},
 	[6] = {
 		name = "The Plane Inhibitor",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -36,6 +39,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Molag Kena",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

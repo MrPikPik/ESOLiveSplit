@@ -5,6 +5,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Selene",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 129167,
@@ -25,6 +26,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Maarselok I",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 134373,
@@ -45,6 +47,7 @@ local splits = {
 	},
 	[6] = {
 		name = "The Azureblight Cancroid",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -59,6 +62,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Maarselok II",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 97301,
@@ -79,6 +83,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Maarselok III",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

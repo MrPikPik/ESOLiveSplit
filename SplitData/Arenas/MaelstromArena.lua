@@ -88,7 +88,8 @@ local splits = {
     },
     [9] = {
         name = "Theater of Despair",
-        splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+        icon = LIVE_SPLIT_ICON_ENDBOSS,
+        splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED,
         data = {
             filter = "Voriak Solkyn",
         }

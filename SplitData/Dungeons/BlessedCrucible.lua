@@ -12,10 +12,12 @@ local splits = {
 	},
 	[2] = {
 		name = "Grunt The Clever",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
 		name = "The Pack",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[4] = {
@@ -24,6 +26,7 @@ local splits = {
 	},
 	[5] = {
 		name = "Teranya The Faceless",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[6] = {
@@ -32,10 +35,12 @@ local splits = {
 	},
 	[7] = {
 		name = "Stinger",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[8] = {
 		name = "The Troll King",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -44,6 +49,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Captain Thoran",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
@@ -52,6 +58,7 @@ local splits = {
 	},
 	[12] = {
 		name = "The Lava Queen",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

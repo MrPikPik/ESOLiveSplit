@@ -5,10 +5,12 @@ local splits = {
 	},
 	[2] = {
 		name = "The Cursed One",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
 		name = "Ulguna Soul-Reaver",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[4] = {
@@ -17,6 +19,7 @@ local splits = {
 	},
 	[5] = {
 		name = "Death's Head",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[6] = {
@@ -25,6 +28,7 @@ local splits = {
 	},
 	[7] = {
 		name = "Grothdarr",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[8] = {
@@ -33,6 +37,7 @@ local splits = {
 	},
 	[9] = {
 		name = "Achaeraizur",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[10] = {
@@ -41,6 +46,7 @@ local splits = {
 	},
 	[11] = {
 		name = "The Ancient One",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[12] = {
@@ -49,6 +55,7 @@ local splits = {
 	},
 	[13] = {
 		name = "Iskra The Omen",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[14] = {
@@ -57,6 +64,7 @@ local splits = {
 	},
 	[15] = {
 		name = "The Mad Architect",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

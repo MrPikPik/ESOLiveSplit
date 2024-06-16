@@ -28,6 +28,7 @@ local splits1Arc = {
 		},
 		[3] = {
 			name = "Cycle 1 - Boss",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -55,6 +56,7 @@ local splits1Arc = {
 		},
 		[6] = {
 			name = "Cycle 2 - Boss",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -82,6 +84,7 @@ local splits1Arc = {
 		},
 		[9] = {
 			name = "Cycle 3 - Boss",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -109,6 +112,7 @@ local splits1Arc = {
 		},
 		[12] = {
 			name = "Cycle 4 - Boss",
+			icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_ENDLESS_STAGE,
 			data = {
 				arc = 1,
@@ -136,6 +140,7 @@ local splits1Arc = {
 		},
 		[15] = {
 			name = "Tho' at Replicanum",
+			icon = LIVE_SPLIT_ICON_ENDBOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 	}
@@ -198,6 +203,7 @@ local splits5Arc = {
 		},
 		[6] = {
 			name = "Tho' at Replicanum",
+			icon = LIVE_SPLIT_ICON_ENDBOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 			data = {
 				match = "Tho' at",
@@ -308,6 +314,7 @@ local splits10Arc = {
 		},
 		[11] = {
 			name = "Tho' at Replicanum",
+			icon = LIVE_SPLIT_ICON_ENDBOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 			data = {
 				match = "Tho' at",

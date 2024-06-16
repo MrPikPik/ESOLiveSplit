@@ -111,6 +111,7 @@ local splits = {
         name = {
             en = "The Champion's Arena",
         },
+        icon = LIVE_SPLIT_ICON_ENDBOSS,
         splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
     },
 }

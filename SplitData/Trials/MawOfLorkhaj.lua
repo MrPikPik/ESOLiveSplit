@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Zhaj'hassa",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,10 +21,12 @@ local splits = {
 	},
 	[4] = {
 		name = "Vashai & Skinrai",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
 		name = "Arena",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 65342,
@@ -38,6 +41,7 @@ local splits = {
 	},
 	[7] = {
 		name = "Rakkhat",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

@@ -50,6 +50,7 @@ local splits = {
 		},
 		[5] = {
 			name = "Arena 1 - Boss",
+            icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
                 match = {
@@ -102,6 +103,7 @@ local splits = {
 		},
 		[11] = {
 			name = "Arena 2 - Boss",
+            icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
                 match = {
@@ -154,6 +156,7 @@ local splits = {
 		},
 		[17] = {
 			name = "Arena 3 - Boss",
+            icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
                 match = {
@@ -206,6 +209,7 @@ local splits = {
 		},
 		[23] = {
 			name = "Arena 4 - Boss",
+            icon = LIVE_SPLIT_ICON_BOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
             data = {
                 match = {
@@ -258,6 +262,7 @@ local splits = {
 		},
 		[29] = {
 			name = "Arena 5 - Endboss",
+            icon = LIVE_SPLIT_ICON_ENDBOSS,
 			splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 		},
 	}

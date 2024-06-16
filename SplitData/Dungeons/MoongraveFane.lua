@@ -5,6 +5,7 @@ local splits = {
 	},
 	[2] = {
 		name = "The Risen Ruins",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -13,6 +14,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Dro'zakar",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -21,6 +23,7 @@ local splits = {
 	},
 	[6] = {
 		name = "The Kujo Kethba",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -29,6 +32,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Nisaazda & Grundwulf",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 103510,
@@ -43,6 +47,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Grundwulf",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

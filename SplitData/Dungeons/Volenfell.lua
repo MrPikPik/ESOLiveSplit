@@ -5,6 +5,7 @@ local splits = {
 	},
 	[2] = {
 		name = "The Desert Lion",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -12,43 +13,49 @@ local splits = {
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
 	[4] = {
-		name = "Quintus Verres",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
+		name = "Quintus Verres & Gargoyle",
+		icon = LIVE_SPLIT_ICON_BOSS,
+		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED,
+		data = {
+			filterMatch = {
+				["en"] = "Gargoyle",
+			},
+		}
 	},
 	[5] = {
-		name = "Gargoyle",
-		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
-	},
-	[6] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[7] = {
+	[6] = {
 		name = "Boilbite",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[8] = {
+	[7] = {
 		name = "Trash 4",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[9] = {
+	[8] = {
 		name = "The Unstable Construct",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[10] = {
+	[9] = {
 		name = "Running",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[11] = {
+	[10] = {
 		name = "Tremorscale",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
-	[12] = {
+	[11] = {
 		name = "Trash 5",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
 	},
-	[13] = {
+	[12] = {
 		name = "The Guardian Council",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

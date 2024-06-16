@@ -5,6 +5,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Keeper Areldur",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -13,6 +14,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Maw of the Infernal",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -21,6 +23,7 @@ local splits = {
 	},
 	[6] = {
 		name = "Keeper Voranil",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -29,6 +32,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Keeper Imiril",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -37,6 +41,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Sihna & Vera",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
@@ -45,6 +50,7 @@ local splits = {
 	},
 	[12] = {
 		name = "High Kinlord Rilis",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

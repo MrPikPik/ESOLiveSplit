@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Mathgamain",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Caillaoife",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,6 +30,7 @@ local splits = {
 	},
 	[6] = {
 		name = "Stoneheart",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -36,6 +39,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Galchobhar",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -44,10 +48,12 @@ local splits = {
 	},
 	[10] = {
 		name = "Gherig Bullblood",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
 		name = "The Earthgore Amalgam",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

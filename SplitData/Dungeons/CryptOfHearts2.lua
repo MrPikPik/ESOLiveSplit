@@ -10,6 +10,7 @@ local splits =  {
 	},
 	[2] = {
 		name = "Ibelgast",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -18,6 +19,7 @@ local splits =  {
 	},
 	[4] = {
 		name = "Ruzozuzslpamaz",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -32,6 +34,7 @@ local splits =  {
 	},
 	[6] = {
 		name = "Chamber Guardian",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 47177,
@@ -46,6 +49,7 @@ local splits =  {
 	},
 	[8] = {
 		name = "Ilambris Amalgam",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -54,6 +58,7 @@ local splits =  {
 	},
 	[10] = {
 		name = "Mezeluth",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
@@ -67,6 +72,7 @@ local splits =  {
 	},
 	[12] = {
 		name = "Nerien'eth",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_NPC_MESSAGE,
 		data = {
 			match = {

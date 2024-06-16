@@ -11,6 +11,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Iron-Heel",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -19,6 +20,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Atarnus",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -27,6 +29,7 @@ local splits = {
 	},
 	[6] = {
 		name = "First Mate Wavecutter",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -35,6 +38,7 @@ local splits = {
 	},
 	[8] = {
 		name = "The Roost Mother",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -43,6 +47,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Hollow Heart",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
@@ -51,6 +56,7 @@ local splits = {
 	},
 	[12] = {
 		name = "Captain Blackheart",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

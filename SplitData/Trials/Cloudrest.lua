@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Mini 1",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Mini 2",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,6 +30,7 @@ local splits = {
 	},
 	[6] = {
 		name = "Mini 3",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -36,6 +39,7 @@ local splits = {
 	},
 	[8] = {
 		name = "Z'Maja",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -47,6 +51,7 @@ local splits_plus1 = {
 	},
 	[2] = {
 		name = "Mini 1",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -55,6 +60,7 @@ local splits_plus1 = {
 	},
 	[4] = {
 		name = "Mini 2",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -68,6 +74,7 @@ local splits_plus1 = {
 	},
 	[6] = {
 		name = "Z'Maja + 1",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -79,6 +86,7 @@ local splits_plus2 = {
 	},
 	[2] = {
 		name = "Mini 1",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -92,6 +100,7 @@ local splits_plus2 = {
 	},
 	[4] = {
 		name = "Z'Maja + 2",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -108,6 +117,7 @@ local splits_plus3 = {
 	},
 	[2] = {
 		name = "Z'Maja + 3",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

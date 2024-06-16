@@ -5,6 +5,7 @@ local splitsNoSkip = {
 	},
 	[2] = {
 		name = "The Mage Master",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -13,6 +14,7 @@ local splitsNoSkip = {
 	},
 	[4] = {
 		name = "Archmaster Siniel",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -21,6 +23,7 @@ local splitsNoSkip = {
 	},
 	[6] = {
 		name = "Death's Leviathan",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -29,6 +32,7 @@ local splitsNoSkip = {
 	},
 	[8] = {
 		name = "Uulkar Bonehand",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -37,10 +41,12 @@ local splitsNoSkip = {
 	},
 	[10] = {
 		name = "Dogas The Berserker",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[11] = {
 		name = "The Ilambris Twins",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -52,6 +58,7 @@ local splitsSkip = {
 	},
 	[2] = {
 		name = "The Mage Master",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -60,6 +67,7 @@ local splitsSkip = {
 	},
 	[4] = {
 		name = "Archmaster Siniel",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -68,6 +76,7 @@ local splitsSkip = {
 	},
 	[6] = {
 		name = "Death's Leviathan",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -76,10 +85,12 @@ local splitsSkip = {
 	},
 	[8] = {
 		name = "Dogas The Berserker",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
 		name = "The Ilambris Twins",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

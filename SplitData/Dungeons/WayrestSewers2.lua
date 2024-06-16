@@ -11,6 +11,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Malubeth The Scourger",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 16509,
@@ -21,6 +22,7 @@ local splits = {
 	},
 	[3] = {
 		name = "Uulgarg The Risen",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 23154,
@@ -31,6 +33,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Garron The Returned",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 26300,
@@ -41,6 +44,7 @@ local splits = {
 	},
 	[5] = {
 		name = "The Forgotten One",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
 		data = {
 			x = 31030,
@@ -55,6 +59,7 @@ local splits = {
 	},
 	[7] = {
 		name = "Pellingare Twins",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

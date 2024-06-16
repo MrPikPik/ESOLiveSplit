@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Head Shepard Neloren",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Foreman Llothan",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,10 +30,12 @@ local splits = {
 	},
 	[6] = {
 		name = "The Hive Lord",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
 		name = "Cavern Patriarch",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[8] = {
@@ -40,6 +44,7 @@ local splits = {
 	},
 	[9] = {
 		name = "Cutting Sphere",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[10] = {
@@ -48,6 +53,7 @@ local splits = {
 	},
 	[11] = {
 		name = "Sentinel of Rkugamz",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

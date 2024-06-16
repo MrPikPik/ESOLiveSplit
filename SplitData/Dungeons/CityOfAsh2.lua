@@ -8,6 +8,7 @@ local startData = {
 local splits = {
 	[1] = {
 		name = "Rukhan",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[2] = {
@@ -16,6 +17,7 @@ local splits = {
 	},
 	[3] = {
 		name = "Marruz",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[4] = {
@@ -24,6 +26,7 @@ local splits = {
 	},
 	[5] = {
 		name = "Horvantud The Fire Maw",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[6] = {
@@ -32,6 +35,7 @@ local splits = {
 	},
 	[7] = {
 		name = "Ash Titan",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[8] = {
@@ -56,6 +60,7 @@ local splits = {
 	},
 	[10] = {
 		name = "Valkyn Skoria",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

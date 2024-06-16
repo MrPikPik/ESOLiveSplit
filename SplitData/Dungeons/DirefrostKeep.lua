@@ -12,6 +12,7 @@ local splitsSkip = {
 	},
 	[2] = {
 		name = "Teethnasher The Frostbound",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splitsSkip = {
 	},
 	[4] = {
 		name = "Guardian of the Flame",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,6 +30,7 @@ local splitsSkip = {
 	},
 	[6] = {
 		name = "Drodda's Dreadlord",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[7] = {
@@ -36,6 +39,7 @@ local splitsSkip = {
 	},
 	[8] = {
 		name = "Iceheart",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[9] = {
@@ -44,6 +48,7 @@ local splitsSkip = {
 	},
 	[10] = {
 		name = "Drodda of Icereach",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }

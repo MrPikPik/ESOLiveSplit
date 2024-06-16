@@ -12,6 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Mini 1",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -20,6 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Mini 2",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -28,6 +30,7 @@ local splits = {
 	},
 	[6] = {
 		name = "Saint Olms The Just",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -39,6 +42,7 @@ local splits_plus1 = {
 	},
 	[2] = {
 		name = "Mini 1",
+		icon = LIVE_SPLIT_ICON_BOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -52,6 +56,7 @@ local splits_plus1 = {
 	},
 	[4] = {
 		name = "Saint Olms The Just",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
@@ -68,6 +73,7 @@ local splits_plus2 = {
 	},
 	[2] = {
 		name = "Saint Olms The Just",
+		icon = LIVE_SPLIT_ICON_ENDBOSS,
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 }
