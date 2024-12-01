@@ -2,6 +2,12 @@ local splits = {
 	[1] = {
 		name = "Trash 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				["en"] = "Scorion",
+				["de"] = "Skorion",
+			},
+		},
 	},
 	[2] = {
 		name = "Scorion Broodlord",
@@ -11,6 +17,11 @@ local splits = {
 	[3] = {
 		name = "Trash 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Artellian",
+			},
+		},
 	},
 	[4] = {
 		name = "Cyronin Artellian",
@@ -20,6 +31,11 @@ local splits = {
 	[5] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Magma",
+			},
+		},
 	},
 	[6] = {
 		name = "The Magma Incarnate",
