@@ -2,6 +2,11 @@ local splits = {
 	[1] = {
 		name = "Trash 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Rogerain",
+			},
+		},
 	},
 	[2] = {
 		name = "Rogerain The Sly",
@@ -11,6 +16,11 @@ local splits = {
 	[3] = {
 		name = "Trash 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Merick",
+			},
+		},
 	},
 	[4] = {
 		name = "The Artifact Bearers",
@@ -20,6 +30,11 @@ local splits = {
 	[5] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Thierric",
+			},
+		},
 	},
 	[6] = {
 		name = "Prior Thierric Sarazen",
