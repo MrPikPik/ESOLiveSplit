@@ -95,6 +95,8 @@ SplitData/Dungeons/BalSunnar.lua
 SplitData/Dungeons/ScrivenersHall.lua
 SplitData/Dungeons/BedlamVeil.lua
 SplitData/Dungeons/OathswornPit.lua
+SplitData/Dungeons/LepSeclusa.lua
+SplitData/Dungeons/ExiledRedoubt.lua
 
 ;Trials
 SplitData/Trials/HelRaCitadel.lua
@@ -110,6 +112,8 @@ SplitData/Trials/Rockgrove.lua
 SplitData/Trials/DreadsailReef.lua
 SplitData/Trials/SanitysEdge.lua
 SplitData/Trials/LucentCitadel.lua
+SplitData/Trials/OsseinCage.lua
+
 
 ;Arenas
 SplitData/Arenas/MaelstromArena.lua
