@@ -2,6 +2,11 @@ local splits = {
 	[1] = {
 		name = "Trash 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Maligalig",
+			},
+		},
 	},
 	[2] = {
 		name = "Maligalig",
@@ -11,6 +16,11 @@ local splits = {
 	[3] = {
 		name = "Trash 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Sarydil",
+			},
+		},
 	},
 	[4] = {
 		name = "Sarydil",
@@ -20,6 +30,11 @@ local splits = {
 	[5] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Varallion",
+			},
+		},
 	},
 	[6] = {
 		name = "Varallion",
