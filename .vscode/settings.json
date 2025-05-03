@@ -7,7 +7,8 @@
         "ZO_Menu",
         "AnchorMenu",
         "EVENT_PLAYER_COMBAT_STATE",
-        "EVENT_BROADCAST"
+        "EVENT_BROADCAST",
+        "GetZoneNameById"
     ],
     "Lua.diagnostics.disable": [
         "inject-field",

@@ -33,7 +33,8 @@ local function OnAddonLoaded(event, addonName)
     local p1 = {}
     local p2 = {}
     SLASH_COMMANDS["/lszone"] = function()
-        DBG:Info("Player is in zone with id <<1>>", GetZoneId(GetUnitZoneIndex("player")))
+        local zoneId = GetZoneId(GetUnitZoneIndex("player"))
+        DBG:Info("Player is in zone <<1>> (<<2>>)", GetZoneNameById(zoneId), zoneId)
     end
     SLASH_COMMANDS["/lsp1"] = function()
         _, p1.x, p1.y, p1.z = GetUnitWorldPosition("player")

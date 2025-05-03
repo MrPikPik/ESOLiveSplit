@@ -59,6 +59,7 @@ DBG_ASSERT      = 9
 --- |`DBG_DEBUG` # Debug level
 --- |`DBG_ASSERT` # Assertion level. Always shows if assertion fails
 
+---@class MPP_Debugger
 MPP_Debugger = ZO_Object:Subclass()
 
 --- Creates a new debugger instance
