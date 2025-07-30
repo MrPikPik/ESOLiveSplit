@@ -67,13 +67,3 @@ SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
-SPLIT_MANAGER:RegisterSplit(725, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_MawOfLorkhaj_HM",
-	catName = "vMoL HM",
-	menuName = "Official HM",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_40_MINUTES,
-	wr = 2400000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})

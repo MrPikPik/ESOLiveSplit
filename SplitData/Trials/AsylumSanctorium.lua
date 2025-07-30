@@ -78,27 +78,16 @@ local splits_plus2 = {
 	},
 }
 
-SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_NORMAL, {
-	id = "ESOLS_AsylumSanctorium_0",
-	catName = "nAS+0",
-	menuName = "Official +0",
-	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
-	startData = startData,
+-- +2
+SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_VETERAN, {
+	id = "ESOLS_AsylumSanctorium_2",
+	catName = "vAS+2",
+	menuName = "Official +2",
+	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	par = LIVE_SPLIT_TIME_15_MINUTES,
 	wr = 900000,
 	wrPlayer = "Zenimax",
-	splits = splits,
-})
-SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_NORMAL, {
-	id = "ESOLS_AsylumSanctorium_1",
-	catName = "nAS+1",
-	menuName = "Official +1",
-	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
-	startData = startData,
-	par = LIVE_SPLIT_TIME_15_MINUTES,
-	wr = 900000,
-	wrPlayer = "Zenimax",
-	splits = splits_plus1,
+	splits = splits_plus2,
 })
 SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_NORMAL, {
 	id = "ESOLS_AsylumSanctorium_2",
@@ -111,16 +100,8 @@ SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_NORMAL, {
 	wrPlayer = "Zenimax",
 	splits = splits_plus2,
 })
-SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_AsylumSanctorium_0",
-	catName = "vAS+0",
-	menuName = "Official +0",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_15_MINUTES,
-	wr = 900000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})
+
+-- +1
 SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_VETERAN, {
 	id = "ESOLS_AsylumSanctorium_1",
 	catName = "vAS+1",
@@ -131,13 +112,37 @@ SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_VETERAN, {
 	wrPlayer = "Zenimax",
 	splits = splits_plus1,
 })
+SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_AsylumSanctorium_1",
+	catName = "nAS+1",
+	menuName = "Official +1",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	par = LIVE_SPLIT_TIME_15_MINUTES,
+	wr = 900000,
+	wrPlayer = "Zenimax",
+	splits = splits_plus1,
+})
+
+-- +0
 SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_AsylumSanctorium_2",
-	catName = "vAS+2",
-	menuName = "Official +2",
+	id = "ESOLS_AsylumSanctorium_0",
+	catName = "vAS+0",
+	menuName = "Official +0",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	par = LIVE_SPLIT_TIME_15_MINUTES,
 	wr = 900000,
 	wrPlayer = "Zenimax",
-	splits = splits_plus2,
+	splits = splits,
+})
+SPLIT_MANAGER:RegisterSplit(1000, DUNGEON_DIFFICULTY_NORMAL, {
+	id = "ESOLS_AsylumSanctorium_0",
+	catName = "nAS+0",
+	menuName = "Official +0",
+	startTrigger = LIVE_SPLIT_TRIGGER_LOCATION,
+	startData = startData,
+	par = LIVE_SPLIT_TIME_15_MINUTES,
+	wr = 900000,
+	wrPlayer = "Zenimax",
+	splits = splits,
 })

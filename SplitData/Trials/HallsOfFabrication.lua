@@ -80,13 +80,3 @@ SPLIT_MANAGER:RegisterSplit(975, DUNGEON_DIFFICULTY_VETERAN, {
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
-SPLIT_MANAGER:RegisterSplit(975, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_HallsOfFabrication_HM",
-	catName = "vHoF HM",
-	menuName = "Official HM",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_40_MINUTES,
-	wr = 2400000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})

@@ -101,13 +101,3 @@ SPLIT_MANAGER:RegisterSplit(1478, DUNGEON_DIFFICULTY_VETERAN, {
 	wrPlayer = "Zenimax",
 	splits = splitsVeteran,
 })
-SPLIT_MANAGER:RegisterSplit(1478, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_LucentCitadel_HM",
-	catName = "vLC HM",
-	menuName = "Official HM",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_30_MINUTES,
-	wr = 1800000,
-	wrPlayer = "Zenimax",
-	splits = splitsVeteran,
-})

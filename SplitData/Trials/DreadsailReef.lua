@@ -74,13 +74,3 @@ SPLIT_MANAGER:RegisterSplit(1344, DUNGEON_DIFFICULTY_VETERAN, {
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
-SPLIT_MANAGER:RegisterSplit(1344, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_DreadSailReef_HM",
-	catName = "vDSR HM",
-	menuName = "Official HM",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_30_MINUTES,
-	wr = 1800000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})

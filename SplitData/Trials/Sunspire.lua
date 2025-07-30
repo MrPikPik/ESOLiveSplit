@@ -12,7 +12,7 @@ local splits = {
 	},
 	[2] = {
 		name = "Dragon 1",
-		icon = LIVE_SPLIT_ICON_BOSS,
+		icon = "/esoui/art/icons/mapkey/mapkey_dragon.dds",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[3] = {
@@ -21,7 +21,7 @@ local splits = {
 	},
 	[4] = {
 		name = "Dragon 2",
-		icon = LIVE_SPLIT_ICON_BOSS,
+		icon = "/esoui/art/icons/mapkey/mapkey_dragon.dds",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_DEATH,
 	},
 	[5] = {
@@ -50,16 +50,6 @@ SPLIT_MANAGER:RegisterSplit(1121, DUNGEON_DIFFICULTY_VETERAN, {
 	id = "ESOLS_Sunspire",
 	catName = "vSS",
 	menuName = "Official",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_30_MINUTES,
-	wr = 1800000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})
-SPLIT_MANAGER:RegisterSplit(1121, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_Sunspire_HM",
-	catName = "vSS HM",
-	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	par = LIVE_SPLIT_TIME_30_MINUTES,
 	wr = 1800000,

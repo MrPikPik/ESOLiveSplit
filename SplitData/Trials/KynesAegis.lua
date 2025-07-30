@@ -56,13 +56,3 @@ SPLIT_MANAGER:RegisterSplit(1196, DUNGEON_DIFFICULTY_VETERAN, {
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
-SPLIT_MANAGER:RegisterSplit(1196, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_KynesAegis_HM",
-	catName = "vKA HM",
-	menuName = "Official HM",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_35_MINUTES,
-	wr = 2100000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})

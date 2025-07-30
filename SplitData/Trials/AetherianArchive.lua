@@ -55,22 +55,10 @@ SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_NORMAL, {
 	wrPlayer = "Zenimax",
 	splits = splits,
 })
-
 SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_VETERAN, {
 	id = "ESOLS_AetherianArchive",
 	catName = "vAA",
 	menuName = "Official",
-	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
-	par = LIVE_SPLIT_TIME_33_MINUTES,
-	wr = 1980000,
-	wrPlayer = "Zenimax",
-	splits = splits,
-})
-
-SPLIT_MANAGER:RegisterSplit(638, DUNGEON_DIFFICULTY_VETERAN, {
-	id = "ESOLS_AetherianArchive_HM",
-	catName = "vAA HM",
-	menuName = "Official HM",
 	startTrigger = LIVE_SPLIT_TRIGGER_BEGIN_TRIAL,
 	par = LIVE_SPLIT_TIME_33_MINUTES,
 	wr = 1980000,
