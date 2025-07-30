@@ -1,5 +1,11 @@
 SplitManager = ZO_Object:Subclass()
 
+local diffNames = {
+    [DUNGEON_DIFFICULTY_NONE] = "None",
+    [DUNGEON_DIFFICULTY_NORMAL] = "Normal",
+    [DUNGEON_DIFFICULTY_VETERAN] = "Veteran"
+}
+
 ---Creates a SplitManager object
 function SplitManager:New()
     local obj = ZO_Object.New(self)
@@ -31,7 +37,7 @@ function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
 
     splitdata.zone = zoneId
     table.insert(self.splitdata[zoneId][difficulty], splitdata)
-    DBG:Info("Registered new split data for zoneId <<1>>: <<2>>", zoneId, splitdata.catName)
+    DBG:Info("Registered new split data for zoneId <<1>>: <<2>> (<<3>>)", zoneId, splitdata.catName, diffNames[difficulty])
 end
 
 ---Returns all registered splits. Sorted by zone, then difficulty
