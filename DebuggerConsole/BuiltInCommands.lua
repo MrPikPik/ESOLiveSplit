@@ -32,6 +32,39 @@ local function GetLocalZoneId()
 end
 LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("zone", GetLocalZoneId)
 
+-- targets
+local function PrintAllTargets()
+    local targets = {}
+    for _, target in pairs(LIVE_SPLIT.coordinateListener.targets) do
+        table.insert(targets, {type = "LiveSplitCoordinateTrigger", data = target})
+    end
+    for _, target in pairs(LIVE_SPLIT.csaListener.targets) do
+        table.insert(targets, {type = "LiveSplitCSATrigger", data = target})
+    end
+    for _, target in pairs(LIVE_SPLIT.npcListener.targets) do
+        table.insert(targets, {type = "LiveSplitNPCMessageTrigger", data = target})
+    end
+    for _, target in pairs(LIVE_SPLIT.delayListener.targets) do
+        table.insert(targets, {type = "LiveSplitDelayTrigger", data = target})
+    end
+    for _, target in pairs(LIVE_SPLIT.bossEnterListener.targets) do
+        table.insert(targets, {type = "LiveSplitBossEnterTrigger", data = target})
+    end
+
+    LIVE_SPLIT_DEBUG_CONSOLE:Write(string.format("%s %s", ESOLS_DebugConsole.Utils.LJust("Trigger Class", 28), "Data"))
+    LIVE_SPLIT_DEBUG_CONSOLE:Write(string.format("%s %s", string.rep("=", 28), string.rep("=", 48)))
+    for _, target in pairs(targets) do
+        local data = ""
+        for k, v in pairs(target.data) do
+            data = data .. k .. "=" .. v .. ", "
+        end
+        data = string.sub(data, 1, -2)
+        LIVE_SPLIT_DEBUG_CONSOLE:Write(string.format("%s %s", ESOLS_DebugConsole.Utils.LJust(target.type, 28), data))
+    end
+end
+LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("targets", PrintAllTargets)
+
+
 
 local function PrintAvailableCommands()
     DBG:Log("Registered Commands:")

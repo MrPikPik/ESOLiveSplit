@@ -1,3 +1,4 @@
 <GuiXml>
     <String name="ESOLS_ROBOTO_MONO" value="ESOLiveSplit/DebuggerConsole/fonts/RobotoMono-Regular.slug"/>
+    <Font name="ESOLSConsoleRoboto" font="$(ESOLS_ROBOTO_MONO)|$(KB_14)|soft-shadow-thin" />
 </GuiXml>

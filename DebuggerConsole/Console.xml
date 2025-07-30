@@ -1,6 +1,4 @@
 <GuiXml>
-    <Font name="ConsoleRoboto" font="$(ESOLS_ROBOTO_MONO)|$(KB_14)|soft-shadow-thin" />
-
     <Controls>
         <TopLevelControl name="ESOLS_DebugConsoleWindow" clampedToScreen="true" mouseEnabled="true" movable="true" hidden="true">
             <Dimensions x="930" y="500" />
@@ -25,7 +23,7 @@
                     </OnClicked>
                 </Button>
 
-                <TextBuffer name="$(parent)Output" font="ConsoleRoboto" maxHistoryLines="ESOLS_CONSOLE_MAX_LINES" mouseEnabled="true" linkEnabled="true">
+                <TextBuffer name="$(parent)Output" font="ESOLSConsoleRoboto" maxHistoryLines="ESOLS_CONSOLE_MAX_LINES" mouseEnabled="true" linkEnabled="true">
                     <Anchor point="TOPLEFT" offsetY="30"/>
                     <Anchor point="BOTTOMRIGHT" offsetX="-2" offsetY="-24"/>
                 </TextBuffer>
@@ -34,7 +32,7 @@
                     <Anchor point="BOTTOMLEFT"/>
                     <Anchor point="BOTTOMRIGHT" />
                     <Controls>
-                        <EditBox name="$(parent)Box" override="true" font="ConsoleRoboto" mouseEnabled="true">
+                        <EditBox name="$(parent)Box" override="true" font="ESOLSConsoleRoboto" mouseEnabled="true">
                             <Dimensions y="24" />
                             <Anchor point="TOPLEFT" offsetX="4" offsetY="0"/>
                             <Anchor point="BOTTOMRIGHT" offsetX="-4" offsetY="0"/>
