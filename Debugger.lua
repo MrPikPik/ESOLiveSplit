@@ -16,24 +16,26 @@
 --- @field public Error function
 --- @field public Critical function
 --- @field public Debug function
+--- @field public DevLog function
 --- @field public Assert function
 --- @field public LuaError function
 --- @field public LuaAssert function
 
---debugger version 1.8
+--debugger version 1.9
 
 -- Debugger
-ZO_CreateStringId("DBG_FORMAT",  "|cffac30[<<1>>]<<2>> <<3>>|r|r")
-ZO_CreateStringId("DBG_FORMAT_0", "")
-ZO_CreateStringId("DBG_FORMAT_1", "")
-ZO_CreateStringId("DBG_FORMAT_2", "|cc40000 [Critical]")
-ZO_CreateStringId("DBG_FORMAT_3", "|cff1c1c [Error]")
-ZO_CreateStringId("DBG_FORMAT_4", "")
-ZO_CreateStringId("DBG_FORMAT_5", "|cff9d00 [Warning]")
-ZO_CreateStringId("DBG_FORMAT_6", "|c0fb800 [Info]")
-ZO_CreateStringId("DBG_FORMAT_7", "|c00b5b5 [Verbose]")
-ZO_CreateStringId("DBG_FORMAT_8", "|c0081b8 [Debug]")
-ZO_CreateStringId("DBG_FORMAT_9", "|cff1c1c [Assert] Assertion failed:")
+ZO_CreateStringId("DBG_FORMAT",    "|cffac30[<<1>>]<<2>> <<3>>|r|r")
+ZO_CreateStringId("DBG_FORMAT_0",  "")
+ZO_CreateStringId("DBG_FORMAT_1",  "")
+ZO_CreateStringId("DBG_FORMAT_2",  "|cc40000 [Critical]")
+ZO_CreateStringId("DBG_FORMAT_3",  "|cff1c1c [Error]")
+ZO_CreateStringId("DBG_FORMAT_4",  "")
+ZO_CreateStringId("DBG_FORMAT_5",  "|cff9d00 [Warning]")
+ZO_CreateStringId("DBG_FORMAT_6",  "|c0fb800 [Info]")
+ZO_CreateStringId("DBG_FORMAT_7",  "|c00b5b5 [Verbose]")
+ZO_CreateStringId("DBG_FORMAT_8",  "|c0081b8 [Debug]")
+ZO_CreateStringId("DBG_FORMAT_9",  "|c0040b8 [Dev]")
+ZO_CreateStringId("DBG_FORMAT_10", "|cff1c1c [Assert] Assertion failed:")
 
 
 DBG_ALWAYS_SHOW = 0
@@ -45,7 +47,8 @@ DBG_WARNING     = 5
 DBG_INFO        = 6
 DBG_VERBOSE     = 7
 DBG_DEBUG       = 8
-DBG_ASSERT      = 9
+DBG_DEVELOPER   = 9
+DBG_ASSERT      = 10
 
 --- @alias DebugLevel
 --- |`DBG_ALWAYS_SHOW` # Always show at this level
@@ -57,6 +60,7 @@ DBG_ASSERT      = 9
 --- |`DBG_INFO` # Informational level
 --- |`DBG_VERBOSE` # Verbose output level
 --- |`DBG_DEBUG` # Debug level
+--- |`DBG_DEVELOPER` # Developer level, additional information for development
 --- |`DBG_ASSERT` # Assertion level. Always shows if assertion fails
 
 ---@class MPP_Debugger
@@ -82,8 +86,8 @@ end
 function MPP_Debugger:SetLogLevel(level)
     if level < DBG_QUIET then
         self.logLevel = DBG_QUIET
-    elseif level >= DBG_DEBUG then
-        self.logLevel = DBG_DEBUG
+    elseif level >= DBG_DEVELOPER then
+        self.logLevel = DBG_DEVELOPER
         self.showDebug = true
     else
         self.logLevel = level
@@ -132,6 +136,8 @@ function MPP_Debugger:TestLevels()
     self:Log("Debugger Test: Info",         DBG_INFO)
     self:Log("Debugger Test: Verbose",      DBG_VERBOSE)
     self:Log("Debugger Test: Debug",        DBG_DEBUG)
+    self:Log("Debugger Test: Developer",    DBG_DEVELOPER)
+    self:Log("Debugger Test: Assert",       DBG_ASSERT)
 end
 
 ---Displays a warning in chat
@@ -174,6 +180,13 @@ end
 function MPP_Debugger:Debug(message, ...)
     if not message then return end
     self:Log(message, DBG_DEBUG, ...)
+end
+
+---Displays a development message in chat
+---@param message string Format string used by zo_strformat
+function MPP_Debugger:DevLog(message, ...)
+    if not message then return end
+    self:Log(message, DBG_DEVELOPER, ...)
 end
 
 ---Displays an assertion  in chat
