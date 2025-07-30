@@ -27,9 +27,10 @@ Debugger.lua
 Triggers/BossEnterTrigger.lua
 Triggers/CoordinateTrigger.lua
 Triggers/CSATrigger.lua
-Triggers/NPCMessageTrigger.lua
 Triggers/DelayTrigger.lua
 Triggers/EndlessArchiveTrigger.lua
+Triggers/NPCMessageTrigger.lua
+Triggers/UnitDeathTrigger.lua
 
 ;SplitManager
 SplitManager/Splitmanager.lua

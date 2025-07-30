@@ -79,7 +79,7 @@ function LiveSplit:Initialize(control)
     self.delayListener = LiveSplitDelayTrigger:New(triggerFn)
     self.endlessArchiveListener = LiveSplitEndlessArchiveTrigger:New(triggerFn)
     self.bossEnterListener = LiveSplitBossEnterTrigger:New(triggerFn)
-
+    self.unitDeathListener = LiveSplitUnitDeathTrigger:New(triggerFn)
 
     -- Row Pool
     local function RowFactory(pool, objectKey)
@@ -125,7 +125,6 @@ function LiveSplit:AddEvents()
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_ACTIVATED, function() self:OnPlayerActivated() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_STARTED, function() self:StartTimer(SOURCE_TYPE_SELF) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_COMPLETE, function() self:OnTrigger() end)
-    EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_UNIT_DEATH_STATE_CHANGED, function(evt, unitTag, isDead) self:OnUnitDeath(unitTag, isDead) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_COMBAT_STATE, function(code, inCombat) self:OnCombatStateChanged(inCombat) end)
     EVENT_MANAGER:RegisterForUpdate("LiveSplit", nil, function() self:OnTick() end)
 end
@@ -219,51 +218,6 @@ function LiveSplit:OnPlayerActivated()
     end
 end
 
-function LiveSplit:OnUnitDeath(unitTag, isDead)
-    if not self.activerun then return end
-
-    if string.sub(unitTag, 1, 4) == "boss" and isDead then
-        if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
-            local bossName = GetUnitName(unitTag)
-            local splitData = self:GetCurrentSplitData()
-
-            if splitData and splitData.filter then
-                for _, filter in pairs(splitData.filter) do
-                    if filter == bossName then
-                        DBG:Info("Specifically named boss <<1>> died. Splitting with exact match.", bossName)
-                        self:Split(SOURCE_TYPE_SELF)
-                        return
-                    end
-                end
-            elseif splitData and splitData.filterMatch then
-                for _, filterMatch in pairs(splitData.filterMatch) do
-                    if string.find(bossName, filterMatch) then
-                        DBG:Info("Specifically named boss <<1>> died. Splitting with match.", bossName)
-                        self:Split(SOURCE_TYPE_SELF)
-                        return
-                    end
-                end
-            end
-        elseif self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_DEATH then
-            local numbosses = 0
-            local numdead = 0
-            for i = 1, MAX_BOSSES do
-                if DoesUnitExist("boss"..i) then
-                    numbosses = numbosses + 1
-                    if IsUnitDead("boss"..i) then
-                        numdead = numdead + 1
-                    end
-                end
-            end
-            if numbosses == numdead then
-                DBG:Info("All bosses gone. Splitting due to BOSS_DEATH trigger.")
-                self:Split(SOURCE_TYPE_SELF)
-                return
-            end
-        end
-    end
-end
-
 function LiveSplit:OnCombatStateChanged(isInCombat)
     if not self.activerun and not self.timerenabled and isInCombat and self.selectedSplit then
         if self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_ENTER_COMBAT then
@@ -297,8 +251,12 @@ function LiveSplit:OnTrigger(target)
         elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
             DBG:Info("Encountered starting boss. Starting run...")
             self:StartTimer(SOURCE_TYPE_SELF)
+        elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
+            DBG:Info("Boss unit(s) died. Starting run...")
+            self:StartTimer(SOURCE_TYPE_SELF)
         else
             DBG:Warn("Something triggered, but no run is going on and it's not handled!")
+            DBG:Warn(debug.traceback())
         end
         return
     end
@@ -340,8 +298,12 @@ function LiveSplit:OnTrigger(target)
     elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
         DBG:Info("Splitting due to boss enter trigger.")
         self:Split(SOURCE_TYPE_SELF)
+    elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH or currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
+        DBG:Info("Splitting due to boss unit(s) dying.")
+        self:Split(SOURCE_TYPE_SELF)
     else
         DBG:Warn("Something triggered, but type is not handled!")
+        DBG:Warn(debug.traceback())
     end
 end
 
@@ -963,6 +925,13 @@ function LiveSplit:SetupTriggersForSplit(isStartTrigger)
             filterMatch = currentSplitData.filterMatch,
         }
         self.bossEnterListener:Listen(target)
+    elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH or currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
+        local target = {
+            type = currentSplitTrigger,
+            filter = currentSplitData.filter,
+            filterMatch = currentSplitData.filterMatch,
+        }
+        self.unitDeathListener:Listen(target)
     end
 end
 
