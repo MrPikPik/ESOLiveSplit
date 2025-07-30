@@ -24,9 +24,9 @@ end
 function LiveSplitEndlessArchiveTrigger:OnPlayerActivated()
     if not self.runStarted then
         if ENDLESS_DUNGEON_MANAGER:IsEndlessDungeonStarted() then
-            DBG:Error("Player already in a started instance! Please reset the Endless Archive to be able to start a run!")
+            DBG:Error("LiveSplitEndlessArchiveTrigger: Player already in a started instance! Please reset the Endless Archive to be able to start a run!")
         elseif ENDLESS_DUNGEON_MANAGER:IsEndlessDungeonCompleted() then
-            DBG:Error("Player already in a completed instance! Please reset the Endless Archive to be able to start a run!")
+            DBG:Error("LiveSplitEndlessArchiveTrigger: Player already in a completed instance! Please reset the Endless Archive to be able to start a run!")
         end
     end
 end
@@ -47,13 +47,13 @@ end
 function LiveSplitEndlessArchiveTrigger:OnStart()
     self:Reset()
     self.runStarted = true
-    DBG:Info("Started new Endless Archive run.")
+    DBG:Info("LiveSplitEndlessArchiveTrigger: Started new Endless Archive run.")
     self:FireCallbacks("OnTrigger")
 end
 
 function LiveSplitEndlessArchiveTrigger:OnComplete(flags)
     self.runComplete = true
-    DBG:Info("Completed Endless Archive run at Arc <<1>>, Cycle <<2>>, Stage <<3>>.", self.arc, self.cycle, self.stage)
+    DBG:Info("LiveSplitEndlessArchiveTrigger: Completed Endless Archive run at Arc <<1>>, Cycle <<2>>, Stage <<3>>.", self.arc, self.cycle, self.stage)
     self:FireCallbacks("OnTrigger")
 end
 
@@ -69,7 +69,7 @@ function LiveSplitEndlessArchiveTrigger:OnCounterChange(counterType, counterValu
             self.stage = counterValue
             self:FireCallbacks("OnTrigger")
         else
-            DBG:Debug("Received OnCounterChange with counterType <<1>> to value <<2>>, which is not tracked.", counterType, counterValue)
+            DBG:Debug("LiveSplitEndlessArchiveTrigger: Received OnCounterChange with counterType <<1>> to value <<2>>, which is not tracked.", counterType, counterValue)
         end
     end
 end

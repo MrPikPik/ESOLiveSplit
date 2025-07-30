@@ -21,7 +21,7 @@ function LiveSplitDelayTrigger:OnUpdate()
     for _, target in pairs(self.targets) do
         target.timeremaining = target.timeremaining - deltaT
         if target.timeremaining <= 0 then
-            DBG:Info("Triggering delay trigger.")
+            DBG:Info("LiveSplitDelayTrigger: Triggering delay trigger.")
             self:Remove(target)
             self:FireCallbacks("OnTrigger", target)
             break

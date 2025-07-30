@@ -22,7 +22,7 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
     end
 
     if self.bounceMessageToLog then
-        DBG:Debug("NPCMessageTrigger: <<2>>: '<<1>>'", message, fromName)
+        DBG:Debug("LiveSplitNPCMessageTrigger: <<2>>: '<<1>>'", message, fromName)
     end
 
     local breakouter = false
@@ -30,7 +30,7 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
         if target.message then
             for _, msg in pairs(target.message) do
                 if msg == message then
-                    DBG:Info("Triggering NPC trigger: Exact message match.")
+                    DBG:Info("LiveSplitNPCMessageTrigger: Triggering NPC trigger: Exact message match.")
                     self:Remove(target)
                     self:FireCallbacks("OnTrigger", target)
                     breakouter = true
@@ -41,7 +41,7 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
         elseif target.match then
             for _, mtch in pairs(target.match) do
                 if string.find(message, mtch) then
-                    DBG:Info("Triggering NPC trigger: string.find found match.")
+                    DBG:Info("LiveSplitNPCMessageTrigger: Triggering NPC trigger: string.find found match.")
                     self:Remove(target)
                     self:FireCallbacks("OnTrigger", target)
                     breakouter = true
@@ -52,7 +52,7 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
         elseif target.fromName then
             for _, name in pairs(target.fromName) do
                 if string.find(fromName, name) then
-                    DBG:Info("Triggering NPC trigger: string.find found match in speaker name.")
+                    DBG:Info("LiveSplitNPCMessageTrigger: Triggering NPC trigger: string.find found match in speaker name.")
                     self:Remove(target)
                     self:FireCallbacks("OnTrigger", target)
                     breakouter = true

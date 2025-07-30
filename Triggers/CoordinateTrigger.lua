@@ -24,12 +24,12 @@ function LiveSplitCoordinateTrigger:CheckTarget(target, unittag)
         local distM = zo_floor(zo_distance3D(target.x, target.y, z1, x, y, z2)) / 100
 
         if target.inverted and distM >= target.r then
-            DBG:Info("Triggering inverted location trigger <<3>>: <<1>>@<<2>>m", GetUnitName(unittag), distM, target.triggerid)
+            DBG:Info("LiveSplitCoordinateTrigger: Triggering inverted location trigger <<3>>: <<1>>@<<2>>m", GetUnitName(unittag), distM, target.triggerid)
             self:Remove(target)
             self:FireCallbacks("OnTrigger", target)
             return true
         elseif not target.inverted and distM <= target.r then
-            DBG:Info("Triggering location trigger <<3>>: <<1>>@<<2>>m", GetUnitName(unittag), distM, target.triggerid)
+            DBG:Info("LiveSplitCoordinateTrigger: Triggering location trigger <<3>>: <<1>>@<<2>>m", GetUnitName(unittag), distM, target.triggerid)
             self:Remove(target)
             self:FireCallbacks("OnTrigger", target)
             return true
@@ -44,7 +44,7 @@ function LiveSplitCoordinateTrigger:Update()
         if IsUnitGrouped("player") then
             for i = 1, GetGroupSize() do
                 if self:CheckTarget(target, "group" .. i) then
-                    DBG:Verbose("Member of the group triggered location trigger. Skipping pending members...")
+                    DBG:Verbose("LiveSplitCoordinateTrigger: Member of the group triggered location trigger. Skipping pending members...")
                     break
                 end
             end

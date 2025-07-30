@@ -27,7 +27,7 @@ function LiveSplitBossEnterTrigger:OnBossChange()
             if target.filter then
                 for _, filter in pairs(target.filter) do
                     if filter == bossName then
-                        DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with exact match.", bossName)
+                        DBG:Info("LiveSplitBossEnterTrigger: Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with exact match.", bossName)
                         self:Remove(target)
                         self:FireCallbacks("OnTrigger", target)
                         break
@@ -36,14 +36,14 @@ function LiveSplitBossEnterTrigger:OnBossChange()
             elseif target.filterMatch then
                 for _, filterMatch in pairs(target.filterMatch) do
                     if string.find(bossName, filterMatch) then
-                        DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with match.", bossName)
+                        DBG:Info("LiveSplitBossEnterTrigger: Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with match.", bossName)
                         self:Remove(target)
                         self:FireCallbacks("OnTrigger", target)
                         break
                     end
                 end
             else
-                DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger.", bossName)
+                DBG:Info("LiveSplitBossEnterTrigger: Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger.", bossName)
                 self:Remove(target)
                 self:FireCallbacks("OnTrigger", target)
             end
