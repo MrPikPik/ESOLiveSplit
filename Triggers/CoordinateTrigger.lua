@@ -1,8 +1,9 @@
 LiveSplitCoordinateTrigger = ZO_CallbackObject:Subclass()
 
-function LiveSplitCoordinateTrigger:New()
+function LiveSplitCoordinateTrigger:New(triggerFn)
     local listener = ZO_CallbackObject.New(self)
     listener:Initialize()
+    self:RegisterCallback("OnTrigger", triggerFn)
     return listener
 end
 

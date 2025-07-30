@@ -1,8 +1,9 @@
 LiveSplitNPCMessageTrigger = ZO_CallbackObject:Subclass()
 
-function LiveSplitNPCMessageTrigger:New()
+function LiveSplitNPCMessageTrigger:New(triggerFn)
     local listener = ZO_CallbackObject.New(self)
     listener:Initialize()
+    self:RegisterCallback("OnTrigger", triggerFn)
     return listener
 end
 

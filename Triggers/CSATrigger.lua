@@ -1,8 +1,9 @@
 LiveSplitCSATrigger = ZO_CallbackObject:Subclass()
 
-function LiveSplitCSATrigger:New()
+function LiveSplitCSATrigger:New(triggerFn)
     local listener = ZO_CallbackObject.New(self)
     listener:Initialize()
+    self:RegisterCallback("OnTrigger", triggerFn)
     return listener
 end
 

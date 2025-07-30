@@ -1,8 +1,9 @@
 LiveSplitDelayTrigger = ZO_CallbackObject:Subclass()
 
-function LiveSplitDelayTrigger:New()
+function LiveSplitDelayTrigger:New(triggerFn)
     local listener = ZO_CallbackObject.New(self)
     listener:Initialize()
+    self:RegisterCallback("OnTrigger", triggerFn)
     return listener
 end
 

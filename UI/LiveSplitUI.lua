@@ -71,20 +71,15 @@ function LiveSplit:Initialize(control)
     self.uncommitedTimes = {}
 
     -- Listeners
-    self.coordinateListener = LiveSplitCoordinateTrigger:New()
-    self.coordinateListener:RegisterCallback("OnTrigger", function(target) self:OnTrigger(target) end)
+    local function triggerFn(target) self:OnTrigger(target) end
 
-    self.csaListener = LiveSplitCSATrigger:New()
-    self.csaListener:RegisterCallback("OnTrigger", function(target) self:OnTrigger(target) end)
+    self.coordinateListener = LiveSplitCoordinateTrigger:New(triggerFn)
+    self.csaListener = LiveSplitCSATrigger:New(triggerFn)
+    self.npcListener = LiveSplitNPCMessageTrigger:New(triggerFn)
+    self.delayListener = LiveSplitDelayTrigger:New(triggerFn)
+    self.endlessArchiveListener = LiveSplitEndlessArchiveTrigger:New(triggerFn)
+    self.bossEnterListener = LiveSplitBossEnterTrigger:New(triggerFn)
 
-    self.npcListener = LiveSplitNPCMessageTrigger:New()
-    self.npcListener:RegisterCallback("OnTrigger", function(target) self:OnTrigger(target) end)
-
-    self.delayListener = LiveSplitDelayTrigger:New()
-    --self.delayListener:RegisterCallback("OnTrigger", function(target) self:OnTrigger(target) end)
-
-    self.endlessArchiveListener = LiveSplitEndlessArchiveTrigger:New()
-    self.endlessArchiveListener:RegisterCallback("OnTrigger", function() self:OnTrigger() end)
 
     -- Row Pool
     local function RowFactory(pool, objectKey)
@@ -130,7 +125,6 @@ function LiveSplit:AddEvents()
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_ACTIVATED, function() self:OnPlayerActivated() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_STARTED, function() self:StartTimer(SOURCE_TYPE_SELF) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_COMPLETE, function() self:OnTrigger() end)
-    EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_BOSSES_CHANGED, function() self:OnBossChange() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_UNIT_DEATH_STATE_CHANGED, function(evt, unitTag, isDead) self:OnUnitDeath(unitTag, isDead) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_COMBAT_STATE, function(code, inCombat) self:OnCombatStateChanged(inCombat) end)
     EVENT_MANAGER:RegisterForUpdate("LiveSplit", nil, function() self:OnTick() end)
@@ -225,47 +219,6 @@ function LiveSplit:OnPlayerActivated()
     end
 end
 
-function LiveSplit:OnBossChange()
-    if not self.timerenabled then return end
-    if not self.selectedSplit then return end
-
-    if self:GetCurrentSplitTrigger() == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
-        local bossFound = false
-        local bossUnitTag = ""
-        for i = 1, MAX_BOSSES do
-            if DoesUnitExist("boss"..i) then
-                bossFound = true
-                bossUnitTag = "boss"..i
-            end
-        end
-        if bossFound then
-            local bossName = GetUnitName(bossUnitTag)
-            local splitData = self:GetCurrentSplitData()
-
-            if splitData and splitData.filter then
-                for _, filter in pairs(splitData.filter) do
-                    if filter == bossName then
-                        DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with exact match.", bossName)
-                        self:Split(SOURCE_TYPE_SELF)
-                        break
-                    end
-                end
-            elseif splitData and splitData.filterMatch then
-                for _, filterMatch in pairs(splitData.filterMatch) do
-                    if string.find(bossName, filterMatch) then
-                        DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger with match.", bossName)
-                        self:Split(SOURCE_TYPE_SELF)
-                        break
-                    end
-                end
-            else
-                DBG:Info("Entered boss arena for <<1>>. Splitting due to BOSS_ENTER trigger.", bossName)
-                self:Split(SOURCE_TYPE_SELF)
-            end
-        end
-    end
-end
-
 function LiveSplit:OnUnitDeath(unitTag, isDead)
     if not self.activerun then return end
 
@@ -341,6 +294,9 @@ function LiveSplit:OnTrigger(target)
         elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
             DBG:Info("Center Annouce showed with magic words. Starting run...")
             self:StartTimer(SOURCE_TYPE_SELF)
+        elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
+            DBG:Info("Encountered starting boss. Starting run...")
+            self:StartTimer(SOURCE_TYPE_SELF)
         else
             DBG:Warn("Something triggered, but no run is going on and it's not handled!")
         end
@@ -380,6 +336,9 @@ function LiveSplit:OnTrigger(target)
         end
     elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_END_TRIAL then
         DBG:Info("Splitting due to trial end trigger.")
+        self:Split(SOURCE_TYPE_SELF)
+    elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
+        DBG:Info("Splitting due to boss enter trigger.")
         self:Split(SOURCE_TYPE_SELF)
     else
         DBG:Warn("Something triggered, but type is not handled!")
@@ -998,6 +957,12 @@ function LiveSplit:SetupTriggersForSplit(isStartTrigger)
             parseMatch = currentSplitData.parseMatch,
         }
         self.csaListener:Listen(target)
+    elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_ENTER then
+        local target = {
+            filter = currentSplitData.filter,
+            filterMatch = currentSplitData.filterMatch,
+        }
+        self.bossEnterListener:Listen(target)
     end
 end
 

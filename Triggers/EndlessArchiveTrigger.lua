@@ -1,8 +1,9 @@
 LiveSplitEndlessArchiveTrigger = ZO_CallbackObject:Subclass()
 
-function LiveSplitEndlessArchiveTrigger:New()
+function LiveSplitEndlessArchiveTrigger:New(triggerFn)
     local listener = ZO_CallbackObject.New(self)
     listener:Initialize()
+    self:RegisterCallback("OnTrigger", triggerFn)
     return listener
 end
 
