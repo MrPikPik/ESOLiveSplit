@@ -5,8 +5,8 @@
 ## Title: ESO Live Split
 ## Description: Live Split lookalike in ESO
 ## Author: MrPikPik
-## APIVersion: 101042
-## Version: 1.0.0 / 10.0.5
+## APIVersion: 101046
+## Version: 1.0.0 / 11.0.6
 ## AddOnVersion: 100
 ## DependsOn: LibCustomMenu>=712
 ## OptionalDependsOn: LibAddonMenu>=31
