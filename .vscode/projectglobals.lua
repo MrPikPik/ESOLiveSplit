@@ -10,6 +10,9 @@ DBG_FORMAT_2 = 1
 DBG_FORMAT_9 = 1
 
 ---@type integer
+DBG_FORMAT_10 = 1
+
+---@type integer
 SI_LIVE_SPLIT_MAXSHOWN = 1
 
 ---@type integer

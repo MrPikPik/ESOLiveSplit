@@ -215,7 +215,7 @@ function MPP_Debugger:LuaAssert(condition, message, ...)
     if not condition then
         self:Log(message, DBG_ASSERT, ...)
     end
-    assert(condition, zo_strformat(GetString(DBG_FORMAT_9) .. " " .. message .. "|r", ...))
+    assert(condition, zo_strformat(GetString(DBG_FORMAT_10) .. " " .. message .. "|r", ...))
 end
 
 DBG = MPP_Debugger:New()
