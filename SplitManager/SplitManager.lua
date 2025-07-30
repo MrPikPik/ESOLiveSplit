@@ -25,6 +25,7 @@ end
 function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
     DBG:LuaAssert(zoneId and type(zoneId) == "number", "SplitManager: Registering split failed: Invalid or missing zoneId.")
     DBG:LuaAssert(difficulty and type(difficulty) == "number", "SplitManager: Registering split failed: Invalid or missing difficulty.")
+    DBG:LuaAssert(difficulty >= 0 and diffNames <= 2, "SplitManager: Registering split failed: Difficulty not valid.")
     DBG:LuaAssert(splitdata and type(splitdata) == "table", "SplitManager: Registering split failed: Invalid or missing splitdata.")
     DBG:LuaAssert(splitdata.id ~= nil, "SplitManager: Registering split failed: Missing field 'id' in splitdata.")
 
