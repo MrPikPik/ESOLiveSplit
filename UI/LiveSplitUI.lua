@@ -493,13 +493,13 @@ end
 function LiveSplit:GetSumBestSegments(offset)
     local offset = offset or 1
     local total = 0
-    if self.SV[self.selectedSplit.id] and self.SV[self.selectedSplit.id][self.difficulty] then
+    if self:HasSavedTimes() then
         -- Bail if there are less saved split tims than there are splits
-        if #self.SV[self.selectedSplit.id][self.difficulty] ~= #self.selectedSplit.splits then
+        if #self:GetSavedTimes() ~= #self.selectedSplit.splits then
             return -1
         end
 
-        for i, t in ipairs(self.SV[self.selectedSplit.id][self.difficulty]) do
+        for i, t in ipairs(self:GetSavedTimes()) do
             if i >= offset then
                 total = total + t
             end
@@ -542,10 +542,7 @@ function LiveSplit:SetSelectedSplit(split)
     end
     ZO_ClearNumericallyIndexedTable(self.splitEntries)
     for i, s in ipairs(split.splits) do
-        local pb = nil
-        if self.SV[split.id] and self.SV[split.id][self.difficulty] then
-            pb = self.SV[split.id][self.difficulty][i]
-        end
+        local pb = LIVE_SPLIT_SV_MANAGER:GetSplitTime(split.id, self.difficulty, i)
         self:AddSplitEntry(s.name, s.icon, pb) -- Any of these may be nil, but this won't break anything.
     end
     self:UpdateSplitEntries()
@@ -578,10 +575,7 @@ function LiveSplit:SetSelectedSplit(split)
     end
 
     -- Personal best
-    local pb = -1
-    if self.SV[self.selectedSplit.id] and self.SV[self.selectedSplit.id][self.difficulty] then
-        pb = self.SV[self.selectedSplit.id][self.difficulty]["PB"] or -1
-    end
+    local pb =self:GetSavedPB() or -1
 
     if pb > 0 then
         self.controls.personalBestLabel:SetText(self:FormatTime(pb, TIMER_PRECISION_TENTHS))
@@ -741,38 +735,31 @@ function LiveSplit:StopTimer(source)
 
     DBG:Info("Stopping timer")
 
-    -- Setup for time saving
-    if not self.SV[self.selectedSplit.id] then
-        self.SV[self.selectedSplit.id] = {}
-    end
-    if not self.SV[self.selectedSplit.id][self.difficulty] then
-        self.SV[self.selectedSplit.id][self.difficulty] = {}
-    end
     -- Individual best times, if not already committed
     if not self.commitImmediatly then
         DBG:Info("Saving split times...")
         for splitindex, splittime in pairs(self.uncommitedTimes) do
-            if not self.SV[self.selectedSplit.id][self.difficulty][splitindex] then
+            if not self:HasSavedTimeForIndex(splitindex) then
                 DBG:Info("Added best time for split '<<1>>': <<2>>.", self.selectedSplit.splits[splitindex].name, splittime)
-                self.SV[self.selectedSplit.id][self.difficulty][splitindex] = splittime
+                self:SetSplitTime(splitindex, splittime)
             else
-                if splittime < self.SV[self.selectedSplit.id][self.difficulty][splitindex] then
+                if splittime < self:GetSavedTime(splitindex) then
                     DBG:Info("Achieved new best time for split '<<1>>': <<2>>!", self.selectedSplit.splits[splitindex].name, splittime)
-                    self.SV[self.selectedSplit.id][self.difficulty][splitindex] = splittime
+                    self:SetSavedTime(splitindex, splittime)
                 end
             end
         end
     end
     -- Personal best
-    if self.SV[self.selectedSplit.id][self.difficulty]["PB"] then
-        if self.totaltime < self.SV[self.selectedSplit.id][self.difficulty]["PB"] then
+    if self:HasSavedPB() then
+        if self.totaltime < self:GetSavedPB() then
             DBG:Info("Achieved new overall best time for '<<1>>': <<2>>!", self.selectedSplit.id, self.totaltime)
-            self.SV[self.selectedSplit.id][self.difficulty]["PB"] = self.totaltime
+            self:SetSavedPB(self.totaltime)
             self.controls.personalBestLabel:SetText(self:FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
         end
     else
         DBG:Info("Recorded overall best time for '<<1>>': <<2>>.", self.selectedSplit.id, self.totaltime)
-        self.SV[self.selectedSplit.id][self.difficulty]["PB"] = self.totaltime
+        self:SetSavedPB(self.totaltime)
         self.controls.personalBestLabel:SetText(self:FormatTime(self.totaltime, TIMER_PRECISION_TENTHS))
     end
 
@@ -796,19 +783,12 @@ function LiveSplit:Split(source)
 
 
     if self.commitImmediatly then
-        if not self.SV[self.selectedSplit.id] then
-            self.SV[self.selectedSplit.id] = {}
-        end
-        if not self.SV[self.selectedSplit.id][self.difficulty] then
-            self.SV[self.selectedSplit.id][self.difficulty] = {}
-        end
-
-        if not self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] then
-            self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] = splittime
+        if not self:HasSavedTimeForIndex(self.currentsplit) then
+            self:SetSavedTime(self.currentsplit, splittime)
         else
-            if splittime < self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] then
+            if splittime < self:GetSavedTime(self.currentsplit) then
                 DBG:Info("Achieved new best time for split '<<1>>'!", self.selectedSplit.splits[self.currentsplit].name)
-                self.SV[self.selectedSplit.id][self.difficulty][self.currentsplit] = splittime
+                self:SetSavedTime(self.currentsplit, splittime)
             end
         end
     else
@@ -1041,6 +1021,32 @@ function LiveSplit:ToggleWindow()
     else
         self:SetShown(true)
     end
+end
+
+-- Wrapper functions
+function LiveSplit:HasSavedPB()
+    return LIVE_SPLIT_SV_MANAGER:HasPB(self.selectedSplit.id, self.difficulty)
+end
+function LiveSplit:HasSavedTimeForIndex(segment)
+    return LIVE_SPLIT_SV_MANAGER:HasSavedTime(self.selectedSplit.id, self.difficulty, segment)
+end
+function LiveSplit:HasSavedTimes()
+    return LIVE_SPLIT_SV_MANAGER:HasSavedTimes(self.selectedSplit.id, self.difficulty)
+end
+function LiveSplit:GetSavedTimes()
+    return LIVE_SPLIT_SV_MANAGER:GetSplitTimes(self.selectedSplit.id, self.difficulty)
+end
+function LiveSplit:GetSavedPB()
+    return LIVE_SPLIT_SV_MANAGER:GetPB(self.selectedSplit.id, self.difficulty)
+end
+function LiveSplit:SetSavedPB(time)
+    LIVE_SPLIT_SV_MANAGER:SetSplitTime(self.selectedSplit.id, self.difficulty, "PB", time)
+end
+function LiveSplit:SetSavedTime(segment, time)
+    LIVE_SPLIT_SV_MANAGER:SetSplitTime(self.selectedSplit.id, self.difficulty, segment, time)
+end
+function LiveSplit:GetSavedTime(segment)
+    return LIVE_SPLIT_SV_MANAGER:GetSplitTime(self.selectedSplit.id, self.difficulty, segment)
 end
 
 -- XML Handlers

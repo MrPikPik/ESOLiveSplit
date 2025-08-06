@@ -20,7 +20,7 @@ local function OnAddonLoaded(event, addonName)
     EVENT_MANAGER:UnregisterForEvent(ESOLS.name, EVENT_ADD_ON_LOADED) 
      
     ESOLS.SV = ZO_SavedVars:NewAccountWide("LiveSplitSavedVars", 0.1, nil, ESOLS.defaults)
-    LIVE_SPLIT.SV = ESOLS.SV.splits
+    LIVE_SPLIT_SV_MANAGER = SVManager:New(ESOLS.SV.splits)
 
     LIVE_SPLIT.maxsplitsshown = ESOLS.SV.maxsplitsshown
     LIVE_SPLIT:ShowAdditionalInfo(ESOLS.SV.additionalInfo)
