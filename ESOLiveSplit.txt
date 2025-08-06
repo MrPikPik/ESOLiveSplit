@@ -32,9 +32,9 @@ Triggers/EndlessArchiveTrigger.lua
 Triggers/NPCMessageTrigger.lua
 Triggers/UnitDeathTrigger.lua
 
-;SplitManager
-SplitManager/Splitmanager.lua
-SVManager.lua
+;Manager Objects
+Managers/Splitmanager.lua
+Managers/SVManager.lua
 
 ;UI
 UI/fonts/fontstrings.xml
