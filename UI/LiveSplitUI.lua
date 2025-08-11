@@ -256,6 +256,7 @@ function LiveSplit:OnTrigger(target)
             self:StartTimer(SOURCE_TYPE_SELF)
         else
             DBG:Warn("Something triggered, but no run is going on and it's not handled!")
+            LIVE_SPLIT_DEBUG_CONSOLE:InvokeCommand("targets")
             DBG:Warn(debug.traceback())
         end
         return
@@ -303,6 +304,7 @@ function LiveSplit:OnTrigger(target)
         self:Split(SOURCE_TYPE_SELF)
     else
         DBG:Warn("Something triggered, but type is not handled!")
+        LIVE_SPLIT_DEBUG_CONSOLE:InvokeCommand("targets")
         DBG:Warn(debug.traceback())
     end
 end
@@ -741,7 +743,7 @@ function LiveSplit:StopTimer(source)
         for splitindex, splittime in pairs(self.uncommitedTimes) do
             if not self:HasSavedTimeForIndex(splitindex) then
                 DBG:Info("Added best time for split '<<1>>': <<2>>.", self.selectedSplit.splits[splitindex].name, splittime)
-                self:SetSplitTime(splitindex, splittime)
+                self:SetSavedTime(splitindex, splittime)
             else
                 if splittime < self:GetSavedTime(splitindex) then
                     DBG:Info("Achieved new best time for split '<<1>>': <<2>>!", self.selectedSplit.splits[splitindex].name, splittime)

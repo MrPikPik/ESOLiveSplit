@@ -52,13 +52,18 @@ end
 
 function SVManager:HasSavedTimes(id, difficulty)
     --DBG:Debug("SVManager: HasSavedTimes(<<1>>, <<2>>)", id, difficulty)
+    if not self.SV[id] then return false end
     return self.SV[id][difficulty] ~= nil
 end
 function SVManager:HasSavedTime(id, difficulty, segment)
     --DBG:Debug("SVManager: HasSavedTime(<<1>>, <<2>>, <<3>>)", id, difficulty, segment)
+    if not self.SV[id] then return false end
+    if not self.SV[id][difficulty] then return false end
     return self.SV[id][difficulty][segment] ~= nil
 end
 function SVManager:HasPB(id, difficulty)
     --DBG:Debug("SVManager: HasPB(<<1>>, <<2>>)", id, difficulty)
+    if not self.SV[id] then return false end
+    if not self.SV[id][difficulty] then return false end
     return self.SV[id][difficulty]["PB"] ~= nil
 end
