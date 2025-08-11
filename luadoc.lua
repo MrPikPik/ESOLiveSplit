@@ -13,6 +13,8 @@
 ---@field zh string? Chinese version of the string.
 ---@field jp string? Japanese version of the string.
 
+---@class LiveSplitTarget
+---@field triggerid number Internal target id of the trigger module it was registered to.
 
 ---@alias LIVE_SPLIT_TRIGGER number # Trigger Types.
 --- |`LIVE_SPLIT_TRIGGER_ENTER_COMBAT` # Player enters combat state.
