@@ -80,6 +80,7 @@ function LiveSplit:Initialize(control)
     self.endlessArchiveListener = LiveSplitEndlessArchiveTrigger:New(triggerFn)
     self.bossEnterListener = LiveSplitBossEnterTrigger:New(triggerFn)
     self.unitDeathListener = LiveSplitUnitDeathTrigger:New(triggerFn)
+    self.trialListener = LiveSplitTrialEventsTrigger:New(triggerFn)
 
     -- Row Pool
     local function RowFactory(pool, objectKey)
@@ -123,8 +124,6 @@ end
 
 function LiveSplit:AddEvents()
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_ACTIVATED, function() self:OnPlayerActivated() end)
-    EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_STARTED, function() self:StartTimer(SOURCE_TYPE_SELF) end)
-    EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_RAID_TRIAL_COMPLETE, function() self:OnTrigger() end)
     EVENT_MANAGER:RegisterForEvent("LiveSplit", EVENT_PLAYER_COMBAT_STATE, function(code, inCombat) self:OnCombatStateChanged(inCombat) end)
     EVENT_MANAGER:RegisterForUpdate("LiveSplit", nil, function() self:OnTick() end)
 end
@@ -254,6 +253,12 @@ function LiveSplit:OnTrigger(target)
         elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
             DBG:Info("Boss unit(s) died. Starting run...")
             self:StartTimer(SOURCE_TYPE_SELF)
+        elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL then
+            DBG:Info("Entered trial. Starting run...")
+            self:StartTimer(SOURCE_TYPE_SELF)
+        elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_END_TRIAL then
+            DBG:Info("Finished trial. Starting run...")
+            self:StartTimer(SOURCE_TYPE_SELF)
         else
             DBG:Warn("Something triggered, but no run is going on and it's not handled!")
             LIVE_SPLIT_DEBUG_CONSOLE:InvokeCommand("targets")
@@ -301,6 +306,12 @@ function LiveSplit:OnTrigger(target)
         self:Split(SOURCE_TYPE_SELF)
     elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH or currentSplitTrigger == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
         DBG:Info("Splitting due to boss unit(s) dying.")
+        self:Split(SOURCE_TYPE_SELF)
+    elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL then
+        DBG:Info("Splitting due to start trial")
+        self:Split(SOURCE_TYPE_SELF)
+    elseif self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_END_TRIAL then
+        DBG:Info("Splitting due to end trial")
         self:Split(SOURCE_TYPE_SELF)
     else
         DBG:Warn("Something triggered, but type is not handled!")

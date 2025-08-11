@@ -31,6 +31,7 @@ Triggers/CSATrigger.lua
 Triggers/DelayTrigger.lua
 Triggers/EndlessArchiveTrigger.lua
 Triggers/NPCMessageTrigger.lua
+Triggers/TrialEventsTrigger.lua
 Triggers/UnitDeathTrigger.lua
 
 ;Manager Objects
