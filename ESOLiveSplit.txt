@@ -24,6 +24,7 @@ lang/$(language).lua
 ;Modules
 Globals.lua
 Debugger.lua
+Triggers/TriggerBase.lua
 Triggers/BossEnterTrigger.lua
 Triggers/CoordinateTrigger.lua
 Triggers/CSATrigger.lua

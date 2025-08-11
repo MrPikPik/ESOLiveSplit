@@ -1,14 +1,12 @@
-LiveSplitBossEnterTrigger = ZO_CallbackObject:Subclass()
+LiveSplitBossEnterTrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitBossEnterTrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitBossEnterTrigger", {LIVE_SPLIT_TRIGGER_BOSS_ENTER}, triggerFn)
+    LiveSplitBossEnterTrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitBossEnterTrigger:Initialize()
-    self.targets = {}
     EVENT_MANAGER:RegisterForEvent("LiveSplitBossEnterTrigger", EVENT_BOSSES_CHANGED, function() self:OnBossChange() end)
 end
 
@@ -49,28 +47,4 @@ function LiveSplitBossEnterTrigger:OnBossChange()
             end
         end
     end
-end
-
-
-
-local triggerid = 1
-function LiveSplitBossEnterTrigger:Listen(target)
-    target.triggerid = triggerid
-    triggerid = triggerid + 1
-    table.insert(self.targets, target)
-    return triggerid - 1
-end
-
-function LiveSplitBossEnterTrigger:Remove(target)
-    for i, t in ipairs(self.targets) do
-        if t.triggerid == target.triggerid then
-            table.remove(self.targets, i)
-            return true
-        end
-    end
-    DBG:Verbose("LiveSplitBossEnterTrigger: Requested deletion of target couldn't be completed: target not found!")
-end
-
-function LiveSplitBossEnterTrigger:ClearTargets()
-    self.targets = {}
 end

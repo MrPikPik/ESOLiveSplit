@@ -1,14 +1,12 @@
-LiveSplitCSATrigger = ZO_CallbackObject:Subclass()
+LiveSplitCSATrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitCSATrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitCSATrigger", {LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE}, triggerFn)
+    LiveSplitCSATrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitCSATrigger:Initialize()
-    self.targets = {}
     EVENT_MANAGER:RegisterForEvent("LiveSplitCSATrigger", EVENT_BROADCAST, function(evt, ...) self:OnMessage(...) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplitCSATrigger", EVENT_DISPLAY_ALERT, function(evt, ...) self:OnMessage(...) end)
     EVENT_MANAGER:RegisterForEvent("LiveSplitCSATrigger", EVENT_DISPLAY_ANNOUNCEMENT, function(evt, ...) self:OnMessage(...) end)
@@ -153,32 +151,13 @@ function LiveSplitCSATrigger:OnMessage(message, subMessage)
     end
 
     if triggerTarget then
-        DBG:Info("LiveSplitCSATrigger: " .. triggerMessage)
+        DBG:Info("LiveSplitCSATrigger: <<1>>", triggerMessage)
         self:Remove(triggerTarget)
         self:FireCallbacks("OnTrigger", triggerTarget)
     end
 end
 
-local triggerid = 1
-function LiveSplitCSATrigger:Listen(target)
+function LiveSplitCSATrigger:CheckTarget(target)
     DBG:LuaAssert(target.match or target.message or target.subMessage or target.subMatch or (target.parsePattern and target.parseMatch), "LiveSplitCSATrigger: Target has nothing to check for!")
-
-    target.triggerid = triggerid
-    triggerid = triggerid + 1
-    table.insert(self.targets, target)
-    return triggerid - 1
-end
-
-function LiveSplitCSATrigger:Remove(target)
-    for i, t in ipairs(self.targets) do
-        if t.triggerid == target.triggerid then
-            table.remove(self.targets, i)
-            return true
-        end
-    end
-    DBG:Verbose("LiveSplitCSATrigger: Requested deletion of target couldn't be completed: target not found!")
-end
-
-function LiveSplitCSATrigger:ClearTargets()
-    self.targets = {}
+    return true
 end

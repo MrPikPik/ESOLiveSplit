@@ -1,14 +1,12 @@
-LiveSplitDelayTrigger = ZO_CallbackObject:Subclass()
+LiveSplitDelayTrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitDelayTrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitDelayTrigger", {LIVE_SPLIT_TRIGGER_DELAY}, triggerFn)
+    LiveSplitDelayTrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitDelayTrigger:Initialize()
-    self.targets = {}
     EVENT_MANAGER:RegisterForUpdate("LiveSplitDelayTrigger", nil, function() self:OnUpdate() end)
 end
 
@@ -29,27 +27,12 @@ function LiveSplitDelayTrigger:OnUpdate()
     end
 end
 
-local triggerid = 1
-function LiveSplitDelayTrigger:Listen(target)
+function LiveSplitDelayTrigger:CheckTarget(target)
     DBG:LuaAssert(target.time and type(target.time) == "number", "LiveSplitDelayTrigger: Delay time for target is missing or not a number!")
+    return true
+end
 
-    target.triggerid = triggerid
-    triggerid = triggerid + 1
+function LiveSplitDelayTrigger:SetupTarget(target)
     target.timeremaining = target.time
-    table.insert(self.targets, target)
-    return triggerid - 1
-end
-
-function LiveSplitDelayTrigger:Remove(target)
-    for i, t in ipairs(self.targets) do
-        if t.triggerid == target.triggerid then
-            table.remove(self.targets, i)
-            return true
-        end
-    end
-    DBG:Verbose("LiveSplitDelayTrigger: Requested deletion of target couldn't be completed: target not found!")
-end
-
-function LiveSplitDelayTrigger:ClearTargets()
-    self.targets = {}
+    return target
 end

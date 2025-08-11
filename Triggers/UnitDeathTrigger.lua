@@ -1,20 +1,17 @@
-LiveSplitUnitDeathTrigger = ZO_CallbackObject:Subclass()
+LiveSplitUnitDeathTrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitUnitDeathTrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitUnitDeathTrigger", {LIVE_SPLIT_TRIGGER_BOSS_DEATH, LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED}, triggerFn)
+    LiveSplitUnitDeathTrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitUnitDeathTrigger:Initialize()
-    self.targets = {}
     EVENT_MANAGER:RegisterForEvent("LiveSplitUnitDeathTrigger", EVENT_UNIT_DEATH_STATE_CHANGED, function(evt, unitTag, isDead) self:OnUnitDeath(unitTag, isDead) end)
 end
 
 function LiveSplitUnitDeathTrigger:OnUnitDeath(unitTag, isDead)
     for _, target in pairs(self.targets) do
-
         if string.sub(unitTag, 1, 4) == "boss" and isDead then
             if target.type == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
                 local bossName = GetUnitName(unitTag)
@@ -62,26 +59,4 @@ function LiveSplitUnitDeathTrigger:OnUnitDeath(unitTag, isDead)
             -- TODO: Non boss units
         end
     end
-end
-
-local triggerid = 1
-function LiveSplitUnitDeathTrigger:Listen(target)
-    target.triggerid = triggerid
-    triggerid = triggerid + 1
-    table.insert(self.targets, target)
-    return triggerid - 1
-end
-
-function LiveSplitUnitDeathTrigger:Remove(target)
-    for i, t in ipairs(self.targets) do
-        if t.triggerid == target.triggerid then
-            table.remove(self.targets, i)
-            return true
-        end
-    end
-    DBG:Verbose("LiveSplitUnitDeathTrigger: Requested deletion of target couldn't be completed: target not found!")
-end
-
-function LiveSplitUnitDeathTrigger:ClearTargets()
-    self.targets = {}
 end

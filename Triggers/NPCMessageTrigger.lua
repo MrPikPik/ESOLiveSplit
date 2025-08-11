@@ -1,14 +1,12 @@
-LiveSplitNPCMessageTrigger = ZO_CallbackObject:Subclass()
+LiveSplitNPCMessageTrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitNPCMessageTrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitNPCMessageTrigger", {LIVE_SPLIT_TRIGGER_NPC_MESSAGE}, triggerFn)
+    LiveSplitNPCMessageTrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitNPCMessageTrigger:Initialize()
-    self.targets = {}
     self.bounceMessageToLog = false
     EVENT_MANAGER:RegisterForEvent("LiveSplitNPCMessageTrigger", EVENT_CHAT_MESSAGE_CHANNEL, function(evt, channelType, fromName, message) self:OnMessage(channelType, fromName, message) end)
 end
@@ -64,26 +62,7 @@ function LiveSplitNPCMessageTrigger:OnMessage(channelType, fromName, message)
     end
 end
 
-local triggerid = 1
-function LiveSplitNPCMessageTrigger:Listen(target)
+function LiveSplitNPCMessageTrigger:CheckTarget(target)
     DBG:LuaAssert(target.match or target.message or target.fromName, "LiveSplitNPCMessageTrigger: Target has nothing to check for")
-
-    target.triggerid = triggerid
-    triggerid = triggerid + 1
-    table.insert(self.targets, target)
-    return triggerid - 1
-end
-
-function LiveSplitNPCMessageTrigger:Remove(target)
-    for i, t in ipairs(self.targets) do
-        if t.triggerid == target.triggerid then
-            table.remove(self.targets, i)
-            return true
-        end
-    end
-    DBG:Verbose("LiveSplitNPCMessageTrigger: Requested deletion of target couldn't be completed: target not found!")
-end
-
-function LiveSplitNPCMessageTrigger:ClearTargets()
-    self.targets = {}
+    return true
 end

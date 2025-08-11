@@ -1,18 +1,16 @@
-LiveSplitCoordinateTrigger = ZO_CallbackObject:Subclass()
+LiveSplitCoordinateTrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitCoordinateTrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitCoordinateTrigger", {LIVE_SPLIT_TRIGGER_LOCATION, LIVE_SPLIT_TRIGGER_LOCATION_INV, LIVE_SPLIT_TRIGGER_LOCATION_MULTI}, triggerFn)
+    LiveSplitCoordinateTrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitCoordinateTrigger:Initialize()
-    self.targets = {}
     EVENT_MANAGER:RegisterForUpdate("LiveSplitCoordinateTrigger", nil, function() self:Update() end)
 end
 
-function LiveSplitCoordinateTrigger:CheckTarget(target, unittag)
+function LiveSplitCoordinateTrigger:Check(target, unittag)
     if not unittag then unittag = "player" end
 
     local zone, x, y, z = GetUnitWorldPosition(unittag)
@@ -43,39 +41,20 @@ function LiveSplitCoordinateTrigger:Update()
     for _, target in pairs(self.targets) do
         if IsUnitGrouped("player") then
             for i = 1, GetGroupSize() do
-                if self:CheckTarget(target, "group" .. i) then
+                if self:Check(target, "group" .. i) then
                     DBG:Verbose("LiveSplitCoordinateTrigger: Member of the group triggered location trigger. Skipping pending members...")
                     break
                 end
             end
         else
-            self:CheckTarget(target)
+            self:Check(target)
         end
     end
 end
 
-local triggerid = 1
-function LiveSplitCoordinateTrigger:Listen(target)
+function LiveSplitCoordinateTrigger:CheckTarget(target)
     DBG:LuaAssert(target.x and type(target.x) == "number", "LiveSplitCoordinateTrigger: X coordinate for target is missing or not a number!")
     DBG:LuaAssert(target.y and type(target.y) == "number", "LiveSplitCoordinateTrigger: Y coordinate for target is missing or not a number!")
     DBG:LuaAssert(target.r and type(target.r) == "number", "LiveSplitCoordinateTrigger: Radius r for target is missing or not a number!")
-
-    target.triggerid = triggerid
-    triggerid = triggerid + 1
-    table.insert(self.targets, target)
-    return triggerid - 1
-end
-
-function LiveSplitCoordinateTrigger:Remove(target)
-    for i, t in ipairs(self.targets) do
-        if t.triggerid == target.triggerid then
-            table.remove(self.targets, i)
-            return true
-        end
-    end
-    DBG:Verbose("LiveSplitCoordinateTrigger: Requested deletion of target couldn't be completed: target not found!")
-end
-
-function LiveSplitCoordinateTrigger:ClearTargets()
-    self.targets = {}
+    return true
 end

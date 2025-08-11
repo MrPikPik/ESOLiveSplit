@@ -1,10 +1,9 @@
-LiveSplitEndlessArchiveTrigger = ZO_CallbackObject:Subclass()
+LiveSplitEndlessArchiveTrigger = LiveSplitTrigger:Subclass()
 
 function LiveSplitEndlessArchiveTrigger:New(triggerFn)
-    local listener = ZO_CallbackObject.New(self)
-    listener:Initialize()
-    self:RegisterCallback("OnTrigger", triggerFn)
-    return listener
+    local trigger = LiveSplitTrigger.New(self, "LiveSplitEndlessArchiveTrigger", {LIVE_SPLIT_TRIGGER_ENDLESS_STAGE}, triggerFn)
+    LiveSplitEndlessArchiveTrigger.Initialize(trigger)
+    return trigger
 end
 
 function LiveSplitEndlessArchiveTrigger:Initialize()
@@ -80,4 +79,9 @@ end
 
 function LiveSplitEndlessArchiveTrigger:GetCurrentProgress()
     return self.arc, self.cycle, self.stage
+end
+
+-- Override base to not care for given targets.
+function LiveSplitEndlessArchiveTrigger:Listen(target)
+    return 0
 end

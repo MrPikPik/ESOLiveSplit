@@ -53,6 +53,11 @@ function ZO_CallbackObject:Subclass() return {} end
 ---@param ... any Parameters to ge given to the attached functions
 function ZO_CallbackObject:FireCallbacks(callbackName, ...) end
 
+---Fires all functions attached to the given callback name.
+---@param callbackName string Named callback to fire
+---@param callbackFunction function Function to call when the callback should fire
+function ZO_CallbackObject:RegisterCallback(callbackName, callbackFunction) end
+
 
 ---@class ZO_Object
 ---@field public New function
@@ -287,6 +292,18 @@ ZO_MailSendSubjectField = {}
 ---@type ZO_Control
 ZO_MailSendBodyField = {}
 
----REturns of the shift key is pressed
+---Returns of the shift key is pressed
 ---@return boolean KeyDown
 function IsShiftKeyDown() return true end
+
+
+---Mixes in `obj` into `base`
+function zo_mixin(base, obj) end
+
+---Clears a table
+---@param t table
+function ZO_ClearTable(t)
+    for k in pairs(t) do
+        t[k] = nil
+    end
+end
