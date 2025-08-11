@@ -35,7 +35,7 @@
 --- |`LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED` # Specify a named boss that needs to perish.
 --- |`LIVE_SPLIT_TRIGGER_END_TRIAL` # Trigger for the EVENT_RAID_TRIAL_COMPLETE firing.
 
----@alias LIVE_SPLIT_TIME number # Predifined times
+---@alias LIVE_SPLIT_TIME number # Predefined times
 --- | `LIVE_SPLIT_TIME_15_MINUTES` # 900000  milliseconds
 --- | `LIVE_SPLIT_TIME_20_MINUTES` # 1200000 milliseconds
 --- | `LIVE_SPLIT_TIME_25_MINUTES` # 1500000 milliseconds
@@ -45,7 +45,7 @@
 --- | `LIVE_SPLIT_TIME_40_MINUTES` # 2400000 milliseconds
 --- | `LIVE_SPLIT_TIME_45_MINUTES` # 2700000 milliseconds
 
----@alias LIVE_SPLIT_ICON TexturePath # Predifined icons
+---@alias LIVE_SPLIT_ICON TexturePath # Predefined icons
 --- | `LIVE_SPLIT_ICON_BOSS`    # Preset icon for a boss (Crossed swords)
 --- | `LIVE_SPLIT_ICON_ENDBOSS` # Preset icon for a final boss (Crossed swords with skull)
 
