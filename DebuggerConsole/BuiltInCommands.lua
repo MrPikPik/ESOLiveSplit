@@ -50,6 +50,9 @@ local function PrintAllTargets()
     for _, target in pairs(LIVE_SPLIT.bossEnterListener.targets) do
         table.insert(targets, {type = "LiveSplitBossEnterTrigger", data = target})
     end
+    for _, target in pairs(LIVE_SPLIT.unitDeathListener.targets) do
+        table.insert(targets, {type = "LiveSplitUnitDeathTrigger", data = target})
+    end
 
     LIVE_SPLIT_DEBUG_CONSOLE:Write(string.format("%s %s", ESOLS_DebugConsole.Utils.LJust("Trigger Class", 28), "Data"))
     LIVE_SPLIT_DEBUG_CONSOLE:Write(string.format("%s %s", string.rep("=", 28), string.rep("=", 48)))
