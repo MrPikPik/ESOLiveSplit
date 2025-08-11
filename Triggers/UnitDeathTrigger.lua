@@ -13,9 +13,10 @@ end
 function LiveSplitUnitDeathTrigger:OnUnitDeath(unitTag, isDead)
     for _, target in pairs(self.targets) do
         if string.sub(unitTag, 1, 4) == "boss" and isDead then
+            local bossName = GetUnitName(unitTag)
+            DBG:Info("LiveSplitUnitDeathTrigger: Boss unit '<<1>>' (<<2>>) died.", bossName, unitTag)
+            
             if target.type == LIVE_SPLIT_TRIGGER_BOSS_DEATH_NAMED then
-                local bossName = GetUnitName(unitTag)
-
                 if target.filter then
                     for _, filter in pairs(target.filter) do
                         if filter == bossName then
