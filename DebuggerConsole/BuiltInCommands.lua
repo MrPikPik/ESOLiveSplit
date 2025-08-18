@@ -28,7 +28,7 @@ LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("hide", ESOLS_DebugConsole_Close)
 -- zoneid
 local function GetLocalZoneId()
     local zoneId = GetZoneId(GetUnitZoneIndex("player"))
-    DBG:Log(zo_strformat("Current zone: <<1>> (<<2>>)",  GetZoneNameById(zoneId), zoneId))
+    DBG:Log("Current zone: <<1>> (<<2>>)",  GetZoneNameById(zoneId), zoneId)
 end
 LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("zone", GetLocalZoneId)
 
@@ -72,7 +72,7 @@ LIVE_SPLIT_DEBUG_CONSOLE:AddCommand("targets", PrintAllTargets)
 local function PrintAvailableCommands()
     DBG:Log("Registered Commands:")
     for command, _ in pairs(LIVE_SPLIT_DEBUG_CONSOLE.commands) do
-        DBG:Log(zo_strformat(" - <<1>>", command))
+        DBG:Log(" - <<1>>", command)
     end
     
 end
