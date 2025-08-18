@@ -59,7 +59,7 @@ local function PrintAllTargets()
     for _, target in pairs(targets) do
         local data = ""
         for k, v in pairs(target.data) do
-            data = data .. k .. "=" .. v .. ", "
+            data = data .. tostring(k) .. "=" .. tostring(v) .. ", "
         end
         data = string.sub(data, 1, -2)
         LIVE_SPLIT_DEBUG_CONSOLE:Write(string.format("%s %s", ESOLS_DebugConsole.Utils.LJust(target.type, 28), data))
