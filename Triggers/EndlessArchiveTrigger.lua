@@ -1,8 +1,13 @@
+---@class LiveSplitEndlessArchiveTrigger: LiveSplitTrigger
 LiveSplitEndlessArchiveTrigger = LiveSplitTrigger:Subclass()
 
+---Creates a new instance
+---@param triggerFn function
+---@return LiveSplitEndlessArchiveTrigger
 function LiveSplitEndlessArchiveTrigger:New(triggerFn)
     local trigger = LiveSplitTrigger.New(self, "LiveSplitEndlessArchiveTrigger", {LIVE_SPLIT_TRIGGER_ENDLESS_STAGE}, triggerFn)
     LiveSplitEndlessArchiveTrigger.Initialize(trigger)
+    ---@type LiveSplitEndlessArchiveTrigger
     return trigger
 end
 
