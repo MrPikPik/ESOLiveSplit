@@ -131,6 +131,7 @@ SplitData/EndlessArchive.lua
 
 ;Testing
 ;SplitData/Test.lua
+SplitData/Test2.lua
 
 ;AddonMain
 ESOLiveSplit.lua
