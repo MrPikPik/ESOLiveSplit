@@ -29,6 +29,12 @@ function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
     DBG:LuaAssert(splitdata and type(splitdata) == "table", "SplitManager: Registering split failed: Invalid or missing splitdata.")
     DBG:LuaAssert(splitdata.id ~= nil, "SplitManager: Registering split failed: Missing field 'id' in splitdata.")
 
+    -- Check for registrations from this addon or external sources
+    if debug.traceback("", 2):gsub("\nstack traceback:\n", ""):find("^user:/AddOns/ESOLiveSplit/") == nil then
+        DBG:LuaAssert(not string.find(splitdata.id, "^ESOLS_"), "ID '<<1>>' begins with 'ESOLS_'. This is reserved for datasets provided by ESOLiveSplit. Please choose another ID prefix.", splitdata.id)
+        splitdata.isexternal = true
+    end
+
     if not self.splitdata[zoneId] then self.splitdata[zoneId] = {} end
     if not self.splitdata[zoneId][difficulty] then self.splitdata[zoneId][difficulty] = {} end
 
@@ -38,7 +44,7 @@ function SplitManager:RegisterSplit(zoneId, difficulty, splitdata)
 
     splitdata.zone = zoneId
     table.insert(self.splitdata[zoneId][difficulty], splitdata)
-    DBG:Info("Registered new split data for zoneId <<1>>: <<2>> (<<3>>)", zoneId, splitdata.catName, diffNames[difficulty])
+    DBG:Info("Registered new split data for zoneId <<1>>: <<2>> (<<3>>) [<<4>>]", zoneId, splitdata.catName, diffNames[difficulty], splitdata.id)
 end
 
 ---Returns all registered splits. Sorted by zone, then difficulty
