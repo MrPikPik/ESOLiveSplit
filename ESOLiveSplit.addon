@@ -5,8 +5,8 @@
 ## Title: ESO Live Split
 ## Description: Live Split lookalike in ESO
 ## Author: MrPikPik
-## APIVersion: 101046
-## Version: 1.0.0 / 11.0.6
+## APIVersion: 101047
+## Version: 1.0.0 / 11.1.8
 ## AddOnVersion: 100
 ## DependsOn: LibCustomMenu>=712
 ## OptionalDependsOn: LibAddonMenu>=31
@@ -102,6 +102,8 @@ SplitData/Dungeons/BedlamVeil.lua
 SplitData/Dungeons/OathswornPit.lua
 SplitData/Dungeons/LepSeclusa.lua
 SplitData/Dungeons/ExiledRedoubt.lua
+SplitData/Dungeons/BlackGemFoundry.lua
+SplitData/Dungeons/NajCaldeesh.lua
 
 ;Trials
 SplitData/Trials/HelRaCitadel.lua

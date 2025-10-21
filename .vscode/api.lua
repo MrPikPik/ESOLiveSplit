@@ -76,6 +76,7 @@ function ZO_Object.Subclass() return {} end
 
 
 ZO_AutoComplete = ZO_Object:New()
+ZO_AutoComplete.ON_ENTRY_SELECTED = "ZO_AutoComplete_On_Entry_Selected"
 
 ---Initialize
 ---@param control Control
@@ -226,8 +227,11 @@ function SceneManager:Show(sceneName) end
 SCENE_MANAGER = SceneManager:New()
 
 ---@class ZO_Control
----@field public SetText function
 ZO_Control = {}
+
+---@class ZO_Label: ZO_Control
+---@field public SetText function
+ZO_Label = {}
 
 ---Sets a label text
 ---@param text any
@@ -285,12 +289,19 @@ function zo_callLater(fn, delay) end
 ---Gets the current unix time stamp
 function GetTimeStamp() return 1 end
 
----@type ZO_Control
-ZO_MailSendToField = {}
----@type ZO_Control
-ZO_MailSendSubjectField = {}
----@type ZO_Control
-ZO_MailSendBodyField = {}
+---@type ZO_Label
+ZO_MailSendToField = {
+    SetText = function(str) end
+}
+---@type ZO_Label
+ZO_MailSendSubjectField = {
+    SetText = function(str) end
+}
+---@type ZO_Label
+ZO_MailSendBodyField = {
+    SetText = function(str) end
+}
+
 
 ---Returns of the shift key is pressed
 ---@return boolean KeyDown

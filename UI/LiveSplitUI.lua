@@ -230,7 +230,8 @@ function LiveSplit:OnTrigger(target)
     if not self.selectedSplit then return end
 
     -- Run is not started which means we need to start a run
-    if not self.timerenabled then
+    if not self.timerenabled and self.totaltime <= 0 then
+        DBG:Assert(self.totaltime == 0, "Timer said not to be enabled, but total time not 0. Needs to be investigated!")
         if self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION or self.selectedSplit.startTrigger == LIVE_SPLIT_TRIGGER_LOCATION_INV then
             DBG:Info("Player entered trigger. Starting run...")
             self:StartTimer(SOURCE_TYPE_SELF)
@@ -266,6 +267,8 @@ function LiveSplit:OnTrigger(target)
         end
         return
     end
+
+    DBG:Debug("totaltime=<<1>>. timerenabled=<<2>>", self.totaltime, tostring(self.timerenabled))
 
     -- Run is started so we need to find out how to handle the triggering
     local currentSplitTrigger = self:GetCurrentSplitTrigger()
@@ -696,15 +699,20 @@ function LiveSplit:Reset(source)
     self.uncommitedTimes = {}
 
     -- Clear all listeners
+    self.bossEnterListener:ClearTargets()
     self.coordinateListener:ClearTargets()
-    self.npcListener:ClearTargets()
-    self.delayListener:ClearTargets()
     self.csaListener:ClearTargets()
+    self.delayListener:ClearTargets()
+    self.endlessArchiveListener:ClearTargets()
+    self.npcListener:ClearTargets()
+    self.trialListener:ClearTargets()
+    self.unitDeathListener:ClearTargets()
 
+    self:UpdateSplitEntries()
     self:UpdateMainTimer()
     self:UpdateSplitTimer()
 
-    if source == SOURCE_TYPE_MENU then
+    if source == SOURCE_TYPE_MENU or source == SOURCE_TYPE_KEYBIND then
         self:OnPlayerActivated() -- Force UI reloading current zone splits
     end
 end
@@ -823,6 +831,7 @@ function LiveSplit:Split(source)
         currentSplit.cleanupFunction()
     end
 
+    -- Check if there are more segments to come. If not, end the run.
     if self.currentsplit < #self.selectedSplit.splits then
         self.currentsplit = self.currentsplit + 1
         self:SetupTriggersForSplit()
@@ -847,6 +856,8 @@ function LiveSplit:SetupTriggersForSplit(isStartTrigger)
         currentSplitData = self.selectedSplit.startData
         currentSplitTrigger = self.selectedSplit.startTrigger
     end
+
+    DBG:Verbose("Setting up triggers for current split <<1>>. Type: <<2>>", self.currentsplit, currentSplitTrigger)
 
     if currentSplitTrigger == LIVE_SPLIT_TRIGGER_LOCATION then
         local target = {
@@ -899,8 +910,10 @@ function LiveSplit:SetupTriggersForSplit(isStartTrigger)
     elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_BEGIN_TRIAL and self.difficulty ~= DUNGEON_DIFFICULTY_VETERAN then
         if isStartTrigger == true then
             DBG:Error("Category start trigger is begin trial, but difficulty is not veteran! This event does not fire on non-veteran content!")
+            return
         else
             DBG:Error("Split trigger is begin trial, but this is not a starting trigger!")
+            return
         end
     elseif currentSplitTrigger == LIVE_SPLIT_TRIGGER_CENTER_ANNOUNCE then
         local target = {

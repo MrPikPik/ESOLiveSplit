@@ -12,10 +12,12 @@ function LiveSplitTrialEventsTrigger:Initialize()
 end
 
 function LiveSplitTrialEventsTrigger:OnTrialBegin(trialName)
+    DBG:Info("LiveSplitTrialEventsTrigger: Started trial '<<1>>'", trialName)
     self:FireCallbacks("OnTrigger")
 end
 
 function LiveSplitTrialEventsTrigger:OnTrialEnd(trialName, score, finalTime)
+    DBG:Info("LiveSplitTrialEventsTrigger: Completed trial '<<1>>'", trialName)
     self:FireCallbacks("OnTrigger")
 end
 

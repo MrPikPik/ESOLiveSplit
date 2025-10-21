@@ -4,6 +4,7 @@
             <Action name="LIVE_SPLIT_KEY1">
                 <Down>
                     if not LIVE_SPLIT.activerun then
+                        LIVE_SPLIT:Reset(3)
                         LIVE_SPLIT:StartTimer(3)
                     else
                         LIVE_SPLIT:Split(3)
