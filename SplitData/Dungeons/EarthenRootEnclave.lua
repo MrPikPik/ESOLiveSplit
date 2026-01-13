@@ -2,6 +2,11 @@ local splits = {
 	[1] = {
 		name = "Trash 1",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Corruption of Stone",
+			},
+		},
 	},
 	[2] = {
 		name = "Corruption of Stone",
@@ -11,6 +16,11 @@ local splits = {
 	[3] = {
 		name = "Trash 2",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Corruption of Root",
+			},
+		},
 	},
 	[4] = {
 		name = "Corruption of Root",
@@ -20,6 +30,11 @@ local splits = {
 	[5] = {
 		name = "Trash 3",
 		splitTrigger = LIVE_SPLIT_TRIGGER_BOSS_ENTER,
+		data = {
+			filterMatch = {
+				[1] = "Devyric",
+			},
+		},
 	},
 	[6] = {
 		name = "Archdruid Devyric",
